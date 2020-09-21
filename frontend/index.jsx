@@ -1,6 +1,6 @@
 import React from 'react'
 import configureStore from './store/store';
-import Root from './components/root';
+import Root from './components/Root';
 import ReactDOM from 'react-dom';
 
 // TESTING STARTS HERE
