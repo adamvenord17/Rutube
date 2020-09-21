@@ -9,7 +9,6 @@ const mSTP = state => {
 };
 
 const Auth = ({ loggedIn, path, component: Component }) => {
-    debugger
     return (<Route path={path}
         render={props => {
             return loggedIn ? <Redirect to="/" /> : <Component {...props} />;
