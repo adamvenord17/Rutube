@@ -1,0 +1,62 @@
+main.signup-login-form-container {
+    margin: 100px auto;
+    width: 350px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 50px;
+    height: 425px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-login-logo {
+    font-size: 18px;
+    padding: 10px;
+}
+
+.signup-login-title {
+    font-size: 24px;
+    padding: 10px;
+}
+
+.signup-login-after-title {
+    font-size: 16px;
+    padding: 5px;
+}
+
+.signup-login-form-container form {
+    width: 100%
+}
+
+.username-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-login-form-container label {
+    position: relative;
+    z-index: 2;
+    background-color: white;
+}
+
+.signup-login-form-container input {
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    left: 30px;
+    top: 2px;;
+    z-index: -1
+}
+
+
+
+
+
+
+
+
+
+
+
+

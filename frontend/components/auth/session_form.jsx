@@ -28,52 +28,43 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        // 
-        // if (this.props.currentUser !== null) {
-        //     return (
-        //         <>
-        //             <Redirect to="/" />
-        //         </>
-        //     )
-        // }
-        let formTypeText = this.props.formType === "Login" ? "Log In" : "Sign Up";
+        let formTypeText = this.props.formType === "Login" ? "Sign In" : "Sign Up";
         let oppositeForm = this.props.formType === "Login" ? "/signup" : "/login";
-        let oppositeFormText = this.props.formType === "Login" ? "Sign Up" : "Log in";
+        let oppositeFormText = this.props.formType === "Login" ? "Sign Up" : "Sign in";
         return (
-            <>
-                <h3>{formTypeText}</h3>
-                <ul>
+            <main class="signup-login-form-container">
+                <span class="signup-login-logo"><span class="iconify" data-icon="mdi-language-ruby"></span>Rutube</span>
+                <span class="signup-login-title">{formTypeText}</span>
+                <span class="signup-login-after-title">to continue to Rutube</span>
+                <ul class="signup-login-errors">
                     {this.props.errors}
                 </ul>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Username:
-                        <input
-                            type="text"
-                            onChange={this.handleChange('username')}
-                            value={this.state.username}
-                        />
-                    </label>
+                    <div class="username-container">
+                        <label>Username:
+                            <input
+                                type="text"
+                                onChange={this.handleChange('username')}
+                                value={this.state.username}
+                            />
+                        </label>
+                        <button class="username-next-btn">Next</button>
+                    </div>
 
-                    <label>Email:
-                        <input
-                            type="text"
-                            onChange={this.handleChange('email')}
-                            value={this.state.email}
-                        />
-                    </label>
-
-                    <label>Password:
-                        <input
-                            type="password"
-                            onChange={this.handleChange('password')}
-                            value={this.state.password}
-                        />
-                    </label>
-
+                    <div class="password-container">
+                        <label>Password:
+                            <input
+                                type="password"
+                                onChange={this.handleChange('password')}
+                                value={this.state.password}
+                            />
+                        </label>
+                        <button class="password-next-btn">Next</button>
+                    </div>
                     <button>{formTypeText}</button>
                 </form>
                 <Link to={oppositeForm}>{oppositeFormText}</Link>
-            </>
+            </main>
         )
     }
 
