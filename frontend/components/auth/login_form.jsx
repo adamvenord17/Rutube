@@ -12,12 +12,21 @@ class LoginForm extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
     }
 
     handleChange(field) {
         return (e) => {
             this.setState({ [field]: e.target.value });
         };
+    }
+
+    handleDemoSubmit() {
+        const user = {
+            username: "DemoUser",
+            password: "password"
+        };
+        this.props.processForm(user);
     }
 
     togglePasswordShow(e) {
@@ -77,6 +86,8 @@ class LoginForm extends React.Component {
                         <label>Username</label>
                         <Link to={oppositeForm}>Create account</Link>
                         <button type="button" className="username-next-btn" onClick={this.moveToPassword}>Next</button>
+                        <span id="or-demo">or</span>
+                        <button type="button" onClick={this.handleDemoSubmit} id="demo-login-btn">Sign in as a demo user</button>
                     </div>
 
                     <div className={passwordClass}>

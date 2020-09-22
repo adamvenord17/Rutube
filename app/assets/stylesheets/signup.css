@@ -1,6 +1,9 @@
 main.signup-login-form-container.signup {
+    margin: 50px auto;
     width: 700px;
+    height: 500px;
     position: relative;
+
 }
 
 .signup-left {
@@ -64,7 +67,7 @@ main.signup-login-form-container.signup {
 }
 
 .signup-login-form-container.signup a {
-    top: 285px;
+    top: 320px;
     left: 8px;
 }
 
@@ -93,7 +96,7 @@ main.signup-login-form-container.signup {
 }
 
 .signup-login-form-container.signup .password-next-btn {
-    top: 270px;
+    top: 305px;
 }
 
 .errors-message.login {

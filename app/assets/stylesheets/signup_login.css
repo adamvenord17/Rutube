@@ -127,7 +127,7 @@ main.signup-login-form-container {
 
 .signup-login-form-container button {
     position: absolute;
-    top: 200px;
+    top: 100px;
     left: 250px;
     height: 40px; 
     width: 100px;
@@ -144,7 +144,7 @@ main.signup-login-form-container {
 
 .signup-login-form-container a {
     position: absolute;
-    top: 215px;
+    top: 115px;
     left: 20px;
     width: 100px;
     font-size: 14px;
@@ -159,6 +159,13 @@ main.signup-login-form-container {
     font-size: 12px;
     left: 20px;
     color: red;
+    margin: 0px;
+    padding: 0px;
+}
+
+.error-message-li {
+    list-style: none;
+    margin: 0;
 }
 
 #login-show-password-btn {
@@ -185,6 +192,21 @@ main.signup-login-form-container {
 
 #login-show-password-btn:active {
     background-color: lightgray;
+}
+
+#or-demo {
+    position: absolute;
+    top: 185px;
+    left: 112px;
+    width: 150px;
+    text-align: center;
+}
+
+#demo-login-btn {
+    position: absolute;
+    top: 247px;
+    left: 112px;
+    width: 150px;
 }
 
 
