@@ -1,0 +1,104 @@
+main.signup-login-form-container.signup {
+    width: 700px;
+    position: relative;
+}
+
+.signup-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.signup-right {
+    width: 500;
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 440px;
+    top: 100px
+}
+
+#signup-icon {
+    color: rgb(0, 89, 255);
+    font-size: 80px;
+    text-align: center;
+    width: 220px;
+    padding: 30px 0px;
+}
+
+#signup-blurb {
+    width: 220px;
+    text-align: center;
+}
+
+.signup-login-form-container.signup .signup-login-after-title {
+    padding: 5px 10px;
+}
+
+.input-container.password.signup {
+    top: 130px;
+    left: -60px;
+}
+
+.input-container.confirm.signup {
+    top: 130px;
+    left: 90px;
+}
+
+.input-container.email.signup {
+    top: 50px;
+    left: -60px;
+}
+
+.input-container.password.signup input {
+    width: 100px;
+}
+
+.input-container.confirm.signup input {
+    width: 100px;
+}
+
+.signup-login-form-container.signup a {
+    top: 285px;
+    left: 8px;
+}
+
+#show-password-btn {
+    width: 45px;
+    background-color: white;
+    height: 45px;
+    border-radius: 25px;
+    top: 189px;
+    left: 293px;
+    color: grey;
+    transition: .25s;
+    font-size: 20px;
+}
+
+#show-password-btn:focus {
+    outline: none;
+}
+
+#show-password-btn:hover {
+    background-color: lightgray;
+}
+
+#show-password-btn:active {
+    background-color: lightgray;
+}
+
+.signup-login-form-container.signup .password-next-btn {
+    top: 270px;
+}
+
+.errors-message.login {
+    top: 245px;
+    left: 10px
+}
+
+

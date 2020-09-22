@@ -12,7 +12,7 @@ main.signup-login-form-container {
 }
 
 .signup-login-logo {
-    font-size: 18px;
+    font-size: 22px;
     padding: 10px;
 }
 
@@ -66,14 +66,15 @@ main.signup-login-form-container {
 
 .signup-login-form-container label {
     position: relative;
-    z-index: 2;
-    top: 0px;
+    z-index: 1;
+    top: 22px;
     left: 30px;
-    font-size: 12px;
+    font-size: 16px;
     padding: 0px 3px;
     background-color: white;
     color: gray;
     display: inline-block;
+    transition: .2s;
 }
 
 .signup-login-form-container input {
@@ -83,16 +84,28 @@ main.signup-login-form-container {
     height: 30px;
     left: 15px;
     top: 5px;
-    z-index: 1;
+    z-index: 2;
     width: 320px;
     border: 1px solid lightgrey;
     border-radius: 5px;
-    background-color: rgb(196, 220, 255);
     font-size: 18px;
+    background: transparent;
+}
+
+.signup-login-form-container input:valid + label {
+    color: lightgrey;
+    top: 0px;
+    left: 30px;
+    font-size: 12px;
+    z-index: 3;
 }
 
 .signup-login-form-container input:focus + label {
     color: rgb(0, 89, 255);
+    top: 0px;
+    left: 30px;
+    font-size: 12px;
+    z-index: 3;
 }
 
 .input-container.errors input {
@@ -105,7 +118,11 @@ main.signup-login-form-container {
 }
 
 .input-container.errors input + label {
-    color: red
+    color: red;
+    top: 0px;
+    left: 30px;
+    font-size: 12px;
+    z-index: 3;
 }
 
 .signup-login-form-container button {
@@ -144,6 +161,31 @@ main.signup-login-form-container {
     color: red;
 }
 
+#login-show-password-btn {
+    position: absolute;
+    top: 9px;
+    left: 305px;
+    width: 45px;
+    background-color: white;
+    height: 45px;
+    border-radius: 25px;
+    color: grey;
+    transition: .25s;
+    font-size: 20px;
+    z-index: 3;
+}
+
+#login-show-password-btn:focus {
+    outline: none;
+}
+
+#login-show-password-btn:hover {
+    background-color: lightgray;
+}
+
+#login-show-password-btn:active {
+    background-color: lightgray;
+}
 
 
 

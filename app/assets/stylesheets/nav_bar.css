@@ -115,7 +115,7 @@ form.search-bar input:focus {
 }
 
 #user-btn {
-    background-color: skyrgb(0, 89, 255);
+    background-color: rgb(0, 89, 255);
     border: rgb(58, 58, 255) 1px solid;
     border-radius: 25px;
     width: 40px;

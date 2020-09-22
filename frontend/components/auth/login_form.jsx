@@ -20,7 +20,23 @@ class LoginForm extends React.Component {
         };
     }
 
-    moveToPassword() {
+    togglePasswordShow(e) {
+        e.preventDefault();
+        let passwordInput = document.getElementById("login-password");
+        let passwordShowBtn = document.getElementById("show-password-btn-icon");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordShowBtn.classList.remove("fa-eye-slash");
+            passwordShowBtn.classList.add("fa-eye");
+        } else {
+            passwordInput.type = "password";
+            passwordShowBtn.classList.remove("fa-eye");
+            passwordShowBtn.classList.add("fa-eye-slash");
+        }
+    }
+
+    moveToPassword(e) {
+        e.preventDefault();
         let usernameContainer = document.getElementsByClassName("input-container username")[0];
         let passwordContainer = document.getElementsByClassName("input-container password")[0];
         usernameContainer.classList.add("hide");
@@ -56,21 +72,26 @@ class LoginForm extends React.Component {
                             type="text"
                             onChange={this.handleChange('username')}
                             value={this.state.username}
+                            required
                         />
                         <label>Username</label>
                         <Link to={oppositeForm}>Create account</Link>
-                        <button className="username-next-btn" onClick={this.moveToPassword}>Next</button>
+                        <button type="button" className="username-next-btn" onClick={this.moveToPassword}>Next</button>
                     </div>
 
                     <div className={passwordClass}>
                         <input
                             type="password"
+                            id="login-password"
                             onChange={this.handleChange('password')}
                             value={this.state.password}
+                            required
                         />
                         <label>Password</label><span className="errors-message">{errorsMessage}</span>
                         <button className="password-next-btn" onClick={this.handleSubmit}>Next</button>
+                        <button type="button" id="login-show-password-btn" onClick={this.togglePasswordShow}><i id="show-password-btn-icon" className="fas fa-eye-slash"></i></button>
                     </div>
+
                 </form>
             </main>
         )
