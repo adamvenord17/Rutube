@@ -1,0 +1,134 @@
+#nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 60px;
+}
+
+form.search-bar {
+    flex-grow: 3;
+    box-sizing: border-box;
+    max-width: 600px;
+}
+
+form.search-bar input {
+    box-sizing: border-box;
+    padding: 8px;
+    padding-left: 15px;
+    padding-top: 9px;
+    font-size: 17px;
+    border: solid lightgray 1px;
+    float: left;
+    width: 85%;
+    background: white;
+    border-radius: 10px 0px 0px 2x;
+}
+
+form.search-bar button {
+    box-sizing: border-box;
+    float: left;
+    width: 15%;
+    padding: 5px;
+    background: rgb(228, 228, 228);
+    color: white;
+    font-size: 17px;
+    border: solid lightgray 1px;
+    border-left: none;
+    cursor: pointer;
+    border-radius: 0px 2px 2px 0px;
+    transition: .25s;
+}
+
+form.search-bar button:hover {
+    background: rgb(211, 211, 211);
+}
+
+form.search-bar button:focus {
+    outline: 0;
+}
+
+form.search-bar input:focus {
+    outline: 0;
+    border: blue 1px solid;
+}
+
+/* #search-bar input {
+    height: 100%;
+    width: 80%;
+    padding: 7px;
+    border: solid lightgray 1px;
+    border-radius: 1px 0px 0px 1px;
+}
+
+#search-bar button {
+    margin: 0px;
+    height: 100%;
+    padding: 5px;
+    border: solid lightgray 1px;
+    border-radius: 0px 1px 1px 0px;
+    border-left: none;
+    width: 20%;
+    float: right;
+} */
+
+.nav-icons button {
+    margin: 20px;
+    background-color: white;
+    border: none;
+    font-size: large;
+    cursor: pointer;
+}
+
+.nav-icons button:focus {
+    outline: 0;
+}
+
+.nav-icons i {
+    font-size: 28px;
+}
+
+.nav-icons i:focus {
+    outline: 0;
+}
+
+#logo-btn {
+    font-weight: bold;
+}
+
+.iconify { 
+    color: red; 
+}
+
+#sign-in-btn {
+    margin: 20px;
+    border: solid blue 1px;
+    color: blue;
+    padding: 7px;
+    border-radius: 3px;
+    width: 125px;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+}
+
+#user-btn {
+    background-color: skyblue;
+    border: rgb(58, 58, 255) 1px solid;
+    border-radius: 25px;
+    width: 40px;
+    height: 40px;
+    color: white;
+    font-size: 22px;
+    text-transform: uppercase;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#user-btn:focus {
+    outline: 0;
+    border: none
+}
