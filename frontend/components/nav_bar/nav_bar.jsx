@@ -15,9 +15,9 @@ class NavBar extends React.Component {
             <header id="nav-bar">
                 <div className="nav-icons left">
                     <button id="sidebar-options-btn">&#x2630;</button>
-                    <button id="logo-btn"><span class="iconify" data-icon="mdi-language-ruby"></span>Rutube</button>
+                    <button id="logo-btn"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</button>
                 </div>
-                <form class="search-bar">
+                <form className="search-bar">
                     <input type="text" placeholder="Search"/>
                     <button>&#x1F50D;</button>
                 </form>

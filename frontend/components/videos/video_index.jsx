@@ -5,7 +5,7 @@ class VideoIndex extends React.Component {
 
     render() {
         return(
-            <main class="video-index-container">
+            <main className="video-index-container">
                 <NavBarContainer />
                 <h1>This is the VideoIndex Component</h1>
             </main>

@@ -50,7 +50,7 @@ form.search-bar button:focus {
 
 form.search-bar input:focus {
     outline: 0;
-    border: blue 1px solid;
+    border: rgb(0, 89, 255) 1px solid;
 }
 
 /* #search-bar input {
@@ -102,8 +102,8 @@ form.search-bar input:focus {
 
 #sign-in-btn {
     margin: 20px;
-    border: solid blue 1px;
-    color: blue;
+    border: solid rgb(0, 89, 255) 1px;
+    color: rgb(0, 89, 255);
     padding: 7px;
     border-radius: 3px;
     width: 125px;
@@ -115,7 +115,7 @@ form.search-bar input:focus {
 }
 
 #user-btn {
-    background-color: skyblue;
+    background-color: skyrgb(0, 89, 255);
     border: rgb(58, 58, 255) 1px solid;
     border-radius: 25px;
     width: 40px;

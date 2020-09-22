@@ -8,6 +8,7 @@ main.signup-login-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 .signup-login-logo {
@@ -26,28 +27,126 @@ main.signup-login-form-container {
 }
 
 .signup-login-form-container form {
-    width: 100%
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    height: 100%;
 }
 
-.username-container {
+.signup-login-form-container div {
+    margin: 50px;
+    position: absolute;
+}
+
+.input-container {
+    position: absolute; 
+    top: -30px;
+    left: -60px;
     display: flex;
     flex-direction: column;
+}
+
+.input-container.password {
+    left: 400px;
+    transition: .5s
+}
+
+.input-container.username {
+    transition: .5s
+}
+
+.input-container.password.show {
+    left: -60px
+}
+
+.input-container.username.hide {
+    left: -600px;
 }
 
 .signup-login-form-container label {
     position: relative;
     z-index: 2;
+    top: 0px;
+    left: 30px;
+    font-size: 12px;
+    padding: 0px 3px;
     background-color: white;
+    color: gray;
+    display: inline-block;
 }
 
 .signup-login-form-container input {
     padding: 10px;
     position: absolute;
     width: 100%;
-    left: 30px;
-    top: 2px;;
-    z-index: -1
+    height: 30px;
+    left: 15px;
+    top: 5px;
+    z-index: 1;
+    width: 320px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    background-color: rgb(196, 220, 255);
+    font-size: 18px;
 }
+
+.signup-login-form-container input:focus + label {
+    color: rgb(0, 89, 255);
+}
+
+.input-container.errors input {
+    background: white;
+    border: red 2px solid;
+}
+
+.input-container.errors input:focus {
+    outline: none;
+}
+
+.input-container.errors input + label {
+    color: red
+}
+
+.signup-login-form-container button {
+    position: absolute;
+    top: 200px;
+    left: 250px;
+    height: 40px; 
+    width: 100px;
+    background-color: rgb(0, 89, 255);
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+.signup-login-form-container button:hover {
+    background-color: rgb(0, 81, 231);
+    cursor: pointer;
+}
+
+.signup-login-form-container a {
+    position: absolute;
+    top: 215px;
+    left: 20px;
+    width: 100px;
+    font-size: 14px;
+    text-decoration: none;
+    color: rgb(0, 89, 255);
+}
+
+.errors-message {
+    position: absolute;
+    top: 60px;
+    width: 300px;
+    font-size: 12px;
+    left: 20px;
+    color: red;
+}
+
+
+
+
 
 
 
