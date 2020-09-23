@@ -174,7 +174,7 @@ form.search-bar input:focus {
 
 #dropdown-header-user-icon {
     float: left;
-    padding-top: 20px;
+    padding-top: 15px;
     padding-left: 18px;
     font-size: 38px;
     color: rgb(58, 58, 255);
@@ -182,18 +182,19 @@ form.search-bar input:focus {
 
 #dropdown-user-info .username {
     font-weight: bolder;
-    font-size: 22px;
+    font-size: 16px;
     margin-bottom: 0px;
     margin-top: 16px;
 }
 
 #dropdown-user-info .email {
     margin-top: 0px;
+    font-size: 14px;
 }
 
 #dropdown-user-info {
     float: right;
-    padding-right: 70px;
+    padding-right: 90px;
 }
 
 .user-drop-down button {

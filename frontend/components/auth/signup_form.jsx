@@ -77,7 +77,7 @@ class SignupForm extends React.Component {
         return (
             <main className="signup-login-form-container signup">
                 <div className="signup-left">
-                    <span className="signup-login-logo"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</span>
+                    <Link to="/" id="signup-logo"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</Link>
                     <span className="signup-login-title">{formTypeText}</span>
                     <span className="signup-login-after-title">to continue to Rutube</span>
                     <form>

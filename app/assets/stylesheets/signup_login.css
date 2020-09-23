@@ -11,9 +11,16 @@ main.signup-login-form-container {
     overflow: hidden;
 }
 
-.signup-login-logo {
+#signup-login-logo {
+    position: static;
     font-size: 22px;
-    padding: 10px;
+    background-color: white;
+    height: 30px;
+    width: 115px;
+    border: none;
+    color: black;
+    text-align: center;
+    margin: 0px;
 }
 
 .signup-login-title {

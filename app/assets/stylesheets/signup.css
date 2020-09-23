@@ -39,6 +39,18 @@ main.signup-login-form-container.signup {
     text-align: center;
 }
 
+#signup-logo {
+    position: static;
+    font-size: 22px;
+    background-color: white;
+    height: 30px;
+    width: 115px;
+    border: none;
+    color: black;
+    text-align: center;
+    margin: 0px 0px 0px 5px;
+}
+
 .signup-login-form-container.signup .signup-login-after-title {
     padding: 5px 10px;
 }
