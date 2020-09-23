@@ -100,6 +100,26 @@ form.search-bar input:focus {
     color: red; 
 }
 
+.nav-icons.right {
+    position: relative
+}
+
+#add-video-btn-online {
+    margin: 20px;
+    height: 30px;
+    position: absolute;
+    right: 60px;
+    top: 5px;
+}
+
+#add-video-btn-offline {
+    margin: 20px;
+    height: 30px;
+    position: absolute;
+    right: 60px;
+    top: 5px;
+}
+
 #sign-in-btn {
     margin: 20px;
     border: solid rgb(0, 89, 255) 1px;
@@ -131,4 +151,80 @@ form.search-bar input:focus {
 #user-btn:focus {
     outline: 0;
     border: none
+}
+
+.user-drop-down {
+    position: absolute;
+    top: 15px;
+    right: 65px;
+    width: 280px;
+}
+
+#dropdown-header {
+    background-color: white;
+    border: lightgray 1px solid;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#dropdown-header-user-icon {
+    float: left;
+    padding-top: 20px;
+    padding-left: 18px;
+    font-size: 38px;
+    color: rgb(58, 58, 255);
+}
+
+#dropdown-user-info .username {
+    font-weight: bolder;
+    font-size: 22px;
+    margin-bottom: 0px;
+    margin-top: 16px;
+}
+
+#dropdown-user-info .email {
+    margin-top: 0px;
+}
+
+#dropdown-user-info {
+    float: right;
+    padding-right: 70px;
+}
+
+.user-drop-down button {
+    margin: 0;
+    border-right: lightgray 1px solid;
+    border-left: lightgray 1px solid;
+    height: 40px;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    text-align: start;
+    transition: .25s;
+    color: gray;
+    padding: 10px;
+}
+
+.user-drop-down button:hover {
+    background-color: rgb(236, 236, 236);
+}
+
+#last-user-dropdown-btn {
+    border-bottom: lightgray 1px solid;
+}
+
+#dropdown-user-icon {
+    font-size: 14px;;
+}
+
+#dropdown-logout-icon {
+    font-size: 14px;;
+}
+
+.hide {
+    right: -1000px;
 }

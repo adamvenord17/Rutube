@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import NavBar from './nav_bar';
+import { logout } from '../../actions/user_actions';
 
 const mSTP = state => {
     return {
@@ -7,10 +8,10 @@ const mSTP = state => {
     };
 };
 
-// const mDTP = dispatch => {
-//     return {
+const mDTP = dispatch => {
+    return {
+        logout: () => dispatch(logout())
+    };
+};
 
-//     }
-// }
-
-export default connect(mSTP)(NavBar);
+export default connect(mSTP, mDTP)(NavBar);

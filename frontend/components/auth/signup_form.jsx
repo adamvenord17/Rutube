@@ -16,6 +16,10 @@ class SignupForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        this.props.clearErrors();
+    }
+
     handleChange(field) {
         return (e) => {
             this.setState({ [field]: e.target.value });
@@ -126,7 +130,7 @@ class SignupForm extends React.Component {
                 </div>
                 <div className="signup-right">
                     <i id="signup-icon" className='fas fa-user-circle'></i>
-                    <span id="signup-blurb">One account to rule them all. The full power of Rutube content awaits!</span>
+                    <span id="signup-blurb">One account to rule them all. The full power of Rutube awaits you!</span>
                 </div>
             </main>
         )
