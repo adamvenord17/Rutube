@@ -49,7 +49,7 @@ class NavBar extends React.Component {
                 </div>
                 <form className="search-bar">
                     <input type="text" placeholder="Search"/>
-                    <button>&#x1F50D;</button>
+                    <button><i class="fas fa-search"></i></button>
                 </form>
                 <div className="nav-icons right">
                     <button id={addVideoBtnClass}><i className="far fa-file-video"></i></button>
