@@ -18,6 +18,10 @@ class User < ApplicationRecord
 
     attr_reader :password
 
+    has_many :uploaded_videos,
+        foreign_key: :uploader_id,
+        class_name: :Video
+
     def self.find_by_credentials(username, password) 
         user = User.find_by(username: username)
         return user if user && user.is_password?(password)
