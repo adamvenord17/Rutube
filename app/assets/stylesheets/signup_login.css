@@ -1,11 +1,11 @@
 main.signup-login-form-container {
     margin: 100px auto;
     margin-bottom: 0px;
-    width: 348px;
+    width: 372px;
     border: 1px solid lightgrey;
     border-radius: 8px;
-    padding: 50px;
-    height: 400px;
+    padding: 38px;
+    height: 424px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,11 +28,13 @@ main.signup-login-form-container {
 .signup-login-title {
     font-size: 24px;
     padding: 10px;
+    padding-top: 11px;
 }
 
 .signup-login-after-title {
     font-size: 16px;
     padding: 5px;
+    padding-top: 0px;
 }
 
 .signup-login-form-container form {
@@ -89,12 +91,11 @@ main.signup-login-form-container {
 .signup-login-form-container input {
     padding: 10px;
     position: absolute;
-    width: 100%;
     height: 30px;
-    left: 15px;
+    left: 12px;
     top: 5px;
     z-index: 2;
-    width: 320px;
+    width: 345px;
     border: 1px solid lightgrey;
     border-radius: 5px;
     font-size: 18px;
@@ -157,7 +158,7 @@ main.signup-login-form-container {
 .signup-login-form-container button {
     position: absolute;
     top: 100px;
-    left: 255px;
+    left: 279px;
     height: 40px; 
     width: 100px;
     background-color: rgb(0, 89, 255);
@@ -173,8 +174,8 @@ main.signup-login-form-container {
 
 .signup-login-form-container a {
     position: absolute;
-    top: 115px;
-    left: 15px;
+    top: 110px;
+    left: 12px;
     width: 100px;
     font-size: 14px;
     text-decoration: none;
@@ -200,7 +201,7 @@ main.signup-login-form-container {
 #login-show-password-btn {
     position: absolute;
     top: 9px;
-    left: 305px;
+    left: 325px;
     width: 45px;
     background-color: white;
     height: 45px;
@@ -208,7 +209,7 @@ main.signup-login-form-container {
     color: grey;
     transition: .25s;
     font-size: 20px;
-    z-index: 3;
+    z-index: 6;
 }
 
 #login-show-password-btn:focus {
@@ -226,7 +227,7 @@ main.signup-login-form-container {
 #or-demo {
     position: absolute;
     top: 175px;
-    left: 110px;
+    left: 120px;
     width: 150px;
     text-align: center;
 }
@@ -234,7 +235,7 @@ main.signup-login-form-container {
 #demo-login-btn {
     position: absolute;
     top: 247px;
-    left: 110px;
+    left: 120px;
     width: 150px;
 }
 
@@ -248,7 +249,7 @@ main.signup-login-form-container {
     border: none;
     color: rgb(0, 89, 255);
     top: 110px;
-    left: 20px;
+    left: 12px;
 }
 
 #back-to-username-link:focus {
@@ -258,23 +259,24 @@ main.signup-login-form-container {
 #passwordMatchError {
     position: absolute;
     top: -7px;
-    left: 150px;
+    left: 168px;
+    width: 155px;
 }
 
 #usernameError {
     position: absolute;
-    top: -167px;
+    top: -182px;
 }
 
 #emailError {
     position: absolute;
-    top: -87px
+    top: -120px
 }
 
 #passwordLengthError {
     position: absolute;
     top: -7px;
-    width: 120px;
+    width: 150px;
 }
 
 #login-footer {

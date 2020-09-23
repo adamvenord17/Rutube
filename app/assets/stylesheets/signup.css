@@ -1,8 +1,8 @@
 main.signup-login-form-container.signup {
     margin: 71px auto;
     margin-bottom: 0px;
-    width: 648px;
-    height: 458px;
+    width: 672px;
+    height: 482px;
     position: relative;
 }
 
@@ -10,9 +10,9 @@ main.signup-login-form-container.signup {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    position: relative;
+    position: absolute;
     top: 0px;
-    left: 0px;
+    left: -12px;
 }
 
 .signup-right {
@@ -34,6 +34,10 @@ main.signup-login-form-container.signup {
     padding: 30px 0px;
 }
 
+.signup-login-title.signup {
+    padding-left: 2px
+}
+
 #signup-blurb {
     width: 220px;
     text-align: center;
@@ -48,39 +52,57 @@ main.signup-login-form-container.signup {
     border: none;
     color: black;
     text-align: center;
-    margin: 0px 0px 0px 5px;
+    margin: 0px 0px 0px 0px;
 }
 
 .signup-login-form-container.signup .signup-login-after-title {
-    padding: 5px 10px;
+    padding: 5px 2px;
+    padding-top: 1px;
+    padding-bottom: 10px;
 }
 
 .input-container.password.signup {
-    top: 130px;
+    top: 142px;
     left: -60px;
 }
 
 .input-container.confirm.signup {
-    top: 130px;
-    left: 90px;
+    top: 142px;
+    left: 108px;
 }
 
 .input-container.email.signup {
-    top: 50px;
+    top: 30px;
     left: -60px;
 }
 
+.input-container.username.signup input {
+    height: 14px;
+}
+
+.input-container.email.signup input {
+    height: 14px;
+}
+
 .input-container.password.signup input {
-    width: 100px;
+    width: 130px;
+    height: 14px;
 }
 
 .input-container.confirm.signup input {
-    width: 100px;
+    width: 130px;
+    height: 14px;
 }
 
 .signup-login-form-container.signup a {
-    top: 320px;
+    top: 330px;
     left: 8px;
+}
+
+.input-container.signup label {
+    top: 16px;
+    font-size: 14px;
+    left: 18px;
 }
 
 #show-password-btn {
@@ -88,8 +110,8 @@ main.signup-login-form-container.signup {
     background-color: white;
     height: 45px;
     border-radius: 25px;
-    top: 189px;
-    left: 293px;
+    top: 196px;
+    left: 325px;
     color: grey;
     transition: .25s;
     font-size: 20px;
@@ -108,7 +130,10 @@ main.signup-login-form-container.signup {
 }
 
 .signup-login-form-container.signup .password-next-btn {
-    top: 305px;
+    top: 322px;
+    width: 88px;
+    left: 282px;
+    height: 35px;
 }
 
 .errors-message.login {
