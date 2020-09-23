@@ -84,41 +84,56 @@ class LoginForm extends React.Component {
         let errorsMessage = this.props.errors.length === 0 ? "" : `⚠ ${this.props.errors[0]}, please try again`;
     
         return (
-            <main className="signup-login-form-container">
-                <Link to="/" id="signup-login-logo"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</Link>
-                <span className="signup-login-title">{formTypeText}</span>
-                <span className="signup-login-after-title">to continue to Rutube</span>
-                <form>
-                    <div className="input-container username">
-                        <input
-                            type="text"
-                            onChange={this.handleChange('username')}
-                            value={this.state.username}
-                            required
-                        />
-                        <label>Username</label>
-                        <Link to={oppositeForm}>Create account</Link>
-                        <button type="button" className="username-next-btn" onClick={this.moveToPassword}>Next</button>
-                        <span id="or-demo">or</span>
-                        <button type="button" onClick={this.handleDemoSubmit} id="demo-login-btn">Sign in as a demo user</button>
-                    </div>
+            <div>
+                <main className="signup-login-form-container">
+                    <Link to="/" id="signup-login-logo"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</Link>
+                    <span className="signup-login-title">{formTypeText}</span>
+                    <span className="signup-login-after-title">to continue to Rutube</span>
+                    <form>
+                        <div className="input-container username">
+                            <input
+                                type="text"
+                                onChange={this.handleChange('username')}
+                                value={this.state.username}
+                                required
+                            />
+                            <label>Username</label>
+                            <Link to={oppositeForm}>Create account</Link>
+                            <button type="button" className="username-next-btn" onClick={this.moveToPassword}>Next</button>
+                            <span id="or-demo">or</span>
+                            <button type="button" onClick={this.handleDemoSubmit} id="demo-login-btn">Sign in as a demo user</button>
+                        </div>
 
-                    <div className={passwordClass}>
-                        <input
-                            type="password"
-                            id="login-password"
-                            onChange={this.handleChange('password')}
-                            value={this.state.password}
-                            required
-                        />
-                        <label id="login-password-label">Password</label><span className="errors-message">{errorsMessage}</span>
-                        <button type="button" id="back-to-username-link" onClick={this.moveToUsername}>Back to username</button>
-                        <button className="password-next-btn" onClick={this.handleSubmit}>Next</button>
-                        <button type="button" id="login-show-password-btn" onClick={this.togglePasswordShow}><i id="show-password-btn-icon" className="fas fa-eye-slash"></i></button>
-                    </div>
-
-                </form>
-            </main>
+                        <div className={passwordClass}>
+                            <input
+                                type="password"
+                                id="login-password"
+                                onChange={this.handleChange('password')}
+                                value={this.state.password}
+                                required
+                            />
+                            <label id="login-password-label">Password</label><span className="errors-message">{errorsMessage}</span>
+                            <button type="button" id="back-to-username-link" onClick={this.moveToUsername}>Back to username</button>
+                            <button className="password-next-btn" onClick={this.handleSubmit}>Next</button>
+                            <button type="button" id="login-show-password-btn" onClick={this.togglePasswordShow}><i id="show-password-btn-icon" className="fas fa-eye-slash"></i></button>
+                        </div>
+                    </form>
+                </main>
+                <footer id="login-footer">
+                    <span id="language">English (United States)</span>
+                    <ul id="login-page-links">
+                        <li>
+                            <a href="https://github.com/adamvenord17">GitHub</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/adamvenord17/Rutube">Project Repo</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/adamvenord17">Personal Website</a>
+                        </li>
+                    </ul>
+                </footer>
+            </div>
         )
     }
 

@@ -1,9 +1,9 @@
 main.signup-login-form-container.signup {
-    margin: 50px auto;
-    width: 700px;
-    height: 500px;
+    margin: 71px auto;
+    margin-bottom: 0px;
+    width: 648px;
+    height: 458px;
     position: relative;
-
 }
 
 .signup-left {
@@ -116,4 +116,39 @@ main.signup-login-form-container.signup {
     left: 10px
 }
 
+.input-container.errors label {
+    color: red;
+    top: 0px;
+    left: 30px;
+    font-size: 12px;
+    z-index: 5;
+}
+
+.signup.input-container.errors:focus label {
+    color: red;
+    top: 0px;
+    left: 30px;
+    font-size: 12px;
+    z-index: 5;
+}
+
+.input-container.errors input:valid + label {
+    color: red;
+    top: 0px;
+    left: 30px;
+    font-size: 12px;
+    z-index: 5;
+}
+
+.input-container.errors input:invalid + label {
+    color: red;
+    top: 0px;
+    left: 30px;
+    font-size: 12px;
+    z-index: 5;
+}
+
+#login-footer.signup-footer {
+    width: 749px;
+}
 

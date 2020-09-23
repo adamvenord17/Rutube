@@ -64,75 +64,106 @@ class SignupForm extends React.Component {
 
         let formTypeText = this.props.formType === "Login" ? "Sign In" : "Sign Up";
         
-        let usernameClass = errors.length === 0 ? "input-container username signup" : "input-container username signup errors";
-        let emailClass = errors.length === 0 ? "input-container email signup" : "input-container email signup errors";
-        let passwordClass = errors.length === 0 ? "input-container password signup" : "input-container password signup errors";
-        let confirmClass = errors.length === 0 ? "input-container confirm signup" : "input-container confirm signup errors";
-        
+        let usernameClass = "input-container username signup";
+        let emailClass = "input-container email signup";
+        let passwordClass = "input-container password signup";
+        let confirmClass = "input-container confirm signup";
+        // debugger
         let errorMessages = errors.map(error => {
+            // debugger
+            let errorId = '';
+            if (error.includes("Password is")) {
+                errorId = "passwordLengthError";
+                passwordClass = "input-container password signup errors";
+            } else if (error.includes("Passwords do")) {
+                errorId = "passwordMatchError";
+                confirmClass = "input-container confirm signup errors";
+            } else if (error.includes("Email")) {
+                errorId = "emailError";
+                emailClass = "input-container email signup errors";
+            } else if (error.includes("Username")) {
+                errorId = "usernameError";
+                usernameClass = "input-container username signup errors";
+            }
             error = `⚠ ${error}`;
-            return <li key={error} className="error-message-li">{error}</li>;
+            return <li key={error} id={errorId} className="error-message-li">{error}</li>;
         })
-        
+        // debugger
         return (
-            <main className="signup-login-form-container signup">
-                <div className="signup-left">
-                    <Link to="/" id="signup-logo"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</Link>
-                    <span className="signup-login-title">{formTypeText}</span>
-                    <span className="signup-login-after-title">to continue to Rutube</span>
-                    <form>
-                        <div className={usernameClass}>
-                            <input
-                                type="text"
-                                onChange={this.handleChange('username')}
-                                value={this.state.username}
-                                required
-                            />
-                            <label>Username</label>
-                        </div>
+            <div>
+                <main className="signup-login-form-container signup">
+                    <div className="signup-left">
+                        <Link to="/" id="signup-logo"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</Link>
+                        <span className="signup-login-title">{formTypeText}</span>
+                        <span className="signup-login-after-title">to continue to Rutube</span>
+                        <form>
+                            <div className={usernameClass}>
+                                <input
+                                    type="text"
+                                    onChange={this.handleChange('username')}
+                                    value={this.state.username}
+                                    required
+                                />
+                                <label>Username</label>
+                            </div>
 
-                        <div className={emailClass}>
-                            <input
-                                type="text"
-                                onChange={this.handleChange('email')}
-                                value={this.state.email}
-                                required
-                            />
-                            <label>Email</label>
-                        </div>
+                            <div className={emailClass}>
+                                <input
+                                    type="text"
+                                    onChange={this.handleChange('email')}
+                                    value={this.state.email}
+                                    required
+                                />
+                                <label>Email</label>
+                            </div>
 
-                        <div className={passwordClass}>
-                            <input
-                                type="password"
-                                id="password"
-                                onChange={this.handleChange('password')}
-                                value={this.state.password}
-                                required
-                            />
-                            <label>Password</label>
-                        </div>
+                            <div className={passwordClass}>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    onChange={this.handleChange('password')}
+                                    value={this.state.password}
+                                    required
+                                />
+                                <label>Password</label>
+                            </div>
 
-                        <div className={confirmClass}>
-                            <input
-                                type="password"
-                                id="confirm"
-                                onChange={this.handleChange('confirmPassword')}
-                                value={this.state.confirmPassword}
-                                required
-                            />
-                            <label>Confirm</label>
-                        </div>
-                        <button type="button" id="show-password-btn" onClick={this.togglePasswordShow}><i id="show-password-btn-icon"className="fas fa-eye-slash"></i></button>
-                        <ul className="errors-message login">{errorMessages}</ul>
-                        <Link to="/login">Sign in instead</Link>
-                        <button className="password-next-btn" onClick={this.handleSubmit}>Next</button>
-                    </form>
-                </div>
-                <div className="signup-right">
-                    <i id="signup-icon" className='fas fa-user-circle'></i>
-                    <span id="signup-blurb">One account to rule them all. The full power of Rutube awaits you!</span>
-                </div>
-            </main>
+                            <div className={confirmClass}>
+                                <input
+                                    type="password"
+                                    id="confirm"
+                                    onChange={this.handleChange('confirmPassword')}
+                                    value={this.state.confirmPassword}
+                                    required
+                                />
+                                <label>Confirm</label>
+                            </div>
+                            <button type="button" id="show-password-btn" onClick={this.togglePasswordShow}><i id="show-password-btn-icon"className="fas fa-eye-slash"></i></button>
+                            <ul className="errors-message login">{errorMessages}</ul>
+                            <Link to="/login">Sign in instead</Link>
+                            <button className="password-next-btn" onClick={this.handleSubmit}>Next</button>
+                        </form>
+                    </div>
+                    <div className="signup-right">
+                        <i id="signup-icon" className='fas fa-user-circle'></i>
+                        <span id="signup-blurb">One account to rule them all. The full power of Rutube awaits you!</span>
+                    </div>
+                </main>
+                <footer id="login-footer" class="signup-footer">
+                    <span id="language">English (United States)</span>
+                    <ul id="login-page-links">
+                        <li>
+                            <a href="https://github.com/adamvenord17">GitHub</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/adamvenord17/Rutube">Project Repo</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/adamvenord17">Personal Website</a>
+                        </li>
+                    </ul>
+                </footer>
+            </div>
         )
     }
 

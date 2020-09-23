@@ -47,9 +47,9 @@ class NavBar extends React.Component {
                     <button id="sidebar-options-btn">&#x2630;</button>
                     <button id="logo-btn"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</button>
                 </div>
-                <form className="search-bar">
+                <form className="search-bar clear-fix">
                     <input type="text" placeholder="Search"/>
-                    <button><i class="fas fa-search"></i></button>
+                    <button><i className="fas fa-search"></i></button>
                 </form>
                 <div className="nav-icons right">
                     <button id={addVideoBtnClass}><i className="far fa-file-video"></i></button>
