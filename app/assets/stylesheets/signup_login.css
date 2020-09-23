@@ -144,12 +144,12 @@ main.signup-login-form-container {
     outline: none;
 }
 
-.input-container.errors input + label {
+.errors #login-password:valid + label {
     color: red;
     top: 0px;
     left: 30px;
     font-size: 12px;
-    z-index: 3;
+    z-index: 5;
 }
 
 .signup-login-form-container button {
