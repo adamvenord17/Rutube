@@ -22,6 +22,7 @@ main.signup-login-form-container {
     color: black;
     text-align: center;
     margin: 0px;
+    margin-top: 10px;
     margin-bottom: 5px;
 }
 
@@ -29,12 +30,14 @@ main.signup-login-form-container {
     font-size: 24px;
     padding: 10px;
     padding-top: 11px;
+    padding-bottom: 12px;
 }
 
 .signup-login-after-title {
     font-size: 16px;
     padding: 5px;
     padding-top: 0px;
+    padding-bottom: 10px;
 }
 
 .signup-login-form-container form {
@@ -78,8 +81,8 @@ main.signup-login-form-container {
 .signup-login-form-container label {
     position: relative;
     z-index: 1;
-    top: 22px;
-    left: 30px;
+    top: 24px;
+    left: 26px;
     font-size: 16px;
     padding: 0px 3px;
     background-color: white;
@@ -91,7 +94,7 @@ main.signup-login-form-container {
 .signup-login-form-container input {
     padding: 10px;
     position: absolute;
-    height: 30px;
+    height: 34px;
     left: 12px;
     top: 5px;
     z-index: 2;
