@@ -92,13 +92,32 @@ main.signup-login-form-container {
     background: transparent;
 }
 
+#login-password {
+    z-index: 4;
+}
+
+#login-password:valid + label {
+    color: lightgrey;
+    top: 0px;
+    left: 30px;
+    font-size: 12px;
+    z-index: 5;
+}
+
+#login-password:focus + label {
+    color: rgb(0, 89, 255);
+    top: 0px;
+    left: 30px;
+    font-size: 12px;
+    z-index: 5;
+}
+
 .signup-login-form-container input:valid + label {
     color: lightgrey;
     top: 0px;
     left: 30px;
     font-size: 12px;
     z-index: 3;
-    width: 50px;
 }
 
 .signup-login-form-container input:focus + label {

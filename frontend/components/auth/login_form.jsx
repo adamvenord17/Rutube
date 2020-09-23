@@ -111,7 +111,7 @@ class LoginForm extends React.Component {
                             value={this.state.password}
                             required
                         />
-                        <label>Password</label><span className="errors-message">{errorsMessage}</span>
+                        <label id="login-password-label">Password</label><span className="errors-message">{errorsMessage}</span>
                         <button type="button" id="back-to-username-link" onClick={this.moveToUsername}>Back to username</button>
                         <button className="password-next-btn" onClick={this.handleSubmit}>Next</button>
                         <button type="button" id="login-show-password-btn" onClick={this.togglePasswordShow}><i id="show-password-btn-icon" className="fas fa-eye-slash"></i></button>

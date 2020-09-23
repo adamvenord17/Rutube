@@ -71,7 +71,7 @@ class SignupForm extends React.Component {
         
         let errorMessages = errors.map(error => {
             error = `⚠ ${error}`;
-            return <li key={error} className="error-message-li">{error}</li>
+            return <li key={error} className="error-message-li">{error}</li>;
         })
         
         return (
