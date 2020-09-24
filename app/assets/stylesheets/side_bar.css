@@ -1,0 +1,81 @@
+#sidebar-container {
+    position: absolute;
+    top: -62px;
+    left: 0px;
+    width: 240px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar-container.hide {
+    display: none;
+}
+
+#sidebar-container div {
+    padding: 14px 0px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: lightgray solid 1px;
+}
+
+#sidebar-container #sidebar-title {
+    padding: 0px;
+    padding-top: 17px;
+    padding-bottom: 12px;
+    display: block;
+    border-bottom: none;
+}
+
+#sidebar-container a {
+    padding: 10px;
+    padding-bottom: 11px;
+    padding-left: 25px;
+    font-size: 13px;
+    text-decoration: none;
+    color: black;
+    padding-top: 9px
+}
+
+#sidebar-container a:hover {
+    background-color: rgb(243, 243, 243);
+}
+
+#sidebar-container #sidebar-home-link {
+    background-color: rgb(224, 223, 223);
+}
+
+#sidebar-container #sidebar-home-link i {
+    color: red;
+}
+
+#sidebar-container #sidebar-home-link:hover {
+    background-color: rgb(206, 206, 206);
+}
+
+#sidebar-container a i {
+    padding-right: 28px;
+    font-size: 19px;
+    color: rgb(95, 95, 95);
+    width: 18px;
+}
+
+
+
+#sidebar-title button {
+    background-color: white;
+    color: rgb(95, 95, 95);
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+#sidebar-title #logo-btn {
+    color: black;
+    font-size: 20px;
+}
+
+#sidebar-title #sidebar-options-btn {
+    margin-left: 20px;
+    margin-right: 12px;
+}

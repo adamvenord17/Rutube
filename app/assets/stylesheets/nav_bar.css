@@ -86,9 +86,10 @@ form.search-bar input:focus {
     cursor: pointer;
 }
 
-#sidebar-options-btn {
+#navbar-options-btn {
     margin-right: 12px;
-    margin-left: 31px;
+    margin-left: 20px;
+    padding-bottom: 4px;
 }
 
 .nav-icons button:focus {

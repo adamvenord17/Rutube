@@ -1,0 +1,67 @@
+#small-sidebar-container {
+    display: flex;
+    flex-direction: column;
+    width: 72px;
+    margin: 0px;
+    position: absolute;
+    top: 5px;
+    left: 0px;
+}
+
+#small-sidebar-container.hide {
+    display: none;
+}
+
+#small-sidebar-container a {
+    padding-bottom: 10px;
+    padding-left: 25px;
+    font-size: 19px;
+    text-decoration: none;
+    color: black;
+    padding-top: 18px;
+}
+
+#small-sidebar-container a span {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+#small-sidebar-container a #small-sidebar-span-home {
+    margin-left: -1px;
+    margin-top: 5px;
+}
+
+#small-sidebar-container a #small-sidebar-span-github {
+    margin-left: -3px
+}
+
+#small-sidebar-container a #small-sidebar-span-linkedin {
+    margin-left: -6px
+}
+
+#small-sidebar-container a #small-sidebar-span-project {
+    /* position: absolute;
+    top: 277px;
+    left: 19px; */
+    margin-left: -3px;
+}
+
+#small-sidebar-container a i.fa-home {
+    color: red;
+}
+
+#small-sidebar-container a i.fa-github {
+    margin-left: 2px;
+}
+
+#small-sidebar-container a i.fa-linkedin {
+    margin-left: 3px;
+}
+
+#small-sidebar-container a i.fa-project {
+    margin-left: 3px;
+}
+
+#small-sidebar-container a:hover {
+    background-color: rgb(243, 243, 243);
+}

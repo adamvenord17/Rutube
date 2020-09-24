@@ -7,22 +7,17 @@ class NavBar extends React.Component {
         super(props);
 
         this.handleUserDropdown = this.handleUserDropdown.bind(this);
+        this.showSidebar = this.showSidebar.bind(this);
     }
 
-    // componentDidMount() {
-    //     let addVideo = document.getElementsByClassName("nav-bar-right-links addVideo")[0];
-    //     let github = document.getElementsByClassName("nav-bar-right-links github")[0];
-    //     let linkedin = document.getElementsByClassName("nav-bar-right-links linkedin")[0];
-    //     let addVideoPop = document.getElementsByClassName("nav-bar-right-links linkedin")[0];
-    //     let githubPop = document.getElementsByClassName("nav-bar-right-links linkedin")[0];
-    //     let linkedinPop = document.getElementsByClassName("nav-bar-right-links linkedin")[0];
-    //     debugger
-    //     addVideo.addEventListener("hover", () => {
-    //         debugger
-    //         addVideoPop.setAttribute("display", "inline");
-    //     });
-    //     debugger
-    // }
+    showSidebar() {
+        let sideBar = document.getElementById("sidebar-container");
+        let videoIndex = document.getElementById("video-index-container");
+        let smallSideBar = document.getElementById("small-sidebar-container");
+        smallSideBar.classList.add("hide");
+        sideBar.classList.remove("hide");
+        videoIndex.classList.remove("extend");
+    }
 
     handleUserDropdown() {
         let userDropdown = document.getElementsByClassName("user-drop-down")[0];
@@ -60,7 +55,7 @@ class NavBar extends React.Component {
             <div>
                 <header id="nav-bar">
                     <div className="nav-icons left">
-                        <button id="sidebar-options-btn">&#x2630;</button>
+                        <button onClick={this.showSidebar} id="navbar-options-btn">&#x2630;</button>
                         <button id="logo-btn"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</button>
                     </div>
                     <form className="search-bar clear-fix">

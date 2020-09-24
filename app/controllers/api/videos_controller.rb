@@ -11,7 +11,10 @@ class Api::VideosController < ApplicationController
     end
 
     def create
+        debugger
         @video = Video.new(video_params)
+        debugger
+        @video.uploader_id = current_user.id
         if @video.save
             render :show
         else
@@ -31,6 +34,7 @@ class Api::VideosController < ApplicationController
     def destroy
         @video = Video.find(params[:id])
         @video.destroy
+        render :index
     end
 
     private

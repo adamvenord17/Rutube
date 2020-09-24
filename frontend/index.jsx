@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 
 // TESTING STARTS HERE
 import { signup, login, logout } from './actions/user_actions';
+import { uploadVideo, fetchVideo, fetchVideos } from './actions/video_actions';
 // TESTING ENDS HERE
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,6 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
     window.signup = signup
     window.login = login
     window.logout = logout
+    window.fetchVideo = fetchVideo
+    window.fetchVideos = fetchVideos
+    window.uploadVideo = uploadVideo
     // TESTING ENDS HERE
 
     ReactDOM.render(<Root store={store} />, root);
