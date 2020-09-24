@@ -80,9 +80,15 @@ form.search-bar input:focus {
 .nav-icons button {
     margin: 20px;
     background-color: white;
+    color: rgb(95, 95, 95);
     border: none;
-    font-size: large;
+    font-size: 22px;
     cursor: pointer;
+}
+
+#sidebar-options-btn {
+    margin-right: 12px;
+    margin-left: 31px;
 }
 
 .nav-icons button:focus {
@@ -100,6 +106,7 @@ form.search-bar input:focus {
 #logo-btn {
     font-size: 20px;
     margin-left: 0px;
+    color: black;
 }
 
 .iconify { 
@@ -145,25 +152,23 @@ form.search-bar input:focus {
     font-size: 24px;;
 }
 
-
-
 #user-btn {
-    background-color: rgb(0, 89, 255);
-    border: rgb(58, 58, 255) 1px solid;
+    background-color: rgb(216 123 255);
     border-radius: 25px;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     color: white;
-    font-size: 22px;
+    font-size: 21px;
     text-transform: uppercase;
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    margin-left: 15px;
 }
 
 #user-btn:focus {
     outline: 0;
-    border: none
+    border: rgb(58, 58, 255) 1px solid;
 }
 
 .user-drop-down {
@@ -242,4 +247,63 @@ form.search-bar input:focus {
 
 .hide {
     right: -1000px;
+}
+
+.nav-bar-right-links {
+    color: rgb(95, 95, 95);
+    margin: 18px;
+    position: relative;
+}
+
+.nav-bar-right-links.github {
+    top: 3px;
+}
+
+.nav-bar-right-links.addVideo:hover + .upload-video-popup {
+    display: inline;
+}
+
+.nav-bar-right-links.github:hover + .github-popup {
+    display: inline;
+}
+
+.nav-bar-right-links.linkedin:hover + .linkedin-popup {
+    display: inline;
+}
+
+.nav-bar-right-links.linkedin {
+    top: 3px;
+}
+
+.nav-bar-right-links.addVideo {
+    padding: 0px;
+    top: 3px;
+}
+
+.popup-descriptions {
+    background-color: rgb(0 0 0 / 52%);
+    top: 70px;
+    position: absolute;
+    padding: 12px;
+    font-size: 12px;
+    border-radius: 2px;
+    color: #f3f2f2d4;
+    height: 10px;
+    text-align: center;
+    padding-right: 14px;
+    padding-bottom: 14px;
+    transition-duration: 0.5s;
+    display: none;
+}
+
+.upload-video-popup {
+    left: -12px;
+}
+
+.github-popup {
+    right: 113px;
+}
+
+.linkedin-popup {
+    right: 47px;
 }

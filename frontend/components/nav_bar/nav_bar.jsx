@@ -9,6 +9,21 @@ class NavBar extends React.Component {
         this.handleUserDropdown = this.handleUserDropdown.bind(this);
     }
 
+    // componentDidMount() {
+    //     let addVideo = document.getElementsByClassName("nav-bar-right-links addVideo")[0];
+    //     let github = document.getElementsByClassName("nav-bar-right-links github")[0];
+    //     let linkedin = document.getElementsByClassName("nav-bar-right-links linkedin")[0];
+    //     let addVideoPop = document.getElementsByClassName("nav-bar-right-links linkedin")[0];
+    //     let githubPop = document.getElementsByClassName("nav-bar-right-links linkedin")[0];
+    //     let linkedinPop = document.getElementsByClassName("nav-bar-right-links linkedin")[0];
+    //     debugger
+    //     addVideo.addEventListener("hover", () => {
+    //         debugger
+    //         addVideoPop.setAttribute("display", "inline");
+    //     });
+    //     debugger
+    // }
+
     handleUserDropdown() {
         let userDropdown = document.getElementsByClassName("user-drop-down")[0];
         userDropdown.classList.remove("hide");
@@ -39,24 +54,31 @@ class NavBar extends React.Component {
                             </div>
         } else {
             userButton = <Link to="/login" id="sign-in-btn"><i className='fas fa-user-circle'></i>SIGN IN</Link>
-            addVideoBtnClass = "add-video-btn-ffline";
+            addVideoBtnClass = "add-video-btn-offline";
         }
         return(
-            <header id="nav-bar">
-                <div className="nav-icons left">
-                    <button id="sidebar-options-btn">&#x2630;</button>
-                    <button id="logo-btn"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</button>
-                </div>
-                <form className="search-bar clear-fix">
-                    <input type="text" placeholder="Search"/>
-                    <button><i className="fas fa-search"></i></button>
-                </form>
-                <div className="nav-icons right">
-                    <button id={addVideoBtnClass}><i className="far fa-file-video"></i></button>
-                    {userButton}
-                    {userDropdown}
-                </div>
-            </header>
+            <div>
+                <header id="nav-bar">
+                    <div className="nav-icons left">
+                        <button id="sidebar-options-btn">&#x2630;</button>
+                        <button id="logo-btn"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</button>
+                    </div>
+                    <form className="search-bar clear-fix">
+                        <input type="text" placeholder="Search"/>
+                        <button><i className="fas fa-search"></i></button>
+                    </form>
+                    <div className="nav-icons right">
+                        <button className="nav-bar-right-links addVideo"><i className="far fa-file-video"></i></button>
+                            <span className="popup-descriptions upload-video-popup">Upload Video</span>
+                        <a className="nav-bar-right-links github" href="https://github.com/adamvenord17/Rutube"><i className="fab fa-github"></i></a>
+                            <span className="popup-descriptions github-popup">Project Repo</span>
+                        <a className="nav-bar-right-links linkedin" href="https://www.linkedin.com/in/nicholas-draper/"><i className="fab fa-linkedin"></i></a>
+                            <span className="popup-descriptions linkedin-popup">LinkedIn Profile</span>
+                        {userButton}
+                        {userDropdown}
+                    </div>
+                </header>
+            </div>
         )
     }
 }

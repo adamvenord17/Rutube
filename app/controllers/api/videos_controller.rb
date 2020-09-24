@@ -11,21 +11,32 @@ class Api::VideosController < ApplicationController
     end
 
     def create
-        
+        @video = Video.new(video_params)
+        if @video.save
+            render :show
+        else
+            render json: @post.errors.full_messages
+        end
     end
 
     def update
-
+        @video = Video.find(params[:id])
+        if @video.update_attributes(video_params)
+            render :show
+        else
+            render json: @post.errors.full_messages
+        end
     end
 
     def destroy
-
+        @video = Video.find(params[:id])
+        @video.destroy
     end
 
     private
 
     def video_params
-        params.require(:video).permit(:title, :body)
+        params.require(:video).permit(:title, :body, :video_file)
     end
 
 end
