@@ -63,7 +63,7 @@ class NavBar extends React.Component {
                         <button><i className="fas fa-search"></i></button>
                     </form>
                     <div className="nav-icons right">
-                        <button className="nav-bar-right-links addVideo"><i className="far fa-file-video"></i></button>
+                        <button onClick={this.props.openModal} className="nav-bar-right-links addVideo"><i className="far fa-file-video"></i></button>
                             <span className="popup-descriptions upload-video-popup">Upload Video</span>
                         <a className="nav-bar-right-links github" href="https://github.com/adamvenord17/Rutube"><i className="fab fa-github"></i></a>
                             <span className="popup-descriptions github-popup">Project Repo</span>
