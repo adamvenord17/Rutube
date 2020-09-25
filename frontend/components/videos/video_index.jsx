@@ -5,6 +5,10 @@ import SmallSideBar from '../side_bar/small_side_bar';
 
 class VideoIndex extends React.Component {
 
+    componentDidMount() {
+        this.props.fetchVideos();
+    }
+
     render() {
         return(
             <>

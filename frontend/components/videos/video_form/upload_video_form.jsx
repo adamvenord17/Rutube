@@ -6,7 +6,8 @@ class UploadVideoForm extends React.Component {
         this.state = {
             title: '',
             body: '',
-            video_file: null
+            videoFile: null,
+            videoUrl: null,
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -17,8 +18,15 @@ class UploadVideoForm extends React.Component {
         this.handleDragOver = this.handleDragOver.bind(this);
     }
 
-    handleSubmit() {
-        this.props.processForm(video)
+    handleSubmit(e) {
+        e.preventDefault();
+        let formData = new FormData();
+        formData.append('video[title]', this.state.title);
+        formData.append('video[body]', this.state.body);
+        formData.append('video[video_file]', this.state.videoFile);
+        // debugger
+        this.props.processForm(formData);
+        this.props.closeModal();
     }
 
     handleChange(feild) {
@@ -28,7 +36,16 @@ class UploadVideoForm extends React.Component {
     }
 
     handleFile(e) {
-        this.setState({video_file: e.currentTarget.files[0]});
+        const file = e.currentTarget.files[0];
+        const fileReader = new FileReader();
+        // debugger
+        fileReader.onloadend = (e) => {
+            let blobData = e.target.result;
+            this.setState({videoFile: file, videoUrl: blobData});
+        };
+        if (file) {
+            fileReader.readAsDataURL(file);
+        }
     }
 
     handleDragOver(e) {
@@ -45,16 +62,18 @@ class UploadVideoForm extends React.Component {
         e.preventDefault();
         e.stopPropagation();
         let file = e.dataTransfer.files[0];
-        this.setState({ video_file: file });
+        this.setState({ videoFile: file });
     }
 
     render() {
-        if (this.state.video_file) {
+        // console.log(this.state);
+        // debugger
+        if (this.state.videoFile) {
             return(
                 <>
                     <main id="upload-video-form-container">
-                        <header>
-                            <span>Upload video</span>
+                        <header id="upload-video-details">
+                            <span>{this.state.title}</span>
                             <div>
                                 <i className="fas fa-exclamation-triangle"></i>
                                 {/* <label class="feedback">Send Feedback</label> */}
@@ -63,14 +82,63 @@ class UploadVideoForm extends React.Component {
                             </div>
                         </header>
 
+                        <div id="line-container">
+                            <div id="circle-details-container">
+                                <p className="strong-p">Details</p>
+                                <div id="circle-details"></div>
+                            </div>
+                            <div id="circle-elements-container">
+                                <p className="strong-p">Elements</p>
+                                <div id="circle-elements"></div>
+                            </div>
+                            <div id="circle-visibility-container">
+                                <p className="strong-p">Visibility</p>
+                                <div id="circle-visibility"></div>
+                            </div>
+                        </div>
+                        
+                        <div id="line"></div>
 
+                        <h1>Details</h1>
+
+                        <div id="video-details-form-container">
+                            <form>
+                                <input type="text" id="video-upload-title-input" onChange={this.handleChange("title")} value={this.state.title} placeholder="Add a title that describes your video" required/>
+                                <label id="video-upload-title-label">Title (required)</label>
+                                <textarea cols="30" rows="10" onChange={this.handleChange("body")} value={this.state.body} placeholder="Tell viewers about your video"></textarea>
+                                <label id="video-upload-body-label">Description</label>
+                            </form>
+                            <div id="video-upload-preview-container">
+                                <video height="170" width="303" controls>
+                                    <source src={this.state.videoUrl} type="video/mp4"/>
+                                    <source src={this.state.videoUrl} type="video/ogg"/>
+                                    <source src={this.state.videoUrl} type="video/webm"/>
+                                    There was a problem rendering the video
+                                </video>
+                                <div id="video-upload-preview-details-container">
+                                    <div id="video-preview-link-container">
+                                        <div>
+                                            <label>Video Link</label>
+                                            <a>Availble after successful upload</a>
+                                        </div>
+                                        <i class="far fa-copy"></i>
+                                    </div>
+                                    <div id="video-preview-filename-container">
+                                        <div>
+                                            <label>Filename</label>
+                                            <p className="strong-p">{this.state.videoFile.name}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <footer>
                             <div>
-                                <i class="fab fa-js-square"></i>
-                                <p className="weak-p">Finished Processing</p>
+                                <i className="fab fa-js-square"></i>
+                                <p className="weak-p">Finished processing</p>
                             </div>
-                            <button onClick={this.handleSubmit}>Upload</button>
+                            <button onClick={this.handleSubmit}>UPLOAD</button>
                         </footer>
                     </main>
                 </>

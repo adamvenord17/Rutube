@@ -11,12 +11,10 @@ class Api::VideosController < ApplicationController
     end
 
     def create
-        debugger
         @video = Video.new(video_params)
-        debugger
         @video.uploader_id = current_user.id
         if @video.save
-            render :show
+            redirect_to api_video_url
         else
             render json: @post.errors.full_messages
         end
