@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import VideoIndexItem from './video-index-item';
+import VideoIndexItem from './video_index_item';
 import { fetchUser } from '../../actions/user_actions';
 
 const mSTP = (state, ownProps) => {

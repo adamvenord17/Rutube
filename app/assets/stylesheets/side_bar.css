@@ -62,8 +62,6 @@
     width: 18px;
 }
 
-
-
 #sidebar-title button {
     background-color: white;
     color: rgb(95, 95, 95);
@@ -75,6 +73,11 @@
 #sidebar-title #logo-btn {
     color: black;
     font-size: 20px;
+    padding: 0px;
+}
+
+#sidebar-title #logo-btn:hover {
+    background-color: white;
 }
 
 #sidebar-title #sidebar-options-btn {

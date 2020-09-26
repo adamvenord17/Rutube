@@ -84,7 +84,7 @@ class NavBar extends React.Component {
                 <header id="nav-bar">
                     <div className="nav-icons left">
                         <button onClick={this.showSidebar} id="navbar-options-btn">&#x2630;</button>
-                        <button id="logo-btn"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</button>
+                        <Link to="/" id="logo-btn"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</Link>
                     </div>
                     <form className="search-bar clear-fix">
                         <input type="text" placeholder="Search"/>

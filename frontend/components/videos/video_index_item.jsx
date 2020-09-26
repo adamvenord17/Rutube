@@ -58,7 +58,7 @@ class VideoIndexItem extends React.Component {
                         <div id="video-index-item-info">
                             <p id="video-index-item-title">{this.props.video.title}</p>
                             <p>{uploader.username}</p>
-                            <p>{this.state.views} views -- 1 month ago</p>
+                            <p>{this.state.views} views • 1 month ago</p>
                         </div>
                     </div>
                 </Link>

@@ -115,8 +115,9 @@ form.search-bar input:focus {
 
 #logo-btn {
     font-size: 20px;
-    margin-left: 0px;
+    margin-left: 3px;
     color: black;
+    text-decoration: none;
 }
 
 .iconify { 

@@ -14,3 +14,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.modal-child #sidebar-container {
+  top: -358px;
+  left: -720px;
+  height: 110vh;
+}
+
+.modal-child #sidebar-container #sidebar-title #logo-btn svg {
+  vertical-align: -0.15em;
+}
