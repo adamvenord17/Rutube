@@ -12,6 +12,8 @@
     margin-left: 72px;
 }
 
+/* everything below is styling for the genre header */
+
 #genre-header {
     width: 500%;
     display: block;
@@ -49,26 +51,43 @@
     outline: none;
 }
 
+/* everything below is the video index container styling */
+
 #videos-container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    padding: 24px;
-    height: 650px;
-    overflow-y: scroll;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  padding: 24px;
+  height: 540px;
+  /* height: 100%; */
+  overflow-y: scroll;
+  padding-right: 0px;
+  margin-top: 0px;
+  padding-top: 22px;
+  padding-left: 14px;
+  padding-right: 14px;
+  overflow: scroll;
+  padding-bottom: 10000px
 }
 
 #videos-container .video-item {
-    height: 270px;
-    width: 277px;
+  height: 270px;
+  width: 277px;
+  flex-basis: 20%;
+  -ms-flex: auto;
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0px 0px;
+  padding: 0px 8px;
+  margin-bottom: 45px;
+}
+
+@media(max-width: 1700px) {
+  #videos-container .video-item {
     flex-basis: 25%;
-    -ms-flex: auto;
-    position: relative;
-    display: block;
-    box-sizing: border-box;
-    background-color: white;
-    list-style: none;
-    border: 1px solid grey;
+  }
 }
 
 @media(max-width: 1333px) {
@@ -92,8 +111,63 @@
   }
 }
 
-#videos-container .video-item div {
-    height: 50px;
+#videos-container #video-index-video-sleeve {
+    /* height: 50px;
     width: 100%;
-    background-color: red;
+    background-color: black */
 }
+
+#videos-container video {
+  width: 100%;
+  height: 178px;
+  /* max-height: 170px; */
+  object-fit: cover;
+}
+
+#videos-container a {
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  font-size: 16px;
+  color: black;
+}
+
+#video-index-item-info-container {
+  padding-top: 12px;
+  display: flex;
+}
+
+.uploader-icon {
+  width: 36px;
+  height: 36px;
+  background-color: purple;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+#video-index-item-info {
+  margin-left: 12px;
+  font-size: 14px;
+}
+
+#video-index-item-info p {
+  margin-bottom: 3px;
+  margin-top: 0px;
+}
+
+#video-index-item-info #video-index-item-title {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bolder;
+  margin-top: 3px;
+  width: 270px;
+}
+
+
+
+
+
+

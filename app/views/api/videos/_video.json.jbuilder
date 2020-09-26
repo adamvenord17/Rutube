@@ -1,2 +1,5 @@
-json.extract! video, :id, :title, :body, :uploader_id, :video_file
-json.video_file url_for(video.video_file)
+json.id video.id
+json.title video.title
+json.body video.body
+json.uploaderId video.uploader_id
+json.videoUrl url_for(video.video_file)

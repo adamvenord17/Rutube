@@ -177,6 +177,7 @@ form.search-bar input:focus {
     top: 15px;
     right: 65px;
     width: 280px;
+    z-index: 10;
     /* transition: .5s; */
 }
 
@@ -213,7 +214,7 @@ form.search-bar input:focus {
 
 #dropdown-user-info {
     float: right;
-    padding-right: 90px;
+    width: 212px;
 }
 
 .user-drop-down button {

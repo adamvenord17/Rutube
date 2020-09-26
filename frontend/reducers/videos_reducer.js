@@ -6,7 +6,8 @@ const videosReducer = (oldState = {}, action) => {
         case RECEIVE_VIDEOS:
             return action.videos;
         case RECEIVE_VIDEO:
-            return action.video;
+            newState = Object.assign({}, oldState, action.video); 
+            return newState;
         default:
             return oldState;
     }

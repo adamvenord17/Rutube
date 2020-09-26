@@ -8,6 +8,24 @@ class NavBar extends React.Component {
 
         this.handleUserDropdown = this.handleUserDropdown.bind(this);
         this.showSidebar = this.showSidebar.bind(this);
+        this.hashCode = this.hashCode.bind(this);
+        this.intToRGB = this.intToRGB.bind(this);
+    }
+
+    hashCode(str) { // java String#hashCode
+        var hash = 0;
+        for (var i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        return hash;
+    }
+
+    intToRGB(i) {
+        var c = (i & 0x00FFFFFF)
+            .toString(16)
+            .toUpperCase();
+
+        return "00000".substring(0, 6 - c.length) + c;
     }
 
     showSidebar() {
@@ -32,13 +50,22 @@ class NavBar extends React.Component {
         let userButton = '';
         let addVideoBtnClass = '';
         let userDropdown = '';
+        let addVideoBtn = ''
         if (this.props.currentUser) {
+            let iconColor = this.intToRGB(this.hashCode(this.props.currentUser.username))
+            let iconBackgroundStyle = {
+                backgroundColor: `#${iconColor}`
+            };
+            let iconStyle = {
+                color: `#${iconColor}`
+            };
+            addVideoBtn = <button onClick={this.props.openModal} className="nav-bar-right-links addVideo"><i className="far fa-file-video"></i></button>
             let firstLetter = this.props.currentUser.username[0];
-            userButton = <button onClick={this.handleUserDropdown} id="user-btn">{firstLetter}</button>
+            userButton = <button onClick={this.handleUserDropdown} id="user-btn" style={iconBackgroundStyle} >{firstLetter}</button>
             addVideoBtnClass = "add-video-btn-online";
             userDropdown = <div className="user-drop-down hide">
                                 <header id="dropdown-header" className="clearfix">
-                                        <span><i id="dropdown-header-user-icon" className='fas fa-user-circle'></i></span>
+                                        <span><i id="dropdown-header-user-icon" style={iconStyle} className='fas fa-user-circle'></i></span>
                                         <div id="dropdown-user-info">
                                             <p className="username">{this.props.currentUser.username}</p>
                                             <p className="email">{this.props.currentUser.email}</p>
@@ -50,6 +77,7 @@ class NavBar extends React.Component {
         } else {
             userButton = <Link to="/login" id="sign-in-btn"><i className='fas fa-user-circle'></i>SIGN IN</Link>
             addVideoBtnClass = "add-video-btn-offline";
+            addVideoBtn = <Link to="/login" className="nav-bar-right-links addVideo"><i className="far fa-file-video"></i></Link>
         }
         return(
             <div>
@@ -63,7 +91,7 @@ class NavBar extends React.Component {
                         <button><i className="fas fa-search"></i></button>
                     </form>
                     <div className="nav-icons right">
-                        <button onClick={this.props.openModal} className="nav-bar-right-links addVideo"><i className="far fa-file-video"></i></button>
+                        {addVideoBtn}
                             <span className="popup-descriptions upload-video-popup">Upload Video</span>
                         <a className="nav-bar-right-links github" href="https://github.com/adamvenord17/Rutube"><i className="fab fa-github"></i></a>
                             <span className="popup-descriptions github-popup">Project Repo</span>

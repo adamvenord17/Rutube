@@ -14,7 +14,7 @@ class Api::VideosController < ApplicationController
         @video = Video.new(video_params)
         @video.uploader_id = current_user.id
         if @video.save
-            redirect_to api_video_url
+            redirect_to api_video_url(@video.id)
         else
             render json: @post.errors.full_messages
         end
