@@ -84,12 +84,21 @@ form.search-bar input:focus {
     border: none;
     font-size: 22px;
     cursor: pointer;
+
 }
 
 #navbar-options-btn {
     margin-right: 12px;
-    margin-left: 20px;
+    margin-left: 16px;
     padding-bottom: 4px;
+    transition: .5s;
+    border-radius: 25px;
+    width: 45px;
+    height: 45px;
+}
+
+#navbar-options-btn:active {
+    background-color: rgb(231, 231, 231)
 }
 
 .nav-icons button:focus {

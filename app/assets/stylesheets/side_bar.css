@@ -21,10 +21,12 @@
 
 #sidebar-container #sidebar-title {
     padding: 0px;
-    padding-top: 17px;
+    padding-top: 12px;
     padding-bottom: 12px;
     display: block;
     border-bottom: none;
+    margin-right: 35px;
+    /* width: 200px; */
 }
 
 #sidebar-container a {
@@ -76,6 +78,19 @@
 }
 
 #sidebar-title #sidebar-options-btn {
-    margin-left: 20px;
+    margin-left: 16px;
     margin-right: 12px;
+    width: 45px;
+    height: 45px;
+    border-radius: 25px;
+    transition: .5s;
+    padding-bottom: 4px;
+}
+
+#sidebar-title #sidebar-options-btn:active {
+    background-color: rgb(231, 231, 231);
+}
+
+#sidebar-title #sidebar-options-btn:focus {
+    outline: none;
 }
