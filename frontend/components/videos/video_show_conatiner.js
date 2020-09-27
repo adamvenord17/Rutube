@@ -9,7 +9,8 @@ const mSTP = (state, ownProps) => {
     return {
         currentVideo: state.entities.videos[ownProps.match.params.videoId],
         videos: state.entities.videos,
-        users: state.entities.users
+        users: state.entities.users,
+        currentUserId: state.session.currentUserId
     };
 };
 

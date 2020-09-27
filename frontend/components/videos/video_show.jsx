@@ -53,12 +53,26 @@ class VideoShow extends React.Component {
             let iconStyle = {
                 backgroundColor: `#${iconColor}`
             };
+            let isCurrentUser = (this.props.currentVideo.uploaderId === this.props.currentUserId);
 
             let nextVideos = Object.values(this.props.videos).map(video => {
                 if (video.id != this.props.currentVideo.id) {
                     return <NextVideoItem key={video.id} fetchUser={this.props.fetchUser} users={this.props.users} video={video}/>
                 }
             });
+
+            let videoShowOptionsBtns = '';
+
+            if (isCurrentUser) {
+                videoShowOptionsBtns = <div id="video-show-options-btns">
+                                            <button id="edit-btn">EDIT</button>
+                                            <button id="delete-btn">REMOVE</button>
+                                        </div>
+            } else {
+                videoShowOptionsBtns = <div id="video-show-options-btns">
+                                            <button id="subscribe-btn">SUBSCRIBE</button>
+                                        </div>
+            }
 
             return(
                 <div id="video-show-component">
@@ -93,7 +107,7 @@ class VideoShow extends React.Component {
                                                 <p className="video-body">{this.props.currentVideo.body}</p>
                                             </div>
                                         </div>
-                                        <button id="subscribe-btn">SUBSCRIBE</button>
+                                        {videoShowOptionsBtns}
                                     </div>
                                 </div>
                                 <div id="video-comments-container">

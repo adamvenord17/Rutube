@@ -40,3 +40,7 @@ export const uploadVideo = (video) => dispatch => {
 export const removeVideo = () => dispatch => {
     return (ApiVideosUtil.deleteVideo().then(videos => dispatch(receiveVideos(videos))));
 };
+
+export const updateVideo = () => dispatch => {
+    return (ApiVideosUtil.updateVideo().then(video => dispatch(receiveVideo(video))));
+};
