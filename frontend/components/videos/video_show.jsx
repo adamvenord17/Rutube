@@ -80,11 +80,19 @@ class VideoShow extends React.Component {
                                         </div>
             }
 
+            let sideBarButton = '';
+
+            if (this.props.isModal) {
+                sideBarButton = <button onClick={this.props.closeModal} id="navbar-options-btn" className="special">&#x2630;</button>
+            } else {
+                sideBarButton = <button onClick={this.props.openModalSidebar} id="navbar-options-btn" className="special">&#x2630;</button>
+            }
+
             return(
                 <div id="video-show-component">
                     <NavBarContainer />
                     <div className="scrollable">
-                    <button onClick={this.props.openModalSidebar} id="navbar-options-btn" className="special">&#x2630;</button>
+                    {sideBarButton}
                         <main id="video-show-container">
                             <div id="video-content-container">
                                 <div id="video-content">
