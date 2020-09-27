@@ -14,9 +14,10 @@ class Api::VideosController < ApplicationController
         @video = Video.new(video_params)
         @video.uploader_id = current_user.id
         if @video.save
+            sleep 10
             redirect_to api_video_url(@video.id)
         else
-            render json: @post.errors.full_messages
+            render json: @video.errors.full_messages, status: 422
         end
     end
 
@@ -25,13 +26,14 @@ class Api::VideosController < ApplicationController
         if @video.update_attributes(video_params)
             render :show
         else
-            render json: @post.errors.full_messages
+            render json: @video.errors.full_messages, status: 422
         end
     end
 
     def destroy
         @video = Video.find(params[:id])
         @video.destroy
+        sleep 5
         render :index
     end
 

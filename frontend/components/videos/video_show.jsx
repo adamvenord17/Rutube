@@ -12,10 +12,16 @@ class VideoShow extends React.Component {
         this.hashCode = this.hashCode.bind(this);
         this.intToRGB = this.intToRGB.bind(this);
         this.sliderClick = this.sliderClick.bind(this);
+        this.handleRemoveVideo = this.handleRemoveVideo.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchVideos();
+    }
+
+    handleRemoveVideo() {
+        this.props.removeVideo(this.props.currentVideo.id);
+        this.props.history.push('/');
     }
 
     hashCode(str) { // java String#hashCode
@@ -65,8 +71,8 @@ class VideoShow extends React.Component {
 
             if (isCurrentUser) {
                 videoShowOptionsBtns = <div id="video-show-options-btns">
-                                            <button id="edit-btn">EDIT</button>
-                                            <button id="delete-btn">REMOVE</button>
+                                            <button onClick={this.props.openModalEdit} id="edit-btn">EDIT</button>
+                                            <button onClick={this.handleRemoveVideo} id="delete-btn">REMOVE</button>
                                         </div>
             } else {
                 videoShowOptionsBtns = <div id="video-show-options-btns">
@@ -78,7 +84,7 @@ class VideoShow extends React.Component {
                 <div id="video-show-component">
                     <NavBarContainer />
                     <div className="scrollable">
-                    <button onClick={this.props.openModal} id="navbar-options-btn" className="special">&#x2630;</button>
+                    <button onClick={this.props.openModalSidebar} id="navbar-options-btn" className="special">&#x2630;</button>
                         <main id="video-show-container">
                             <div id="video-content-container">
                                 <div id="video-content">

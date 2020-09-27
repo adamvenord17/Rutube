@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import VideoShow from './video_show';
-import { fetchVideos } from "../../actions/video_actions"; 
+import { fetchVideos, removeVideo } from "../../actions/video_actions"; 
 import { fetchUser } from "../../actions/user_actions";
 import { openModal } from "../../actions/modal_actions";
+import { withRouter } from 'react-router-dom';
 
 const mSTP = (state, ownProps) => {
     // debugger
@@ -18,9 +19,11 @@ const mDTP = dispatch => {
     return {
         fetchVideos: () => dispatch(fetchVideos()),
         fetchUser: (userId) => dispatch(fetchUser(userId)),
-        openModal: () => dispatch(openModal('sidebar')),
+        openModalSidebar: () => dispatch(openModal('sidebar')),
+        openModalEdit: () => dispatch(openModal('edit')),
+        removeVideo: (videoId) => dispatch(removeVideo(videoId))
     };
 };
 
 
-export default connect(mSTP, mDTP)(VideoShow);
+export default withRouter(connect(mSTP, mDTP)(VideoShow));

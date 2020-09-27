@@ -29,6 +29,7 @@ export const createVideo = (video) => {
 };
 
 export const updateVideo = (video) => {
+    debugger
     return (
         $.ajax({
             method: "PATCH",

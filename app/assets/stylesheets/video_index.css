@@ -138,7 +138,7 @@
 }
 
 .uploader-icon {
-  width: 36px;
+  min-width: 36px;
   height: 36px;
   background-color: purple;
   border-radius: 25px;

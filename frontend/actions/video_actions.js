@@ -37,10 +37,10 @@ export const uploadVideo = (video) => dispatch => {
     return (ApiVideosUtil.createVideo(video).then(video => dispatch(receiveVideo(video.id)), errors => dispatch(receiveVideoErrors(errors))));
 };
 
-export const removeVideo = () => dispatch => {
-    return (ApiVideosUtil.deleteVideo().then(videos => dispatch(receiveVideos(videos))));
+export const removeVideo = (videoId) => dispatch => {
+    return (ApiVideosUtil.deleteVideo(videoId).then(videos => dispatch(receiveVideos(videos))));
 };
 
-export const updateVideo = () => dispatch => {
-    return (ApiVideosUtil.updateVideo().then(video => dispatch(receiveVideo(video))));
+export const updateVideo = (video) => dispatch => {
+    return (ApiVideosUtil.updateVideo(video).then(video => dispatch(receiveVideo(video))));
 };

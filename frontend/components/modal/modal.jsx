@@ -2,8 +2,10 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 
+
 import SidebarContainer from "../side_bar/side_bar_container";
-import UploadVideoFormContainer from "../videos/video_form/upload_video_form_container"
+import UploadVideoFormContainer from "../videos/video_form/upload_video_form_container";
+import EditVideoFormContainer from "../videos/video_form/edit_video_form_container";
 
 
 function Modal({ modal, closeModal }) {
@@ -19,6 +21,9 @@ function Modal({ modal, closeModal }) {
         case 'sidebar':
             component = <SidebarContainer/>;
             break;
+        case 'edit':
+            component = <EditVideoFormContainer />;
+            break;
         default:
             return null;
     }
@@ -32,7 +37,8 @@ function Modal({ modal, closeModal }) {
     );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+    // debugger
     return {
         modal: state.ui.modal
     };

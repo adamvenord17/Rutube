@@ -5,7 +5,8 @@ import UploadVideoForm from "./upload_video_form";
 
 const mSTP = ({ errors }) => {
     return {
-        errors: errors.videos
+        errors: errors.videos,
+        formType: "UPLOAD"
     };
 };
 

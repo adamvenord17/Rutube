@@ -4,18 +4,6 @@
     max-width:  100%;
 }
 
-@media(max-width: 1150px) {
-    #video-content-container {
-        float: none;
-        width: 100%;
-    }
-
-    #next-videos-container {
-        float: none;
-        width: 100%;
-    }   
-}
-
 #video-show-container {
     background-color: rgb(243, 242, 242);
     padding: 25px 80px;
@@ -24,6 +12,12 @@
     display: flex;
     flex-direction: row;
     padding-bottom: 200px;
+}
+
+@media(max-width: 1050px) {
+    .video-show-container {
+        flex-direction: column;
+    }
 }
 
 #video-content-container {
@@ -132,7 +126,7 @@
     display: flex;
     justify-content: space-between;
     padding-top: 16px;
-    height: 165px;
+    min-height: 165px;
     border-bottom: 1px lightgray solid;
 
 }
@@ -143,7 +137,7 @@
 }
 
 #video-user-info .uploader-icon {
-    width: 46px;
+    min-width: 46px;
     height: 46px;
     font-size: 23px;
     text-decoration: none;
@@ -204,6 +198,11 @@
     background-color: rgb(0, 89, 255);
     border-color: rgb(0, 89, 255);
     margin-left: 5px;
+}
+
+#video-user-info #video-show-options-btns #edit-btn:hover, #video-user-info #video-show-options-btns #delete-btn:active {
+    background-color: rgb(60, 113, 211);
+    border-color: rgb(60, 113, 211);
 }
 
 #video-user-info #video-show-options-btns #edit-btn {
@@ -323,10 +322,10 @@
     z-index: 15;
     top: 5px;
     left: 0px;
-    background-color: white;
     color: rgb(95, 95, 95);
     font-size: 22px;
     border: none;
+    background-color: #ffffff00;
 }
 
 #video-show-component #navbar-options-btn.special:hover {
@@ -336,6 +335,5 @@
 #video-show-component #navbar-options-btn.special:focus {
     outline: none;
 }
-
 
 

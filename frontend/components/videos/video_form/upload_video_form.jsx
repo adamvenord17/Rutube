@@ -16,16 +16,42 @@ class UploadVideoForm extends React.Component {
         this.handleDrop = this.handleDrop.bind(this);
         this.handleDragEnter = this.handleDragEnter.bind(this);
         this.handleDragOver = this.handleDragOver.bind(this);
+        this.handleEnterEdit - this.handleEnterEdit.bind(this);
+    }
+
+    componentDidMount() {
+        if (this.props.formType === "EDIT") {
+            this.handleEnterEdit();
+        }
+    }
+
+    componentDidUpdate() {
+        let submitBtn = document.getElementById("upload-video-submit-form-btn");
+        if (this.state.title.length === 0) {
+            submitBtn.setAttribute('disabled', '');
+        } else {
+            submitBtn.removeAttribute('disabled', '');
+            submitBtn.removeAttribute('disabled', '');
+        }
     }
 
     handleSubmit(e) {
         e.preventDefault();
         let formData = new FormData();
-        formData.append('video[title]', this.state.title);
-        formData.append('video[body]', this.state.body);
-        formData.append('video[video_file]', this.state.videoFile);
-        // debugger
-        this.props.processForm(formData);
+        let video = {};
+        if (this.props.formType === "EDIT") {
+            video = ({
+                        id: this.props.location.pathname.slice(-1),
+                        title: this.state.title,
+                        body: this.state.body
+                    });
+            this.props.processForm(video);
+        } else {
+            formData.append('video[title]', this.state.title);
+            formData.append('video[body]', this.state.body);
+            formData.append('video[video_file]', this.state.videoFile);
+            this.props.processForm(formData);
+        }
         this.props.closeModal();
     }
 
@@ -65,10 +91,22 @@ class UploadVideoForm extends React.Component {
         this.setState({ videoFile: file });
     }
 
+    handleEnterEdit() {
+        let currentVideo = this.props.videos[this.props.location.pathname.slice(-1)];
+        this.setState({ title: currentVideo.title, body: currentVideo.body, videoUrl: currentVideo.videoUrl });
+    }
+
     render() {
-        // console.log(this.state);
+        // this.props.location.pathname.slice(-1)
         // debugger
-        if (this.state.videoFile) {
+        
+        if (this.state.videoFile || this.state.videoUrl) {
+            let fileName= '';
+            if (this.state.videoFile) {
+                fileName = this.state.videoFile.name;
+            } else {
+                fileName = this.state.title;
+            }
             return(
                 <>
                     <main id="upload-video-form-container">
@@ -121,12 +159,12 @@ class UploadVideoForm extends React.Component {
                                             <label>Video Link</label>
                                             <a>Availble after successful upload</a>
                                         </div>
-                                        <i class="far fa-copy"></i>
+                                        <i className="far fa-copy"></i>
                                     </div>
                                     <div id="video-preview-filename-container">
                                         <div>
                                             <label>Filename</label>
-                                            <p className="strong-p">{this.state.videoFile.name}</p>
+                                            <p className="strong-p">{fileName}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +176,7 @@ class UploadVideoForm extends React.Component {
                                 <i className="fab fa-js-square"></i>
                                 <p className="weak-p">Finished processing</p>
                             </div>
-                            <button onClick={this.handleSubmit}>UPLOAD</button>
+                            <button id="upload-video-submit-form-btn" onClick={this.handleSubmit}>{this.props.formType}</button>
                         </footer>
                     </main>
                 </>
