@@ -116,19 +116,19 @@ v13 = Video.create!({
 
 # THE BELOW IS FOR PRODUCTION ONLY attach sample video files to videos
 
-videoFile1 = open('https://s3.amazonaws.com/ruby-reels-seeds/sample-mov-file.mov')
-videoFile2 = open('https://ruby-reels-seeds.s3.amazonaws.com/Beach_Aerial_Footage_Taken_by_a_Drone.mp4')
-videoFile3 = open('https://ruby-reels-seeds.s3.amazonaws.com/Pexels_Videos_2519660.mp4')
-videoFile4 = open('https://ruby-reels-seeds.s3.amazonaws.com/Roller_Coaster.mp4')
-videoFile5 = open('https://ruby-reels-seeds.s3.amazonaws.com/video_(1).mp4')
-videoFile6 = open('https://ruby-reels-seeds.s3.amazonaws.com/video_(2).mp4')
-videoFile7 = open('https://ruby-reels-seeds.s3.amazonaws.com/video_(3).mp4')
-videoFile8 = open('https://ruby-reels-seeds.s3.amazonaws.com/video1.mov')
-videoFile9 = open('https://ruby-reels-seeds.s3.amazonaws.com/Hand_Washing_34091.mp4')
-videoFile10 = open('https://ruby-reels-seeds.s3.amazonaws.com/video_(5).mp4')
-videoFile11 = open('https://ruby-reels-seeds.s3.amazonaws.com/video_(6).mp4')
-videoFile12 = open('https://ruby-reels-seeds.s3.amazonaws.com/video.mp4')
-videoFile13 = open('https://ruby-reels-seeds.s3.amazonaws.com/video_(4).mp4')
+videoFile1 = URI.open('https://s3.amazonaws.com/ruby-reels-seeds/sample-mov-file.mov')
+videoFile2 = URI.open('https://ruby-reels-seeds.s3.amazonaws.com/Beach_Aerial_Footage_Taken_by_a_Drone.mp4')
+videoFile3 = URI.open('https://ruby-reels-seeds.s3.amazonaws.com/Pexels_Videos_2519660.mp4')
+videoFile4 = URI.open('https://ruby-reels-seeds.s3.amazonaws.com/Roller_Coaster.mp4')
+videoFile5 = URI.open('https://ruby-reels-seeds.s3.amazonaws.com/video_(1).mp4')
+videoFile6 = URI.open('https://ruby-reels-seeds.s3.amazonaws.com/video_(2).mp4')
+videoFile7 = URI.open('https://ruby-reels-seeds.s3.amazonaws.com/video_(3).mp4')
+videoFile8 = URI.open('https://ruby-reels-seeds.s3.amazonaws.com/video1.mov')
+videoFile9 = URI.open('https://ruby-reels-seeds.s3.amazonaws.com/Hand_Washing_34091.mp4')
+videoFile10 = URI.open('https://ruby-reels-seeds.s3.amazonaws.com/video_(5).mp4')
+videoFile11 = URI.open('https://ruby-reels-seeds.s3.amazonaws.com/video_(6).mp4')
+videoFile12 = URI.open('https://ruby-reels-seeds.s3.amazonaws.com/video.mp4')
+videoFile13 = URI.open('https://ruby-reels-seeds.s3.amazonaws.com/video_(4).mp4')
 
 # demo_user.avatar.attach(io: file, filename: 'some_file.jpg')
 
