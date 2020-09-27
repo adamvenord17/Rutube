@@ -64,7 +64,7 @@
 #video-show-title-views .weak-p{
     font-size: 14px;
     margin-top: 0px;
-    color: rgb(109 108 108);
+    color: rgb(109, 108, 108);
     height: 12px;
 }
 
@@ -103,7 +103,7 @@
 }
 
 #video-show-buttons button i:active {
-    background-color: rgb(216 216 216);
+    background-color: rgb(216, 216, 216);
 }
 
 

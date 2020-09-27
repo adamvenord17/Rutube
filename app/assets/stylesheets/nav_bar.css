@@ -164,7 +164,6 @@ form.search-bar input:focus {
 }
 
 #user-btn {
-    background-color: rgb(216 123 255);
     border-radius: 25px;
     width: 35px;
     height: 35px;
@@ -293,7 +292,7 @@ form.search-bar input:focus {
 }
 
 .popup-descriptions {
-    background-color: rgb(0 0 0 / 52%);
+    background-color: rgba(0, 0, 0, 52%);
     top: 70px;
     position: absolute;
     padding: 12px;

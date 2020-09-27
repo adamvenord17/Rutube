@@ -238,7 +238,7 @@
 #video-details-form-container form input, #video-details-form-container form textarea {
     display: block;
     width: 522px;
-    border: 1px solid rgb(103 103 103);
+    border: 1px solid rgb(103, 103, 103);
     margin-bottom: 24px;
     padding: 13px;
     font-size: 15px;
@@ -268,7 +268,7 @@
 
 #video-details-form-container form label {
     font-size: 12px;
-    color: rgb(103 103 103);
+    color: rgb(103, 103, 103);
 }
 
 #video-details-form-container form #video-upload-title-label{
