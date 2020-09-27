@@ -1,12 +1,12 @@
 class Api::VideosController < ApplicationController
 
     def index
-        @videos = Video.all
+        @videos = Video.with_attached_video_file.all
         render :index
     end
 
     def show
-        @video = Video.find(params[:id])
+        @video = Video.with_attached_video_file.find(params[:id])
         render :show
     end
 
