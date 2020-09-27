@@ -116,7 +116,7 @@ v13 = Video.create!({
 
 # THE BELOW IS FOR PRODUCTION ONLY attach sample video files to videos
 
-videoFile1 = open('https://ruby-reels-seeds.s3.amazonaws.com/sample-mov-file.mov')
+videoFile1 = open('https://s3.amazonaws.com/ruby-reels-seeds/sample-mov-file.mov')
 videoFile2 = open('https://ruby-reels-seeds.s3.amazonaws.com/Beach_Aerial_Footage_Taken_by_a_Drone.mp4')
 videoFile3 = open('https://ruby-reels-seeds.s3.amazonaws.com/Pexels_Videos_2519660.mp4')
 videoFile4 = open('https://ruby-reels-seeds.s3.amazonaws.com/Roller_Coaster.mp4')
