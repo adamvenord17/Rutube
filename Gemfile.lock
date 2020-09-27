@@ -136,6 +136,7 @@ GEM
     nio4r (2.5.3)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    open-uri (0.1.0)
     pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -238,6 +239,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  open-uri
   pg (>= 0.18, < 2.0)
   pry-rails
   puma (~> 3.11)
