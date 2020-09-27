@@ -15,7 +15,7 @@
 }
 
 @media(max-width: 1050px) {
-    .video-show-container {
+    #video-show-container {
         flex-direction: column;
     }
 }
