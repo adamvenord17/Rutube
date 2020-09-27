@@ -149,10 +149,6 @@
     margin-top: 8px;
 }
 
-#video-info p {
-    
-}
-
 #video-info .username {
     text-decoration: none;
     font-size: 15px;
@@ -204,15 +200,6 @@
     background-color: rgb(60, 113, 211);
     border-color: rgb(60, 113, 211);
 }
-
-#video-user-info #video-show-options-btns #edit-btn {
-
-}
-
-#video-user-info #video-show-options-btns #delete-btn {
-
-}
-
 
 /* the following is styling for the next videos list */
 
