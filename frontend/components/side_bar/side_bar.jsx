@@ -41,7 +41,7 @@ class SideBar extends React.Component {
             );
         } else {
             return (
-                <section id="sidebar-container">
+                <section onClick={this.props.closeModal} id="sidebar-container">
                     <div id="sidebar-title">
                         <button onClick={this.closeModal} id="sidebar-options-btn">&#x2630;</button>
                         <Link to="/" id="logo-btn"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</Link>
