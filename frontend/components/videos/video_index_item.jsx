@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { timeSinceUpload } from '../../util/format_util';
 
 // passed in props:
 // video
@@ -68,7 +69,7 @@ class VideoIndexItem extends React.Component {
                         <div id="video-index-item-info">
                             <p id="video-index-item-title">{this.props.video.title}</p>
                             <p>{uploader.username}</p>
-                            <p>{this.state.views} views • 1 month ago</p>
+                            <p>{this.state.views} views • {timeSinceUpload(this.props.video.uploadDate)}</p>
                         </div>
                     </div>
                 </Link>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { timeSinceUpload } from '../../util/format_util';
 
 class NextVideoItem extends React.Component {
     constructor(props) {
@@ -26,7 +27,6 @@ class NextVideoItem extends React.Component {
             return null
         } else {
             let views = (Math.floor(Math.random() * 100) + 1);
-            let months = (Math.floor(Math.random() * 10) + 1);
             let uploader = this.props.users[this.props.video.uploaderId];
             let videoShowUrl = `/api/videos/${this.props.video.id}`;
             return (
@@ -35,7 +35,7 @@ class NextVideoItem extends React.Component {
                     <div id="next-video-item-info">
                         <p className="strong-p">{this.props.video.title}</p>
                         <p className="weak-p">{uploader.username}</p>
-                        <p className="weak-p">{views}K views • {months} month ago</p>
+                        <p className="weak-p">{views}K views • {timeSinceUpload(this.props.video.uploadDate)}</p>
                     </div>
                 </Link>
             )

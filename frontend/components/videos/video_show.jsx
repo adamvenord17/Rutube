@@ -3,6 +3,7 @@ import NavBarContainer from '../nav_bar/nav_bar_container';
 import {Link} from 'react-router-dom';
 import NextVideoItem from './next_video_item';
 import SideBarContainer from '../side_bar/side_bar_container';
+import { formatDate } from '../../util/format_util';
 
 class VideoShow extends React.Component {
 
@@ -100,7 +101,7 @@ class VideoShow extends React.Component {
                                     <div id="video-show-info">
                                         <p className="strong-p">{this.props.currentVideo.title}</p>
                                         <div id="video-show-title-views">
-                                            <p className="weak-p">123 views • Aug 20, 2020</p>
+                                            <p className="weak-p">123 views • {formatDate(this.props.currentVideo.uploadDate)}</p>
                                             <div id="video-show-buttons">
                                                 <button id="like-btn"><i className="fas fa-thumbs-up"></i>55</button>
                                                 <button id="dislike-btn"><i className="fas fa-thumbs-down"></i>12</button>
