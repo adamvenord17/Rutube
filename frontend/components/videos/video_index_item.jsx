@@ -15,6 +15,8 @@ class VideoIndexItem extends React.Component {
 
         this.hashCode = this.hashCode.bind(this);
         this.intToRGB = this.intToRGB.bind(this);
+        this.handleMouseOut = this.handleMouseOut.bind(this);
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
     }
 
     hashCode(str) { // java String#hashCode
@@ -37,6 +39,14 @@ class VideoIndexItem extends React.Component {
         this.props.fetchUser(this.props.video.uploaderId);
     }
 
+    handleMouseEnter(e) {
+        e.target.play();
+    }
+
+    handleMouseOut(e) {
+        e.target.pause();
+    }
+
     render() {
         if (this.props.users[this.props.video.uploaderId]) {
             let videoShowUrl = `/api/videos/${this.props.video.id}`;
@@ -49,7 +59,7 @@ class VideoIndexItem extends React.Component {
             return(
                 <Link to={videoShowUrl}>
                     <div id="video-index-video-sleeve">
-                        <video src={this.props.video.videoUrl}></video>
+                        <video onMouseEnter={this.handleMouseEnter} onMouseOut={this.handleMouseOut} src={this.props.video.videoUrl} muted></video>
                     </div>
                     <div id="video-index-item-info-container">
                         <div className="uploader-icon" style={iconStyle}>

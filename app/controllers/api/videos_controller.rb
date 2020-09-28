@@ -32,7 +32,6 @@ class Api::VideosController < ApplicationController
     def destroy
         @video = Video.find(params[:id])
         @video.destroy
-        sleep 5
         render :index
     end
 

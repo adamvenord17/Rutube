@@ -5,10 +5,20 @@ class NextVideoItem extends React.Component {
     constructor(props) {
         super(props);
 
+        this.handleMouseOut = this.handleMouseOut.bind(this);
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchUser(this.props.video.uploaderId);
+    }
+
+    handleMouseEnter(e) {
+        e.target.play();
+    }
+
+    handleMouseOut(e) {
+        e.target.pause();
     }
 
     render() {
@@ -21,7 +31,7 @@ class NextVideoItem extends React.Component {
             let videoShowUrl = `/api/videos/${this.props.video.id}`;
             return (
                 <Link to={videoShowUrl} id="next-video-item-container">
-                    <video src={this.props.video.videoUrl}></video>
+                    <video onMouseEnter={this.handleMouseEnter} onMouseOut={this.handleMouseOut} src={this.props.video.videoUrl} muted></video>
                     <div id="next-video-item-info">
                         <p className="strong-p">{this.props.video.title}</p>
                         <p className="weak-p">{uploader.username}</p>
