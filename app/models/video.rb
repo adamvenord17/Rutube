@@ -17,6 +17,16 @@ class Video < ApplicationRecord
         foreign_key: :uploader_id,
         class_name: :User
 
+    has_many :likes, as: :likeable
+
     has_one_attached :video_file
+
+    def liker_ids
+        self.likes.where(is_like?: true).select(:liker_id).map { |ele| ele.liker_id }
+    end
+
+    def disliker_ids
+        self.likes.where(is_like?: false).select(:liker_id).map { |ele| ele.liker_id }
+    end
 
 end
