@@ -22,7 +22,7 @@ class UploadVideoForm extends React.Component {
     componentDidMount() {
         if (this.props.formType === "EDIT") {
             this.handleEnterEdit();
-        }
+        } 
     }
 
     componentDidUpdate() {
@@ -67,7 +67,7 @@ class UploadVideoForm extends React.Component {
         // debugger
         fileReader.onloadend = (e) => {
             let blobData = e.target.result;
-            this.setState({videoFile: file, videoUrl: blobData});
+            this.setState({videoFile: file, videoUrl: blobData, title: file.name});
         };
         if (file) {
             fileReader.readAsDataURL(file);
@@ -100,13 +100,14 @@ class UploadVideoForm extends React.Component {
         // this.props.location.pathname.slice(-1)
         // debugger
         
+        let fileName = '';
+        if (this.state.videoFile) {
+            fileName = this.state.videoFile.name;
+        } else {
+            fileName = this.state.title;
+        }
+
         if (this.state.videoFile || this.state.videoUrl) {
-            let fileName= '';
-            if (this.state.videoFile) {
-                fileName = this.state.videoFile.name;
-            } else {
-                fileName = this.state.title;
-            }
             return(
                 <>
                     <main id="upload-video-form-container">
