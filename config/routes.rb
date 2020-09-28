@@ -7,6 +7,11 @@
 #                  api_user GET    /api/users/:id(.:format)                                                                 api/users#show {:default=>{:Format=>:json}}
 #               api_session DELETE /api/session(.:format)                                                                   api/sessions#destroy {:default=>{:Format=>:json}}
 #                           POST   /api/session(.:format)                                                                   api/sessions#create {:default=>{:Format=>:json}}
+#            api_video_like POST   /api/videos/:video_id/like(.:format)                                                     api/videos#like {:default=>{:Format=>:json}}
+#          api_video_unlike POST   /api/videos/:video_id/unlike(.:format)                                                   api/videos#unlike {:default=>{:Format=>:json}}
+#         api_video_dislike POST   /api/videos/:video_id/dislike(.:format)                                                  api/videos#dislike {:default=>{:Format=>:json}}
+#       api_video_undislike POST   /api/videos/:video_id/undislike(.:format)                                                api/videos#undislike {:default=>{:Format=>:json}}
+#      api_video_changelike PATCH  /api/videos/:video_id/changelike(.:format)                                               api/videos#change_like {:default=>{:Format=>:json}}
 #                api_videos GET    /api/videos(.:format)                                                                    api/videos#index {:default=>{:Format=>:json}}
 #                           POST   /api/videos(.:format)                                                                    api/videos#create {:default=>{:Format=>:json}}
 #                 api_video GET    /api/videos/:id(.:format)                                                                api/videos#show {:default=>{:Format=>:json}}
@@ -30,7 +35,30 @@ Rails.application.routes.draw do
     end
     resource :session, only: %i(create destroy)
     
-    resources :videos, only: %i(index show create destroy update)
+    resources :videos, only: %i(index show create destroy update) do
+      post :like, to: 'videos#like', as: 'like'
+      post :unlike, to: 'videos#unlike', as: 'unlike'
+      post :dislike, to: 'videos#dislike', as: 'dislike'
+      post :undislike, to: 'videos#undislike', as: 'undislike'
+      patch :changelike, to: 'videos#change_like', as: 'changelike'
+    end
+    
+
+
+
+    
+    # resources :likes, only: %i(create)
+    
+    # # resources :likes, only: %i(create) do
+    # #   member do
+    # #     patch :update, to: "api/likes/update", as: "update"
+    # #     delete :remove, to: "api/likes/destroy", as: "destroy"
+    # #   end
+    # # end
+
+
+
+
   end
 
 end
