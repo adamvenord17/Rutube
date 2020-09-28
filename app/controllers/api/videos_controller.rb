@@ -14,8 +14,7 @@ class Api::VideosController < ApplicationController
         @video = Video.new(video_params)
         @video.uploader_id = current_user.id
         if @video.save
-            sleep 10
-            redirect_to api_video_url(@video.id)
+            render :show
         else
             render json: @video.errors.full_messages, status: 422
         end

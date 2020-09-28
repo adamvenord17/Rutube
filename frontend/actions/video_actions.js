@@ -34,7 +34,7 @@ export const fetchVideo = (videoId) => dispatch => {
 };
 
 export const uploadVideo = (video) => dispatch => {
-    return (ApiVideosUtil.createVideo(video).then(video => dispatch(receiveVideo(video.id)), errors => dispatch(receiveVideoErrors(errors))));
+    return (ApiVideosUtil.createVideo(video).then(video => dispatch(receiveVideo(video)), errors => dispatch(receiveVideoErrors(errors))));
 };
 
 export const removeVideo = (videoId) => dispatch => {
