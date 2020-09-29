@@ -87,6 +87,10 @@
     cursor: pointer;
 }
 
+#video-show-buttons button.like-selected {
+    color: rgb(0, 89, 255);
+}
+
 #video-show-buttons button:focus {
     outline: none
 }

@@ -1,34 +1,34 @@
 export const likeVideo = (videoId) => {
-    $.ajax({
+    return ($.ajax({
         method: "POST",
         url: `api/videos/${videoId}/like`
-    });
+    }));
 };
 
 export const unlikeVideo = (videoId) => {
-    $.ajax({
+    return ($.ajax({
         method: "POST",
         url: `api/videos/${videoId}/unlike`
-    });
+    }));
 };
 
 export const dislikeVideo = (videoId) => {
-    $.ajax({
+    return ($.ajax({
         method: "POST",
         url: `api/videos/${videoId}/dislike`
-    });
+    }));
 };
 
 export const undislikeVideo = (videoId) => {
-    $.ajax({
+    return ($.ajax({
         method: "POST",
         url: `api/videos/${videoId}/undislike`
-    });
+    }));
 };
 
-export const changelikeVideo = (videoId) => {
-    $.ajax({
-        method: "PATCH",
+export const changeLikeVideo = (videoId) => {
+    return ($.ajax({
+        method: "POST",
         url: `api/videos/${videoId}/changelike`
-    });
+    }));
 };

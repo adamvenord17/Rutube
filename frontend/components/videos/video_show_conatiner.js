@@ -4,9 +4,9 @@ import { fetchVideos, removeVideo } from "../../actions/video_actions";
 import { fetchUser } from "../../actions/user_actions";
 import { closeModal, openModal } from "../../actions/modal_actions";
 import { withRouter } from 'react-router-dom';
+import { likeVideo, unlikeVideo, dislikeVideo, undislikeVideo, changeLikeVideo } from '../../actions/video_actions';
 
 const mSTP = (state, ownProps) => {
-    // debugger
     return {
         currentVideo: state.entities.videos[ownProps.match.params.videoId],
         videos: state.entities.videos,
@@ -24,6 +24,11 @@ const mDTP = dispatch => {
         openModalEdit: () => dispatch(openModal('edit')),
         removeVideo: (videoId) => dispatch(removeVideo(videoId)),
         closeModal: () => dispatch(closeModal()),
+        likeVideo: (videoId) => dispatch(likeVideo(videoId)),
+        unlikeVideo: (videoId) => dispatch(unlikeVideo(videoId)),
+        dislikeVideo: (videoId) => dispatch(dislikeVideo(videoId)),
+        undislikeVideo: (videoId) => dispatch(undislikeVideo(videoId)),
+        changeLikeVideo: (videoId) => dispatch(changeLikeVideo(videoId))
     };
 };
 

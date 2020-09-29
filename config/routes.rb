@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       post :unlike, to: 'videos#unlike', as: 'unlike'
       post :dislike, to: 'videos#dislike', as: 'dislike'
       post :undislike, to: 'videos#undislike', as: 'undislike'
-      patch :changelike, to: 'videos#change_like', as: 'changelike'
+      post :changelike, to: 'videos#change_like', as: 'changelike'
     end
     
 
