@@ -3,7 +3,7 @@
 # Table name: likes
 #
 #  id            :bigint           not null, primary key
-#  is_like      :boolean          not null
+#  is_like       :boolean          not null
 #  liker_id      :integer          not null
 #  likeable_type :string
 #  likeable_id   :bigint

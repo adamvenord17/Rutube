@@ -19,6 +19,10 @@ class Video < ApplicationRecord
 
     has_many :likes, as: :likeable
 
+    has_many :comments,
+        foreign_key: :video_id,
+        class_name: :Comment
+
     has_one_attached :video_file
 
     def liker_ids

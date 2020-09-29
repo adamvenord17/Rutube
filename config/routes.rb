@@ -11,13 +11,16 @@
 #          api_video_unlike POST   /api/videos/:video_id/unlike(.:format)                                                   api/videos#unlike {:default=>{:Format=>:json}}
 #         api_video_dislike POST   /api/videos/:video_id/dislike(.:format)                                                  api/videos#dislike {:default=>{:Format=>:json}}
 #       api_video_undislike POST   /api/videos/:video_id/undislike(.:format)                                                api/videos#undislike {:default=>{:Format=>:json}}
-#      api_video_changelike PATCH  /api/videos/:video_id/changelike(.:format)                                               api/videos#change_like {:default=>{:Format=>:json}}
+#      api_video_changelike POST   /api/videos/:video_id/changelike(.:format)                                               api/videos#change_like {:default=>{:Format=>:json}}
+#        api_video_comments GET    /api/videos/:video_id/comments(.:format)                                                 api/comments#index {:default=>{:Format=>:json}}
+#                           POST   /api/videos/:video_id/comments(.:format)                                                 api/comments#create {:default=>{:Format=>:json}}
 #                api_videos GET    /api/videos(.:format)                                                                    api/videos#index {:default=>{:Format=>:json}}
 #                           POST   /api/videos(.:format)                                                                    api/videos#create {:default=>{:Format=>:json}}
 #                 api_video GET    /api/videos/:id(.:format)                                                                api/videos#show {:default=>{:Format=>:json}}
 #                           PATCH  /api/videos/:id(.:format)                                                                api/videos#update {:default=>{:Format=>:json}}
 #                           PUT    /api/videos/:id(.:format)                                                                api/videos#update {:default=>{:Format=>:json}}
 #                           DELETE /api/videos/:id(.:format)                                                                api/videos#destroy {:default=>{:Format=>:json}}
+#               api_comment DELETE /api/comments/:id(.:format)                                                              api/comments#destroy {:default=>{:Format=>:json}}
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #        rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
@@ -41,23 +44,11 @@ Rails.application.routes.draw do
       post :dislike, to: 'videos#dislike', as: 'dislike'
       post :undislike, to: 'videos#undislike', as: 'undislike'
       post :changelike, to: 'videos#change_like', as: 'changelike'
+
+      resources :comments, only: %i(index create)
     end
-    
 
-
-
-    
-    # resources :likes, only: %i(create)
-    
-    # # resources :likes, only: %i(create) do
-    # #   member do
-    # #     patch :update, to: "api/likes/update", as: "update"
-    # #     delete :remove, to: "api/likes/destroy", as: "destroy"
-    # #   end
-    # # end
-
-
-
+    resources :comments, only: %i(destroy)
 
   end
 
