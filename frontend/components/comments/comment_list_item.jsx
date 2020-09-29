@@ -8,11 +8,19 @@ import { Link } from "react-router-dom";
 
 class CommentListItem extends React.Component {
 
+    constructor(props) {
+        super(props)
+
+        this.handlePopup = this.handlePopup.bind(this);
+    }
+
     componentDidMount() {
         // debugger
         if (!this.props.author) {
             this.props.fetchUser(this.props.comment.authorId);
         }
+
+        this.handlePopup = this.handlePopup.bind(this);
     }
 
     hashCode(str) { // java String#hashCode
@@ -31,16 +39,40 @@ class CommentListItem extends React.Component {
         return "00000".substring(0, 6 - c.length) + c;
     }
 
+    handlePopup() {
+        let popup = document.getElementById(`comment-options-popup${this.props.comment.id}`);
+        popup.classList.remove("hide");
+        let body = document.getElementsByTagName("body")[0];
+        body.addEventListener("click", () => {
+            popup.classList.add("hide");
+        });
+    }
+
     render() {
-        // debugger
         if (!this.props.author) {
             return null
         } else {
+
+            // set up user icon color
             let iconColor = this.intToRGB(this.hashCode(this.props.author.username));
             let iconStyle = {
                 backgroundColor: `#${iconColor}`
             };
 
+            // set up comment options dropdown if current user is author of comment
+            // allows user to delete comment (and edit in the future)
+            let commentPopup = ''
+            let idTag = `comment-options-popup${this.props.comment.id}`;
+            if (this.props.currentUserId === this.props.author.id) {
+                commentPopup = <div id={idTag} className="comment-options-popup hide">
+                                    <button><i className="fas fa-pencil-alt"></i><span>Edit</span></button>
+                                    <button><i className="fas fa-trash"></i><span>Delete</span></button>
+                                </div>
+            } else {
+                commentPopup = <div id={idTag} className="comment-options-popup hide">
+                                    <button><i className="fas fa-flag"></i><span>Report</span></button>
+                                </div>
+            }
             return (
                 <div className="comment-list-item-container">
                     <div>
@@ -57,7 +89,8 @@ class CommentListItem extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <button id="comment-options-btn"><i className="fas fa-ellipsis-v"></i></button>
+                    <button onClick={this.handlePopup} id="comment-options-btn"><i className="fas fa-ellipsis-v"></i></button>
+                    {commentPopup}
                 </div>
             )
         }

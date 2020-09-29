@@ -7,7 +7,8 @@ const mSTP = (state, ownProps) => {
     // debugger
     return ({
         author: state.entities.users[ownProps.comment.authorId],
-        comment: ownProps.comment
+        comment: ownProps.comment,
+        currentUserId: state.session.currentUserId
     });
 };
 

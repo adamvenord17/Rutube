@@ -16,7 +16,7 @@ class UploadVideoForm extends React.Component {
         this.handleDrop = this.handleDrop.bind(this);
         this.handleDragEnter = this.handleDragEnter.bind(this);
         this.handleDragOver = this.handleDragOver.bind(this);
-        this.handleEnterEdit - this.handleEnterEdit.bind(this);
+        // this.handleEnterEdit - this.handleEnterEdit.bind(this);
     }
 
     componentDidMount() {
@@ -39,8 +39,10 @@ class UploadVideoForm extends React.Component {
         let formData = new FormData();
         let video = {};
         if (this.props.formType === "EDIT") {
+            let parts = this.props.location.pathname.split('/');
+            let currentVideoId = parts.pop();
             video = ({
-                        id: this.props.location.pathname.slice(-1),
+                        id: currentVideoId,
                         title: this.state.title,
                         body: this.state.body
                     });
@@ -91,7 +93,9 @@ class UploadVideoForm extends React.Component {
     }
 
     handleEnterEdit() {
-        let currentVideo = this.props.videos[this.props.location.pathname.slice(-1)];
+        let parts = this.props.location.pathname.split('/');
+        let currentVideoId = parts.pop();
+        let currentVideo = this.props.videos[currentVideoId];
         this.setState({ title: currentVideo.title, body: currentVideo.body, videoUrl: currentVideo.videoUrl });
     }
 
