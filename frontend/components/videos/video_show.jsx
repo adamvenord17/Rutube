@@ -34,22 +34,45 @@ class VideoShow extends React.Component {
         }
     }
 
+    getLikeProportion() {
+        let numLikes = this.props.currentVideo.likerIds.length;
+        let totalNum = this.props.currentVideo.likerIds.length + this.props.currentVideo.dislikerIds.length;
+        let result = (numLikes / totalNum) * 100;
+        if (result === NaN) {
+            return '50%';
+        } else {
+            return `${result}%`;
+        }
+    }
+
+    getDislikeProportion() {
+        let numDislikes = this.props.currentVideo.dislikerIds.length;
+        let totalNum = this.props.currentVideo.likerIds.length + this.props.currentVideo.dislikerIds.length;
+        let result = (numDislikes / totalNum) * 100;
+        if (result === NaN) {
+            return `50%`;
+        } else {
+            return `${result}%`;
+        }
+    }
+
     handleLikeChange() {
         let likeBtn = document.getElementById("like-btn");
         let dislikeBtn = document.getElementById("dislike-btn");
-        debugger
+        let likeBar = document.getElementById("like-bar");
+
         if (this.props.currentVideo.likerIds.includes(this.props.currentUserId)) {
-            debugger
             likeBtn.classList.add("like-selected");
             dislikeBtn.classList.remove("like-selected");
+            likeBar.classList.add("like-selected");
         } else if (this.props.currentVideo.dislikerIds.includes(this.props.currentUserId)) {
-            debugger
             likeBtn.classList.remove("like-selected");
             dislikeBtn.classList.add("like-selected");
+            likeBar.classList.add("like-selected");
         } else {
-            debugger
             likeBtn.classList.remove("like-selected");
             dislikeBtn.classList.remove("like-selected");
+            likeBar.classList.remove("like-selected");
         }
     }
 
@@ -165,6 +188,18 @@ class VideoShow extends React.Component {
                 sideBarButton = <button onClick={this.props.openModalSidebar} id="navbar-options-btn" className="special">&#x2630;</button>
             }
 
+            // sets up proportions for the likebar, using inline react styling
+            let likeBarStyle = '';
+            let dislikeBarStyle = '';
+            if (this.props.currentVideo) {
+                likeBarStyle = {
+                    width: this.getLikeProportion()
+                }
+                dislikeBarStyle = {
+                    width: this.getDislikeProportion()
+                }
+            }
+
             return(
                 <div id="video-show-component">
                     <NavBarContainer />
@@ -179,6 +214,10 @@ class VideoShow extends React.Component {
                                         <div id="video-show-title-views">
                                             <p className="weak-p">123 views • {formatDate(this.props.currentVideo.uploadDate)}</p>
                                             <div id="video-show-buttons">
+                                                <div id="like-dislike-bar-container">
+                                                    <div id="like-bar" style={likeBarStyle}></div>
+                                                    <div id="dislike-bar" style={dislikeBarStyle}></div>
+                                                </div>
                                                 {likeBtn}
                                                 {dislikeBtn}
                                                 <button id="share-btn"><i className="fas fa-share"></i>Share</button>

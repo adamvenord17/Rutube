@@ -72,6 +72,7 @@
     display: flex;
     flex-direction: row;
     align-items: flex-end;
+    position: relative;
 }
 
 #video-show-buttons button {
@@ -89,6 +90,31 @@
 
 #video-show-buttons button.like-selected {
     color: rgb(0, 89, 255);
+}
+
+#like-dislike-bar-container {
+    position: absolute;
+    top: 43px;
+    left: 7px;
+    display: flex;
+    height: 2px;
+    width: 150px;
+}
+
+#like-bar {
+    width: 50%;
+    height: 100%;
+    background-color: gray;
+}
+
+#like-bar.like-selected {
+    background-color: rgb(0, 89, 255);
+}
+
+#dislike-bar {
+    width: 50%;
+    height: 100%;
+    background-color: lightgray
 }
 
 #video-show-buttons button:focus {
