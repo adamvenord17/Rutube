@@ -6,7 +6,8 @@ class Api::CommentsController < ApplicationController
     end
 
     def create
-        @comment = Comment.new(like_params)
+        @comment = Comment.new(comment_params)
+        @comment.video_id = params[:video_id]
         @comment.author_id = current_user.id
         if @comment.save
             render :show

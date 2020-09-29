@@ -1,0 +1,104 @@
+#comment-form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#comment-form-input-and-icon {
+    display: flex;
+    margin-top: 10px;
+}
+
+.commenter-icon{
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    min-width: 38px;
+    height: 38px;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+#comment-form-input-and-icon div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 20px;
+}
+
+#comment-form-input-and-icon input {
+    background-color: #ffffff00;
+    border: none;
+    border-bottom: 1px lightgray solid;
+    height: 20px;
+    width: 99%;
+    transition: .25s;
+    font-size: 14px;
+}
+
+#comment-form-input-and-icon input:focus {
+    outline: none;
+
+}
+#comment-form-input-and-icon input + #comment-form-input-underline {
+    position: relative;
+    top: -1px;
+    left: -20px;
+    width: 0;
+    height: 2px;
+    margin-left: 20px;
+    background-color: black;
+    transition: .5s;
+}
+
+#comment-form-input-and-icon input:focus + #comment-form-input-underline {
+    width: 100%;
+}
+
+#comment-form-btns-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#comment-form-btns-container button {
+    padding: 10px 15px;
+    font-size: 14px;
+    margin-left: 10px;
+    background-color: rgb(0, 89, 255);
+    color: white;
+    border: none;
+    border-radius: 2px;
+    margin-top: -8px;
+    transition: .5s;
+}
+
+#comment-form-btns-container button:hover {
+    cursor: pointer;
+}
+
+#comment-form-btns-container button:disabled {
+    background-color: rgb(216, 216, 216);
+    cursor: default;
+}
+
+#comment-form-btns-container button:focus {
+    outline: none;
+}
+
+#comment-form-btns-container button:active {
+    background-color: rgb(67, 110, 189);
+}
+
+#comment-form-btns-container button#comment-form-cancel-btn {
+    background-color: #ffffff00;
+    color: rgb(145, 145, 145);
+}
+
+#comment-form-btns-container button#comment-form-cancel-btn:active {
+    background-color: rgb(221, 221, 221);
+}
+
+
+
+

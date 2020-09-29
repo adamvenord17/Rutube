@@ -31,7 +31,6 @@ class UploadVideoForm extends React.Component {
             submitBtn.setAttribute('disabled', '');
         } else {
             submitBtn.removeAttribute('disabled', '');
-            submitBtn.removeAttribute('disabled', '');
         }
     }
 

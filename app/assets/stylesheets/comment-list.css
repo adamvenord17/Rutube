@@ -1,0 +1,46 @@
+#comment-list-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#comments-list-header {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#comments-list-header > p {
+    margin-top: 25px;
+    font-size: 16px;
+    margin-left: -2px;
+}
+
+#comments-list-header > div {
+    align-items: center;
+    display: flex;
+    margin-left: 32px;
+    margin-top: 24px;
+    font-size: 14px;
+    color: rgb(109, 108, 108);
+    height: 20px;
+    padding: 0px 5px;
+    border-radius: 3px;
+    transition: .25s
+}
+
+#comments-list-header > div:hover {
+    cursor: pointer;
+}
+
+#comments-list-header > div:active {
+    background-color: rgb(209, 209, 209);
+}
+
+#comments-list-header > div > i {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#comments-list-header > div > p {
+    
+}
+

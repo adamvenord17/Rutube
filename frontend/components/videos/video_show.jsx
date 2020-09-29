@@ -2,8 +2,8 @@ import React from 'react';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import {Link} from 'react-router-dom';
 import NextVideoItem from './next_video_item';
-import SideBarContainer from '../side_bar/side_bar_container';
 import { formatDate } from '../../util/format_util';
+import CommentListContainer from '../comments/comments_list_container';
 
 class VideoShow extends React.Component {
 
@@ -240,9 +240,7 @@ class VideoShow extends React.Component {
                                         {videoShowOptionsBtns}
                                     </div>
                                 </div>
-                                <div id="video-comments-container">
-                                    comments container
-                            </div>
+                                <CommentListContainer video={this.props.currentVideo}/>
                             </div>
                             <div id="next-videos-container">
                                 <div id="next-videos-title-container">
