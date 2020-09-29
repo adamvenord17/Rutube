@@ -1,6 +1,7 @@
 #comment-form-container {
     display: flex;
     flex-direction: column;
+    margin-bottom: 22px;
 }
 
 #comment-form-input-and-icon {

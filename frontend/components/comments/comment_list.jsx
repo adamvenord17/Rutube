@@ -1,5 +1,6 @@
 import React from 'react';
 import CommentFormContainer from './comment_form_container';
+import CommentListItemContainer from './comment_list_item_container';
 
 class CommentList extends React.Component {
     constructor(props) {
@@ -28,6 +29,7 @@ class CommentList extends React.Component {
     render() {
         // debugger
 
+        // sets up the comment number count dislpayed in the comment's secion header
         let commentCount = '';
         if (Object.values(this.props.comments).length === 0) {
             commentCount = <p>No comments yet</p>
@@ -36,6 +38,13 @@ class CommentList extends React.Component {
         } else {
             commentCount = <p>{Object.values(this.props.comments).length} Comments</p>
         }
+
+        // set up all the comments associated with the video
+        let comments = Object.values(this.props.comments).map(comment => {
+            return <CommentListItemContainer key={comment.id} comment={comment} />
+        })
+
+
         return(
             <div id="comment-list-container">
                 <header id="comments-list-header">
@@ -47,10 +56,7 @@ class CommentList extends React.Component {
                 </header>
                 <CommentFormContainer videoId={this.props.video.id} />
                 <div id="comment-list-items-container">
-                    <div>comment list item</div>
-                    <div>comment list item</div>
-                    <div>comment list item</div>
-                    <div>comment list item</div>
+                    {comments}
                 </div>
             </div>
         )

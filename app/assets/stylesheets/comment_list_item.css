@@ -1,0 +1,107 @@
+.comment-list-item-container {
+    display: flex;
+    margin: 10px 0px;
+    justify-content: space-between;
+}
+
+.comment-list-item-container div {
+   display: flex;
+}
+
+
+.comment-list-item-container a.commenter-icon {
+    
+}
+
+.comment-list-item-container #comment-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.comment-list-item-container #comment-details a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.comment-list-item-container #comment-details a span {
+    font-weight: normal;
+    color: rgb(109, 108, 108);
+}
+
+.comment-list-item-container #comment-details p {
+    margin: 10px 0px;
+}
+
+.comment-list-item-container #comment-details #comment-btns {
+
+}
+
+.comment-list-item-container #comment-details #comment-btns button {
+    height: 29px;
+    width: 29px;
+    border-radius: 25px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 8px;
+    margin-left: -5px;
+    color: #828282;
+    border: rgba(255, 255, 255, 0) 2px solid;
+    background-color: #f3f2f2;
+    margin-right: 8px;
+    transition: .5s;
+}
+
+.comment-list-item-container #comment-details #comment-btns button:focus {
+    outline: none;
+}
+
+.comment-list-item-container #comment-details #comment-btns button:hover {
+    cursor: pointer;
+}
+
+.comment-list-item-container #comment-details #comment-btns button:active {
+    background-color: rgb(216, 216, 216)
+}
+
+.comment-list-item-container #comment-details #comment-btns button#comment-dislike-btn{
+    padding-top: 6px;
+}
+
+.comment-list-item-container #comment-details #comment-btns button#reply-btn{
+    width: 60px;
+    border-radius: 2px;
+    margin-left: 10px;
+    font-size: 12px;
+    padding-top: 1px;
+}
+
+.comment-list-item-container #comment-options-btn {
+    background-color: #ffffff00;
+    color: #ffffff00;
+    border-radius: 25px;
+    height: 40px;
+    width: 40px;
+    border: none;
+    font-size: 17px;
+    transition: .25s
+}
+
+.comment-list-item-container:hover #comment-options-btn {
+    color: gray;
+}
+
+.comment-list-item-container #comment-options-btn:hover {
+    color: rgb(88, 88, 88);
+}
+
+.comment-list-item-container #comment-options-btn:active {
+    background-color: rgb(170, 170, 170);
+}
+
+.comment-list-item-container #comment-options-btn:focus {
+    outline: none;
+}
+
