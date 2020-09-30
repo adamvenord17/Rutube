@@ -10,6 +10,10 @@ class VideoShow extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state ={
+            lastPlay: 0
+        }
+
         this.hashCode = this.hashCode.bind(this);
         this.intToRGB = this.intToRGB.bind(this);
         this.sliderClick = this.sliderClick.bind(this);
@@ -22,15 +26,28 @@ class VideoShow extends React.Component {
         this.handleUndislikeVideo = this.handleUndislikeVideo.bind(this);
         this.handleChangeLikeVideo = this.handleChangeLikeVideo.bind(this);
         this.handleLikeChange = this.handleLikeChange.bind(this);
+        this.delayClick = this.delayClick.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchVideos();
+        this.props.fetchVideos();   
     }
 
     componentDidUpdate() {
         if (document.getElementById("like-btn") && document.getElementById("dislike-btn")) {
             this.handleLikeChange();
+        }
+        // if (document.getElementById("video-show-video"))
+        //     document.getElementById("video-show-video").addEventListener("play", () => {
+        //         console.log("this is a view!");
+        //     });
+    }
+
+    delayClick() {
+        let delay = 30000;
+        if ((Date.now() - this.state.lastPlay) >= delay) {
+            this.props.addView(this.props.currentVideo.id);
+            this.setState({lastPlay: Date.now()});
         }
     }
 
@@ -208,7 +225,7 @@ class VideoShow extends React.Component {
                         <main id="video-show-container">
                             <div id="video-content-container">
                                 <div id="video-content">
-                                    <video src={this.props.currentVideo.videoUrl} autoPlay controls></video>
+                                    <video id="video-show-video" onPlay={this.delayClick} src={this.props.currentVideo.videoUrl} autoPlay controls></video>
                                     <div id="video-show-info">
                                         <p className="strong-p">{this.props.currentVideo.title}</p>
                                         <div id="video-show-title-views">

@@ -12,6 +12,7 @@
 #         api_video_dislike POST   /api/videos/:video_id/dislike(.:format)                                                  api/videos#dislike {:default=>{:Format=>:json}}
 #       api_video_undislike POST   /api/videos/:video_id/undislike(.:format)                                                api/videos#undislike {:default=>{:Format=>:json}}
 #      api_video_changelike POST   /api/videos/:video_id/changelike(.:format)                                               api/videos#change_like {:default=>{:Format=>:json}}
+#         api_video_addview POST   /api/videos/:video_id/addview(.:format)                                                  api/videos#add_view {:default=>{:Format=>:json}}
 #        api_video_comments GET    /api/videos/:video_id/comments(.:format)                                                 api/comments#index {:default=>{:Format=>:json}}
 #                           POST   /api/videos/:video_id/comments(.:format)                                                 api/comments#create {:default=>{:Format=>:json}}
 #                api_videos GET    /api/videos(.:format)                                                                    api/videos#index {:default=>{:Format=>:json}}
@@ -46,6 +47,8 @@ Rails.application.routes.draw do
       post :dislike, to: 'videos#dislike', as: 'dislike'
       post :undislike, to: 'videos#undislike', as: 'undislike'
       post :changelike, to: 'videos#change_like', as: 'changelike'
+
+      post :addview, to: 'videos#add_view', as: 'addview'
 
       resources :comments, only: %i(index create)
     end

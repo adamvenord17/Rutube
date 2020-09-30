@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import VideoShow from './video_show';
-import { fetchVideos, removeVideo } from "../../actions/video_actions"; 
+import { fetchVideos, removeVideo, addView } from "../../actions/video_actions"; 
 import { fetchUser } from "../../actions/user_actions";
 import { closeModal, openModal } from "../../actions/modal_actions";
 import { withRouter } from 'react-router-dom';
@@ -28,7 +28,8 @@ const mDTP = dispatch => {
         unlikeVideo: (videoId) => dispatch(unlikeVideo(videoId)),
         dislikeVideo: (videoId) => dispatch(dislikeVideo(videoId)),
         undislikeVideo: (videoId) => dispatch(undislikeVideo(videoId)),
-        changeLikeVideo: (videoId) => dispatch(changeLikeVideo(videoId))
+        changeLikeVideo: (videoId) => dispatch(changeLikeVideo(videoId)),
+        addView: (videoId) => dispatch(addView(videoId))
     };
 };
 

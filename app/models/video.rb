@@ -28,6 +28,8 @@ class Video < ApplicationRecord
 
     has_one_attached :video_file
 
+    has_many :views
+
     def liker_ids
         self.likes.where(is_like: true).select(:liker_id).map { |ele| ele.liker_id }
     end
@@ -47,6 +49,10 @@ class Video < ApplicationRecord
 
     def ensure_searchable_title
         self.searchable_title = ' ' + self.title.downcase + ' '
+    end
+
+    def num_views
+        self.views.length
     end
 
 end

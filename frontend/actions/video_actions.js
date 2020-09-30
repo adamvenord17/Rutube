@@ -1,5 +1,6 @@
 import * as ApiVideosUtil from '../util/video_api_util';
 import * as ApiLikesUtil from '../util/likes_util';
+import * as ApiViewsUtil from '../util/views_api_util';
 
 export const RECEIVE_VIDEOS = "RECEIVE_VIDEOS";
 export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
@@ -56,19 +57,24 @@ export const updateVideo = (video) => dispatch => {
 
 // below actions are for likes
 
-export const likeVideo = (videoId) => {
+export const likeVideo = (videoId) => dispatch => {
     return (ApiLikesUtil.likeVideo(videoId).then(video => dispatch(receiveVideo(video))));
 };
-export const unlikeVideo = (videoId) => {
+export const unlikeVideo = (videoId) => dispatch => {
     return (ApiLikesUtil.unlikeVideo(videoId).then(video => dispatch(receiveVideo(video))));
 };
-export const dislikeVideo = (videoId) => {
+export const dislikeVideo = (videoId) => dispatch => {
     return (ApiLikesUtil.dislikeVideo(videoId).then(video => dispatch(receiveVideo(video))));
 };
-export const undislikeVideo = (videoId) => {
+export const undislikeVideo = (videoId) => dispatch => {
     return (ApiLikesUtil.undislikeVideo(videoId).then(video => dispatch(receiveVideo(video))));
 };
-export const changeLikeVideo = (videoId) => {
+export const changeLikeVideo = (videoId) => dispatch => {
     return (ApiLikesUtil.changeLikeVideo(videoId).then(video => dispatch(receiveVideo(video))));
 };
 
+// below action is for adding video view
+
+export const addView = (videoId) => dispatch => {
+    return (ApiViewsUtil.addView(videoId).then(video => dispatch(receiveVideo(video))));
+};
