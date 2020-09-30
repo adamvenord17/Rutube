@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SearchBarContainer from  './search_bar_container';
 
 class NavBar extends React.Component {
 
@@ -86,10 +87,7 @@ class NavBar extends React.Component {
                         <button onClick={this.showSidebar} id="navbar-options-btn">&#x2630;</button>
                         <Link to="/" id="logo-btn"><span className="iconify" data-icon="mdi-language-ruby"></span>Rutube</Link>
                     </div>
-                    <form className="search-bar clear-fix">
-                        <input type="text" placeholder="Search"/>
-                        <button><i className="fas fa-search"></i></button>
-                    </form>
+                    <SearchBarContainer />
                     <div className="nav-icons right">
                         {addVideoBtn}
                             <span className="popup-descriptions upload-video-popup">Upload Video</span>

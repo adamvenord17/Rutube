@@ -5,6 +5,7 @@ import { fetchVideos } from '../../actions/video_actions';
 const mSTP = state => {
     return {
         videos: state.entities.videos,
+        bounds: state.ui.filers.bounds
     };
 };
 
