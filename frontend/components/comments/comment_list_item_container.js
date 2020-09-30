@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { deleteComment } from "../../actions/comment_actions";
+import { deleteComment, updateComment } from "../../actions/comment_actions";
 import { fetchUser } from "../../actions/user_actions";
 import CommentListItem from "./comment_list_item";
 
@@ -15,6 +15,7 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => {
     return ({
         deleteComment: (commentId) => dispatch(deleteComment(commentId)),
+        updateComment: (comment) => dispatch(updateComment(comment)),
         fetchUser: (userId) => dispatch(fetchUser(userId))
     });
 };

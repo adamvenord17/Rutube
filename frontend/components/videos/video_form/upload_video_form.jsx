@@ -100,9 +100,6 @@ class UploadVideoForm extends React.Component {
     }
 
     render() {
-        // this.props.location.pathname.slice(-1)
-        // debugger
-        
         let fileName = '';
         if (this.state.videoFile) {
             fileName = this.state.videoFile.name;

@@ -15,6 +15,16 @@ class CommentForm extends React.Component {
         this.hideButtons = this.hideButtons.bind(this);
         this.redirectToLogin = this.redirectToLogin.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEnterEdit = this.handleEnterEdit.bind(this);
+        this.handleLeaveEdit = this.handleLeaveEdit.bind(this);
+        this.handleCancelEdit = this.handleCancelEdit.bind(this);
+    }
+
+    componentDidMount() {
+        // debugger
+        if (this.props.formType === "EDIT") {
+            this.handleEnterEdit();
+        }
     }
 
     componentDidUpdate() {
@@ -58,58 +68,104 @@ class CommentForm extends React.Component {
     }
 
     handleSubmit() {
-        this.props.createComment(this.props.videoId, {content: this.state.content});
-        this.hideButtons();
+        if (this.props.formType === "CREATE") {
+            this.props.createComment(this.props.videoId, {content: this.state.content});
+            this.hideButtons();
+        } else {
+            this.props.updateComment({id: this.props.comment.id, content: this.state.content});
+            this.handleLeaveEdit();
+        }
+    }
+
+    handleCancelEdit() {
+        this.props.updateComment({ id: this.props.comment.id, content: this.props.comment.content });
+        this.handleLeaveEdit();
     }
 
     redirectToLogin() {
         this.props.history.push("/login");
     }
 
-    render() {
-        
-        // if current user, set up commenter icon and action for clicking on the input
-        // if current user, allow user to fill in input and show buttons, otherwise
-        // redirect to the login page
-        let commenterIcon = '';
-        let inputAction = '';
-        if (this.props.currentUser) {
-            let iconColor = this.intToRGB(this.hashCode(this.props.currentUser.username));
-            let iconStyle = {
-                backgroundColor: `#${iconColor}`
-            };
-            commenterIcon = <Link to='/' className="commenter-icon" style={iconStyle}>
-                                {this.props.currentUser.username[0].toUpperCase()}
-                            </Link>
-            inputAction = this.showButtons
-        } else {
-            commenterIcon = <Link to='/login' className="commenter-icon" style={{backgroundColor: "lightgray"}}></Link>
-            inputAction = this.redirectToLogin
-        }
-
-        // if user is active in the form, show the comment form buttons, otherwise
-        // hide the buttons
-        let buttonDiv = ''
-        if (this.state.active) {
-            buttonDiv = <div id="comment-form-btns-container">
-                            <button type="button" onClick={this.hideButtons} id="comment-form-cancel-btn">CANCEL</button>
-                            <button type="button" onClick={this.handleSubmit} id="comment-form-submit-btn">COMMENT</button>
-                        </div>
-        }
+    handleEnterEdit() {
         // debugger
-        return(
-            <div id="comment-form-container">
-                <div id="comment-form-input-and-icon">
-                    {commenterIcon}
-                    <div>
-                        <input type="text" onClick={inputAction} onChange={this.handleInputChange} value={this.state.content} placeholder="Add a public comment..." required/>
-                        <div id="comment-form-input-underline">
+        this.setState({content: this.props.comment.content, active: true});
+    }
+
+    handleLeaveEdit() {
+        this.setState({active: false, content: "loading..."});
+    }
+
+    render() {
+
+        if (this.props.formType === "CREATE") {
+
+            // if current user, set up commenter icon and action for clicking on the input
+            // if current user, allow user to fill in input and show buttons, otherwise
+            // redirect to the login page
+            let commenterIcon = '';
+            let inputAction = '';
+            if (this.props.currentUser) {
+                let iconColor = this.intToRGB(this.hashCode(this.props.currentUser.username));
+                let iconStyle = {
+                    backgroundColor: `#${iconColor}`
+                };
+                commenterIcon = <Link to='/' className="commenter-icon" style={iconStyle}>
+                    {this.props.currentUser.username[0].toUpperCase()}
+                </Link>
+                inputAction = this.showButtons
+            } else {
+                commenterIcon = <Link to='/login' className="commenter-icon" style={{ backgroundColor: "lightgray" }}></Link>
+                inputAction = this.redirectToLogin
+            }
+
+            // if user is active in the form, show the comment form buttons, otherwise
+            // hide the buttons
+            let buttonDiv = ''
+            if (this.state.active) {
+                buttonDiv = <div id="comment-form-btns-container">
+                    <button type="button" onClick={this.hideButtons} id="comment-form-cancel-btn">CANCEL</button>
+                    <button type="button" onClick={this.handleSubmit} id="comment-form-submit-btn">COMMENT</button>
+                </div>
+            }
+
+            return(
+                <div id="comment-form-container">
+                    <div id="comment-form-input-and-icon">
+                        {commenterIcon}
+                        <div>
+                            <input type="text" onClick={inputAction} onChange={this.handleInputChange} value={this.state.content} placeholder="Add a public comment..." required/>
+                            <div id="comment-form-input-underline">
+                            </div>
                         </div>
                     </div>
+                    {buttonDiv}
                 </div>
-                {buttonDiv}
-            </div>
-        )
+            )
+        } else {
+
+            // if user is active in the form, show the comment form buttons, otherwise
+            // hide the buttons
+            let buttonDiv = ''
+            if (this.state.active) {
+                buttonDiv = <div id="comment-form-btns-container" className="inline-comment-form-btns-container">
+                    <button type="button" onClick={this.handleCancelEdit} id="comment-form-cancel-btn">CANCEL</button>
+                    <button type="button" onClick={this.handleSubmit} id="comment-form-submit-btn">COMMENT</button>
+                </div>
+            }
+            // debugger
+            return(
+                <div id="comment-form-container" className="inline-comment-form-container">
+                    <div id="comment-form-input-and-icon">
+                        <div>
+                            <input type="text" className="inline-comment-form-input" onChange={this.handleInputChange} value={this.state.content} placeholder="Add a public comment..." required />
+                            <div id="comment-form-input-underline">
+                            </div>
+                        </div>
+                    </div>
+                    {buttonDiv}
+                </div>
+            )
+        }
     }
 };
 

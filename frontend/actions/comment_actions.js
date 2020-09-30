@@ -33,6 +33,11 @@ export const createComment = (videoId, comment) => dispatch => {
     return(ApiCommentsUtil.createComment(videoId, comment).then(comment => dispatch(receiveComment(comment))));
 };
 
+export const updateComment = (comment) => dispatch => {
+    return(ApiCommentsUtil.updateComment(comment).then(comment => dispatch(receiveComment(comment))));
+};
+
 export const deleteComment = (commentId) => dispatch => {
     return(ApiCommentsUtil.deleteComment(commentId).then(dispatch(removeComment(commentId))));
 };
+

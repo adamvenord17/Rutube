@@ -25,3 +25,13 @@ export const deleteComment = (commentId) => {
         })
     );
 };
+
+export const updateComment = (comment) => {
+    return (
+        $.ajax({
+            method: "PATCH",
+            url: `api/comments/${comment.id}`,
+            data: { comment }
+        })
+    );
+};

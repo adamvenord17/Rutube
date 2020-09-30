@@ -6,7 +6,8 @@ import { withRouter } from 'react-router-dom'
 const mSTP = (state, ownProps) => {
     return ({
         videoId: ownProps.videoId,
-        currentUser: state.entities.users[state.session.currentUserId]
+        currentUser: state.entities.users[state.session.currentUserId],
+        formType: "CREATE",
     });
 };
 

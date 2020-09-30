@@ -100,6 +100,11 @@
     background-color: rgb(221, 221, 221);
 }
 
+/* the styling below is for the editForm */
 
 
-
+.comment-list-item-container #comment-form-btns-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}

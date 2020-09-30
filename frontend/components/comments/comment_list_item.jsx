@@ -1,6 +1,7 @@
 import React from "react";
 import { timeSinceUpload } from "../../util/format_util";
 import { Link } from "react-router-dom";
+import EditCommentFormContainer from "./edit_comment_form_container";
 
 // props:
 // author (user object)
@@ -11,7 +12,13 @@ class CommentListItem extends React.Component {
     constructor(props) {
         super(props)
 
+        this.state = {
+            editMode: false
+        };
+
         this.handlePopup = this.handlePopup.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
     }
 
     componentDidMount() {
@@ -21,6 +28,17 @@ class CommentListItem extends React.Component {
         }
 
         this.handlePopup = this.handlePopup.bind(this);
+    }
+
+    componentDidUpdate() {
+        // debugger
+        if (document.getElementsByClassName("inline-comment-form-container")[0]) {
+            if (document.getElementsByClassName("inline-comment-form-input")[0].value.length > 0) {
+                if (!document.getElementsByClassName("inline-comment-form-btns-container")[0]) {
+                    this.setState({editMode: false});
+                }
+            }
+        }
     }
 
     hashCode(str) { // java String#hashCode
@@ -48,6 +66,14 @@ class CommentListItem extends React.Component {
         });
     }
 
+    handleDelete() {
+        this.props.deleteComment(this.props.comment.id);
+    }
+
+    handleEdit() {
+        this.setState({editMode: true});
+    }
+
     render() {
         if (!this.props.author) {
             return null
@@ -65,36 +91,54 @@ class CommentListItem extends React.Component {
             let idTag = `comment-options-popup${this.props.comment.id}`;
             if (this.props.currentUserId === this.props.author.id) {
                 commentPopup = <div id={idTag} className="comment-options-popup hide">
-                                    <button><i className="fas fa-pencil-alt"></i><span>Edit</span></button>
-                                    <button><i className="fas fa-trash"></i><span>Delete</span></button>
+                                    <button onClick={this.handleEdit}><i className="fas fa-pencil-alt"></i><span>Edit</span></button>
+                                    <button onClick={this.handleDelete}><i className="fas fa-trash"></i><span>Delete</span></button>
                                 </div>
             } else {
                 commentPopup = <div id={idTag} className="comment-options-popup hide">
                                     <button><i className="fas fa-flag"></i><span>Report</span></button>
                                 </div>
             }
-            return (
-                <div className="comment-list-item-container">
-                    <div>
-                        <Link to='/' className="commenter-icon" style={iconStyle}>
-                            {this.props.author.username[0].toUpperCase()}
-                        </Link>
-                        <div id="comment-details">
-                            <Link to='/'>{this.props.author.username} <span>{timeSinceUpload(this.props.comment.uploadDate)}</span></Link>
-                            <p>{this.props.comment.content}</p>
-                            <div id="comment-btns">
-                                <button type="button" id="comment-like-btn"><i className="fas fa-thumbs-up"></i></button>
-                                <button type="button" id="comment-dislike-btn"><i className="fas fa-thumbs-down"></i></button>
-                                <button id="reply-btn">REPLY</button>
-                            </div>
+
+            let editedTag = '';
+            if (this.props.comment.isEdited) {
+                editedTag = <span>(edited)</span>
+            }
+
+            if (this.state.editMode) {
+                return(
+                    <div className="comment-list-item-container">
+                        <div>
+                            <Link to='/' className="commenter-icon" style={iconStyle}>
+                                {this.props.author.username[0].toUpperCase()}
+                            </Link>
+                            <EditCommentFormContainer comment={this.props.comment} />
                         </div>
                     </div>
-                    <button onClick={this.handlePopup} id="comment-options-btn"><i className="fas fa-ellipsis-v"></i></button>
-                    {commentPopup}
-                </div>
-            )
+                )
+            } else {
+                return (
+                    <div className="comment-list-item-container">
+                        <div>
+                            <Link to='/' className="commenter-icon" style={iconStyle}>
+                                {this.props.author.username[0].toUpperCase()}
+                            </Link>
+                            <div id="comment-details">
+                                <Link to='/'>{this.props.author.username} <span>{timeSinceUpload(this.props.comment.uploadDate)}</span> {editedTag}</Link>
+                                <p>{this.props.comment.content}</p>
+                                <div id="comment-btns">
+                                    <button type="button" id="comment-like-btn"><i className="fas fa-thumbs-up"></i></button>
+                                    <button type="button" id="comment-dislike-btn"><i className="fas fa-thumbs-down"></i></button>
+                                    <button id="reply-btn">REPLY</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button onClick={this.handlePopup} id="comment-options-btn"><i className="fas fa-ellipsis-v"></i></button>
+                        {commentPopup}
+                    </div>
+                )
+            }
         }
-        
     }
 }
 

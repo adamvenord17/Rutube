@@ -20,7 +20,9 @@
 #                           PATCH  /api/videos/:id(.:format)                                                                api/videos#update {:default=>{:Format=>:json}}
 #                           PUT    /api/videos/:id(.:format)                                                                api/videos#update {:default=>{:Format=>:json}}
 #                           DELETE /api/videos/:id(.:format)                                                                api/videos#destroy {:default=>{:Format=>:json}}
-#               api_comment DELETE /api/comments/:id(.:format)                                                              api/comments#destroy {:default=>{:Format=>:json}}
+#               api_comment PATCH  /api/comments/:id(.:format)                                                              api/comments#update {:default=>{:Format=>:json}}
+#                           PUT    /api/comments/:id(.:format)                                                              api/comments#update {:default=>{:Format=>:json}}
+#                           DELETE /api/comments/:id(.:format)                                                              api/comments#destroy {:default=>{:Format=>:json}}
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #        rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
@@ -48,7 +50,7 @@ Rails.application.routes.draw do
       resources :comments, only: %i(index create)
     end
 
-    resources :comments, only: %i(destroy)
+    resources :comments, only: %i(destroy update)
 
   end
 

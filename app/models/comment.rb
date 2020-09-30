@@ -21,4 +21,9 @@ class Comment < ApplicationRecord
         foreign_key: :video_id,
         class_name: :Video
 
+
+    def is_edited?
+        self.created_at != self.updated_at
+    end
+    
 end

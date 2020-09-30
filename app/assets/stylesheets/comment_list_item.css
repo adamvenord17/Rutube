@@ -6,7 +6,8 @@
 }
 
 .comment-list-item-container div {
-   display: flex;
+    display: flex;
+    width: 100%;
 }
 
 
@@ -22,6 +23,7 @@
 }
 
 .comment-list-item-container #comment-details a {
+    width: fit-content;
     text-decoration: none;
     color: black;
     font-weight: bold;
