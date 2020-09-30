@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 
 const mSTP = state => {
     return({
-
+        bounds: state.ui.filters.bounds
     });
 };
 
@@ -15,4 +15,4 @@ const mDTP = dispatch => {
     });
 };
 
-export default withRouter(connect(null, mDTP)(SearchBar));
+export default withRouter(connect(mSTP, mDTP)(SearchBar));

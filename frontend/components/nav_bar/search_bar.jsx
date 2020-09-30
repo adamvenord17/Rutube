@@ -5,7 +5,7 @@ class SearchBar extends React.Component {
         super(props)
 
         this.state = {
-            bounds: ''
+            bounds: this.props.bounds
         };
 
         this.handleChange = this.handleChange.bind(this);

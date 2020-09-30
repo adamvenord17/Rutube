@@ -7,6 +7,7 @@ const mSTP = state => {
     return({
         videos: state.entities.videos,
         users: state.entities.users,
+        bounds: state.ui.filters.bounds
     });
 };
 

@@ -143,7 +143,7 @@ class VideoShow extends React.Component {
 
             let nextVideos = Object.values(this.props.videos).map(video => {
                 if (video.id != this.props.currentVideo.id) {
-                    return <NextVideoItem key={video.id} fetchUser={this.props.fetchUser} users={this.props.users} video={video}/>
+                    return <NextVideoItem key={video.id} fetchUser={this.props.fetchUser} users={this.props.users} video={video} itemType="SHOW"/>
                 }
             });
 

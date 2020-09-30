@@ -9,15 +9,11 @@ class VideoSearchIndex extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
-        this.props.fetchVideos(this.props.bounds);
-    }
-
     render() {
 
         if (this.props.videos) {
             let videoSearchResults = Object.values(this.props.videos).map(video => {
-                return <NextVideoItem key={video.id} fetchUser={this.props.fetchUser} users={this.props.users} video={video} />
+                return <NextVideoItem key={video.id} fetchUser={this.props.fetchUser} users={this.props.users} video={video} itemType="SEARCH" />
             })
 
             return(
@@ -26,14 +22,20 @@ class VideoSearchIndex extends React.Component {
                     <main className="row">
                         <SideBarContainer />
                         <SmallSideBar />
-                        <div id="video-search-index-container">
-                            <div id="search-results-container">
-                                <div><i className="fas fa-sliders-h"></i><span>FILTER</span></div>
-                                {videoSearchResults}
-                            </div>
+                        <div className="scrollable">
+                            <section id="video-index-container" className="extend">
+                                    <div id="search-results-container">
+                                        <div>
+                                            <div>
+                                                <button><i className="fas fa-sliders-h"></i><span>FILTER</span></button>
+                                            </div>
+                                            {videoSearchResults}
+                                        </div>
+                                    </div>
+                            </section>
                         </div>
                     </main>
-                </>  
+                </>
             )
         } else {
             return null;
