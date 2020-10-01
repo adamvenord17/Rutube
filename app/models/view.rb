@@ -10,6 +10,6 @@
 #
 class View < ApplicationRecord 
 
-    validates :video_id, :user_id, presence: true
+    validates :video_id, :ip_address, presence: true
 
 end

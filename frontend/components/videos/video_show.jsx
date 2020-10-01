@@ -44,11 +44,12 @@ class VideoShow extends React.Component {
     }
 
     delayClick() {
-        let delay = 30000;
-        if ((Date.now() - this.state.lastPlay) >= delay) {
-            this.props.addView(this.props.currentVideo.id);
-            this.setState({lastPlay: Date.now()});
-        }
+        // let delay = 30000;
+        // if ((Date.now() - this.state.lastPlay) >= delay) {
+        //     this.props.addView(this.props.currentVideo.id);
+        //     this.setState({lastPlay: Date.now()});
+        // }
+        this.props.addView(this.props.currentVideo.id);
     }
 
     getLikeProportion() {
@@ -229,7 +230,7 @@ class VideoShow extends React.Component {
                                     <div id="video-show-info">
                                         <p className="strong-p">{this.props.currentVideo.title}</p>
                                         <div id="video-show-title-views">
-                                            <p className="weak-p">123 views • {formatDate(this.props.currentVideo.uploadDate)}</p>
+                                            <p className="weak-p">{this.props.currentVideo.numViews} views • {formatDate(this.props.currentVideo.uploadDate)}</p>
                                             <div id="video-show-buttons">
                                                 <div id="like-dislike-bar-container">
                                                     <div id="like-bar" style={likeBarStyle}></div>

@@ -10,10 +10,6 @@ class VideoIndexItem extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            views: (Math.floor(Math.random() * 100) + 1)
-        };
-
         this.hashCode = this.hashCode.bind(this);
         this.intToRGB = this.intToRGB.bind(this);
         this.handleMouseOut = this.handleMouseOut.bind(this);
@@ -69,7 +65,7 @@ class VideoIndexItem extends React.Component {
                         <div id="video-index-item-info">
                             <p id="video-index-item-title">{this.props.video.title}</p>
                             <p>{uploader.username}</p>
-                            <p>{this.state.views} views • {timeSinceUpload(this.props.video.uploadDate)}</p>
+                            <p>{this.props.video.numViews} views • {timeSinceUpload(this.props.video.uploadDate)}</p>
                         </div>
                     </div>
                 </Link>

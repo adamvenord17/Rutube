@@ -86,26 +86,22 @@ class Api::VideosController < ApplicationController
     end
 
     def add_view
-        if logged_in?
-
-            last_view = View.where(user_id: current_user.id)
-            debugger
-            if last_view
-                if ((Time.now - last_view.last.created_at) > 30)
-                    @view = View.new(user_id: current_user.id, video_id: params[:video_id])
-                    if @view.save
-                        redirect_to api_video_url(params[:video_id])
-                    else
-                        render json: @view.errors.full_messages, status: :unprocessable_entity
-                    end
-                end
-            else
-                @view = View.new(user_id: current_user.id, video_id: params[:video_id])
+        last_view = View.where(ip_address: request.remote_ip).where(video_id: params[:video_id])
+        if last_view[0]
+            if ((Time.now - last_view.last.created_at) > 30)
+                @view = View.new(ip_address: request.remote_ip, video_id: params[:video_id])
                 if @view.save
                     redirect_to api_video_url(params[:video_id])
                 else
                     render json: @view.errors.full_messages, status: :unprocessable_entity
                 end
+            end
+        else
+            @view = View.new(ip_address: request.remote_ip, video_id: params[:video_id])
+            if @view.save
+                redirect_to api_video_url(params[:video_id])
+            else
+                render json: @view.errors.full_messages, status: :unprocessable_entity
             end
         end
     end
