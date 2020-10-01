@@ -3,6 +3,7 @@
     margin: 10px 0px;
     justify-content: space-between;
     position: relative;
+    margin-bottom: 25px;
 }
 
 .comment-list-item-container div {

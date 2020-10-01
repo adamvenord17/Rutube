@@ -42,7 +42,7 @@ export const fetchReplys = (commentId) => {
     return (
         $.ajax({
             method: "GET",
-            url: `api/comment/${commentId}/comments`
+            url: `api/comments/${commentId}/comments`
         })
     );
 };
@@ -51,7 +51,7 @@ export const createReply = (commentId, comment) => {
     return (
         $.ajax({
             method: "POST",
-            url: `api/comment/${commentId}/comments`,
+            url: `api/comments/${commentId}/comments`,
             data: { comment }
         })
     );

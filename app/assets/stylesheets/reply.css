@@ -6,4 +6,43 @@
     display: block
 }
 
+#reply-list-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#reply-list-container > button {
+    width: fit-content;
+    height: 20px;
+    color: #0c59ff;
+    background-color: #ffffff00;
+    border: none;
+    font-size: 14px;
+    margin-left: -5px;
+}
+
+#reply-list-container > button:focus {
+    outline: none
+}
+
+#reply-list-container > button:hover {
+    cursor: pointer;
+}
+
+#reply-list-container .reply-list-class {
+    display: flex;
+    flex-direction: column;
+}
+
+#reply-list-container .reply-list-class .comment-list-item-container {
+    margin-bottom: 0px;
+}
+
+#reply-list-container .reply-list-class .comment-list-item-container .commenter-icon {
+    color: white;
+    height: 25px;
+    font-size: 13px;
+    min-width: 25px;
+}
+
 

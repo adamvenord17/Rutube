@@ -21,6 +21,8 @@ class Api::CommentsController < ApplicationController
             @comment.video_id = params[:video_id]
         else
             @comment.parent_id = params[:comment_id]
+            parent = Comment.find(params[:comment_id])
+            @comment.video_id = parent.video_id
         end
         @comment.author_id = current_user.id
         if @comment.save

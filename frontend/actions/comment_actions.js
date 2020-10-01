@@ -4,6 +4,9 @@ import * as ApiLikesUtil from '../util/likes_util';
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENTS";
+export const RECEIVE_REPLY = "RECEIVE_REPLY";
+export const REMOVE_REPLY = "REMOVE_REPLY";
+
 
 const receiveComments = (comments) => {
     return({

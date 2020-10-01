@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
-import { createComment } from "../../actions/comment_actions";
+import { createComment, createReply } from "../../actions/comment_actions";
 import CommentsForm from "./comment_form";
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+
 
 const mSTP = (state, ownProps) => {
     return ({

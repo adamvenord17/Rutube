@@ -12,7 +12,7 @@
 #
 class Comment < ApplicationRecord
 
-    validates :content, :video_id, :author_id, presence: true
+    validates :content, :author_id, presence: true
 
     has_many :likes, as: :likeable
 

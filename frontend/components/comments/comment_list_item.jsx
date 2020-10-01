@@ -3,6 +3,7 @@ import { timeSinceUpload } from "../../util/format_util";
 import { Link } from "react-router-dom";
 import EditCommentFormContainer from "./edit_comment_form_container";
 import CommentFormContainer from "./comment_form_container";
+import ReplysListContainer from "./replys_list_container";
 
 // props:
 // author (user object)
@@ -188,8 +189,26 @@ class CommentListItem extends React.Component {
                 dislikeBtn = <button onClick={this.handleDislikeComment} className="comment-dislike-btn-class" id={dislikeBtnId}><i className="fas fa-thumbs-down"></i></button>
             }
 
+            // set up list of reply comments if any
+            let repliesList = ''
+            if (this.props.comment.replyIds.length > 0) {
+                repliesList = <ReplysListContainer parent={this.props.comment} />
+            }
+            
             let replyCommentFormId = `reply-comment-form-${this.props.comment.id}`
-            let replyListId = `reply-list-${this.props.comment.id}`
+            let repliesSection = '';
+            let replyBtn = '';
+            if (this.props.comment.parentId === null) {
+                repliesSection = <>
+                                    <div id={replyCommentFormId} className="reply-comment-form">
+                                        <CommentFormContainer parentId={this.props.comment.id} />
+                                    </div>
+                                    { repliesList }
+                                </>
+                replyBtn = <button id="reply-btn" onClick={this.handleOpenReplyForm}>REPLY</button>
+            }
+
+            
 
             if (this.state.editMode) {
                 return(
@@ -215,11 +234,9 @@ class CommentListItem extends React.Component {
                                 <div id="comment-btns">
                                     {likeBtn}
                                     {dislikeBtn}
-                                    <button id="reply-btn" onClick={this.handleOpenReplyForm}>REPLY</button>
+                                    {replyBtn}
                                 </div>
-                                <div id={replyCommentFormId} className="reply-comment-form">
-                                    <CommentFormContainer parentId={this.props.comment.id} />
-                                </div>
+                                {repliesSection}
                             </div>
                         </div>
                         <button onClick={this.handlePopup} id="comment-options-btn"><i className="fas fa-ellipsis-v"></i></button>

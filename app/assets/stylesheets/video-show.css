@@ -105,16 +105,19 @@
     width: 50%;
     height: 100%;
     background-color: gray;
+    transition: all .5s ease 0s;
 }
 
 #like-bar.like-selected {
     background-color: rgb(0, 89, 255);
+    transition: all .5s ease 0s;
 }
 
 #dislike-bar {
     width: 50%;
     height: 100%;
-    background-color: lightgray
+    background-color: lightgray;
+    transition: all .5s ease 0s;
 }
 
 #video-show-buttons button:focus {

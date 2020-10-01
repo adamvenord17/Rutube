@@ -29,14 +29,26 @@ class CommentForm extends React.Component {
 
     componentDidUpdate() {
         // debugger
-        let submitBtn = document.getElementById("comment-form-submit-btn");
-        if (submitBtn) {
-            if (this.state.content.length === 0) {
-                submitBtn.setAttribute('disabled', '');
-            } else {
-                submitBtn.removeAttribute('disabled', '');
+        if (this.props.videoId) {
+            let submitBtn = document.getElementById("comment-form-submit-btn");
+            if (submitBtn) {
+                if (this.state.content.length === 0) {
+                    submitBtn.setAttribute('disabled', '');
+                } else {
+                    submitBtn.removeAttribute('disabled', '');
+                }
+            }
+        } else {
+            let submitBtn = document.getElementById(`comment-form-submit-btn-${this.props.parentId}`);
+            if (submitBtn) {
+                if (this.state.content.length === 0) {
+                    submitBtn.setAttribute('disabled', '');
+                } else {
+                    submitBtn.removeAttribute('disabled', '');
+                }
             }
         }
+        
     }
 
     hashCode(str) { // java String#hashCode
@@ -73,7 +85,11 @@ class CommentForm extends React.Component {
 
     handleSubmit() {
         if (this.props.formType === "CREATE") {
-            this.props.createComment(this.props.videoId, {content: this.state.content});
+            if (this.props.videoId) {
+                this.props.createComment(this.props.videoId, { content: this.state.content });
+            } else {
+                this.props.createReply(this.props.parentId, { content: this.state.content });
+            }
             this.hideButtons();
         } else {
             this.props.updateComment({id: this.props.comment.id, content: this.state.content});
@@ -122,13 +138,19 @@ class CommentForm extends React.Component {
                 inputAction = this.redirectToLogin
             }
 
+            let commentSubmitBtnId = "comment-form-submit-btn"
+            if (this.props.parentId) {
+                commentSubmitBtnId = `comment-form-submit-btn-${this.props.parentId}`
+            }
+
+
             // if user is active in the form, show the comment form buttons, otherwise
             // hide the buttons
             let buttonDiv = ''
             if (this.state.active) {
                 buttonDiv = <div id="comment-form-btns-container">
                     <button type="button" onClick={this.hideButtons} id="comment-form-cancel-btn">CANCEL</button>
-                    <button type="button" onClick={this.handleSubmit} id="comment-form-submit-btn">COMMENT</button>
+                    <button type="button" onClick={this.handleSubmit} id={commentSubmitBtnId}>COMMENT</button>
                 </div>
             }
 
@@ -153,7 +175,7 @@ class CommentForm extends React.Component {
             if (this.state.active) {
                 buttonDiv = <div id="comment-form-btns-container" className="inline-comment-form-btns-container">
                     <button type="button" onClick={this.handleCancelEdit} id="comment-form-cancel-btn">CANCEL</button>
-                    <button type="button" onClick={this.handleSubmit} id="comment-form-submit-btn">COMMENT</button>
+                    <button type="button" onClick={this.handleSubmit} id={commentSubmitBtnId}>COMMENT</button>
                 </div>
             }
             // debugger
