@@ -1,0 +1,9 @@
+#comment-details .reply-comment-form {
+    display: none;
+}
+
+#comment-details .reply-comment-form.show {
+    display: block
+}
+
+

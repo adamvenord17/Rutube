@@ -1,4 +1,4 @@
-import { RECEIVE_COMMENTS, RECEIVE_COMMENT, REMOVE_COMMENT } from "../actions/comment_actions";
+import { RECEIVE_COMMENTS, RECEIVE_COMMENT, REMOVE_COMMENT, RECEIVE_REPLY, REMOVE_REPLY } from "../actions/comment_actions";
 
 
 const commentsReducer = (oldState = {}, action) => {
@@ -13,6 +13,14 @@ const commentsReducer = (oldState = {}, action) => {
             return newState;
         case REMOVE_COMMENT:
             delete newState[action.commentId];
+            return newState;
+        case RECEIVE_REPLY:
+            newState[action.reply.parentId].replyIds.push(action.reply.id);
+            newState[action.reply.id] = action.reply;
+            return newState;
+        case REMOVE_REPLY:
+            newState[action.reply.parentId].replyIds = newState[action.reply.parentId].replyIds.filter(ele => ele !== action.reply.id);
+            delete newState[action.reply.id];
             return newState;
         default:
             return oldState;

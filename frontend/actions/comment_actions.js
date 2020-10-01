@@ -26,6 +26,20 @@ const removeComment = (commentId) => {
     });
 };
 
+const removeReply = (reply) => {
+    return({
+        type: REMOVE_COMMENT,
+        reply
+    });
+};
+
+const receiveReply = (reply) => {
+    return({
+        type: RECEIVE_REPLY,
+        reply
+    });
+};
+
 export const fetchComments = (videoId) => dispatch => {
     return(ApiCommentsUtil.fetchComments(videoId).then(comments => dispatch(receiveComments(comments))));
 };
@@ -40,6 +54,14 @@ export const updateComment = (comment) => dispatch => {
 
 export const deleteComment = (commentId) => dispatch => {
     return(ApiCommentsUtil.deleteComment(commentId).then(dispatch(removeComment(commentId))));
+};
+
+export const createReply = (commentId, comment) => dispatch => {
+    return (ApiCommentsUtil.createReply(commentId, comment).then(comment => dispatch(receiveReply(comment))));
+};
+
+export const deleteReply = (reply) => dispatch => {
+    return (ApiCommentsUtil.deleteComment(reply.id).then(dispatch(removeReply(reply))));
 };
 
 // below actions are for liking/disliking comments

@@ -4,10 +4,11 @@
 #
 #  id         :bigint           not null, primary key
 #  content    :string           not null
-#  video_id   :integer          not null
+#  video_id   :integer
 #  author_id  :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  parent_id  :integer
 #
 class Comment < ApplicationRecord
 
@@ -15,17 +16,20 @@ class Comment < ApplicationRecord
 
     has_many :likes, as: :likeable
 
+    has_many :reply_comments,
+        foreign_key: :parent_id,
+        class_name: :Comment
+
     belongs_to :author,
         foreign_key: :author_id,
         class_name: :User
 
-    belongs_to :video,
-        foreign_key: :video_id,
-        class_name: :Video
-
-
     def is_edited?
         self.created_at != self.updated_at
+    end
+
+    def reply_comment_ids
+        self.reply_comments.map { |ele| ele.id }
     end
 
     def liker_ids

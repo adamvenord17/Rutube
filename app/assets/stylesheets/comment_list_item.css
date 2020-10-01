@@ -56,7 +56,7 @@
     margin-right: 8px;
     transition: .5s;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     position: relative;
 }
 

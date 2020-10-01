@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_235349) do
+ActiveRecord::Schema.define(version: 2020_10_01_160602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,11 @@ ActiveRecord::Schema.define(version: 2020_09_30_235349) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content", null: false
-    t.integer "video_id", null: false
+    t.integer "video_id"
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "parent_id"
     t.index ["author_id"], name: "index_comments_on_author_id"
     t.index ["video_id"], name: "index_comments_on_video_id"
   end
@@ -55,6 +56,14 @@ ActiveRecord::Schema.define(version: 2020_09_30_235349) do
     t.datetime "updated_at", null: false
     t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id"
     t.index ["liker_id", "likeable_id", "likeable_type"], name: "index_likes_on_liker_id_and_likeable_id_and_likeable_type", unique: true
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "creator_id", null: false
+    t.integer "subscriber_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id", "subscriber_id"], name: "index_subscriptions_on_creator_id_and_subscriber_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

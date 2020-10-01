@@ -2,6 +2,7 @@ import React from "react";
 import { timeSinceUpload } from "../../util/format_util";
 import { Link } from "react-router-dom";
 import EditCommentFormContainer from "./edit_comment_form_container";
+import CommentFormContainer from "./comment_form_container";
 
 // props:
 // author (user object)
@@ -27,6 +28,7 @@ class CommentListItem extends React.Component {
         this.handleUndislikeComment = this.handleUndislikeComment.bind(this);
         this.handleChangeLikeComment = this.handleChangeLikeComment.bind(this);
         this.handleLikeChange = this.handleLikeChange.bind(this);
+        this.handleOpenReplyForm = this.handleOpenReplyForm.bind(this);
     }
 
     componentDidMount() {
@@ -129,6 +131,10 @@ class CommentListItem extends React.Component {
         this.setState({editMode: true});
     }
 
+    handleOpenReplyForm() {
+        document.getElementById(`reply-comment-form-${this.props.comment.id}`).classList.add("show");
+    }
+
     render() {
         if (!this.props.author) {
             return null
@@ -182,6 +188,9 @@ class CommentListItem extends React.Component {
                 dislikeBtn = <button onClick={this.handleDislikeComment} className="comment-dislike-btn-class" id={dislikeBtnId}><i className="fas fa-thumbs-down"></i></button>
             }
 
+            let replyCommentFormId = `reply-comment-form-${this.props.comment.id}`
+            let replyListId = `reply-list-${this.props.comment.id}`
+
             if (this.state.editMode) {
                 return(
                     <div className="comment-list-item-container">
@@ -206,7 +215,10 @@ class CommentListItem extends React.Component {
                                 <div id="comment-btns">
                                     {likeBtn}
                                     {dislikeBtn}
-                                    <button id="reply-btn">REPLY</button>
+                                    <button id="reply-btn" onClick={this.handleOpenReplyForm}>REPLY</button>
+                                </div>
+                                <div id={replyCommentFormId} className="reply-comment-form">
+                                    <CommentFormContainer parentId={this.props.comment.id} />
                                 </div>
                             </div>
                         </div>

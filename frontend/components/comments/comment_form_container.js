@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom'
 const mSTP = (state, ownProps) => {
     return ({
         videoId: ownProps.videoId,
+        parentId: ownProps.parentId,
         currentUser: state.entities.users[state.session.currentUserId],
         formType: "CREATE",
     });
@@ -13,7 +14,8 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => {
     return ({
-        createComment: (videoId, comment) => dispatch(createComment(videoId, comment))
+        createComment: (videoId, comment) => dispatch(createComment(videoId, comment)),
+        createReply: (parentId, comment) => dispatch(createReply(parentId, comment))
     });
 };
 

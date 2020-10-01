@@ -26,6 +26,8 @@
 #       api_comment_dislike POST   /api/comments/:comment_id/dislike(.:format)                                              api/comments#dislike {:default=>{:Format=>:json}}
 #     api_comment_undislike POST   /api/comments/:comment_id/undislike(.:format)                                            api/comments#undislike {:default=>{:Format=>:json}}
 #    api_comment_changelike POST   /api/comments/:comment_id/changelike(.:format)                                           api/comments#change_like {:default=>{:Format=>:json}}
+#      api_comment_comments GET    /api/comments/:comment_id/comments(.:format)                                             api/comments#index {:default=>{:Format=>:json}}
+#                           POST   /api/comments/:comment_id/comments(.:format)                                             api/comments#create {:default=>{:Format=>:json}}
 #               api_comment GET    /api/comments/:id(.:format)                                                              api/comments#show {:default=>{:Format=>:json}}
 #                           PATCH  /api/comments/:id(.:format)                                                              api/comments#update {:default=>{:Format=>:json}}
 #                           PUT    /api/comments/:id(.:format)                                                              api/comments#update {:default=>{:Format=>:json}}
@@ -65,6 +67,8 @@ Rails.application.routes.draw do
       post :dislike, to: 'comments#dislike', as: 'dislike'
       post :undislike, to: 'comments#undislike', as: 'undislike'
       post :changelike, to: 'comments#change_like', as: 'changelike'
+
+      resources :comments, only: %i(index create)
     end
 
   end

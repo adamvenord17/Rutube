@@ -4,9 +4,9 @@
 #
 #  id         :bigint           not null, primary key
 #  video_id   :integer          not null
-#  user_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  ip_address :string           not null
 #
 class View < ApplicationRecord 
 

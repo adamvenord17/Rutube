@@ -35,3 +35,24 @@ export const updateComment = (comment) => {
         })
     );
 };
+
+// the below are methods for reply comments
+
+export const fetchReplys = (commentId) => {
+    return (
+        $.ajax({
+            method: "GET",
+            url: `api/comment/${commentId}/comments`
+        })
+    );
+};
+
+export const createReply = (commentId, comment) => {
+    return (
+        $.ajax({
+            method: "POST",
+            url: `api/comment/${commentId}/comments`,
+            data: { comment }
+        })
+    );
+};

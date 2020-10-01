@@ -1,7 +1,13 @@
 class Api::CommentsController < ApplicationController
 
     def index
-        @comments = Video.find(params[:video_id]).comments
+        if params[:video_id]
+            root_comments = Video.find(params[:video_id]).comments
+            @comments = root_comments
+            root_comments.each { |comment| @comments.concat(comment.reply_comments) }
+        else
+            @comments = Comment.find(params[:comment_id]).reply_comments
+        end
         render :index
     end
 
@@ -11,7 +17,11 @@ class Api::CommentsController < ApplicationController
 
     def create
         @comment = Comment.new(comment_params)
-        @comment.video_id = params[:video_id]
+        if params[:video_id]
+            @comment.video_id = params[:video_id]
+        else
+            @comment.parent_id = params[:comment_id]
+        end
         @comment.author_id = current_user.id
         if @comment.save
             render :show

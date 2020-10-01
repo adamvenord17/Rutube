@@ -64,7 +64,11 @@ class CommentForm extends React.Component {
     }
 
     hideButtons() {
-        this.setState({content: '', active: false});
+        if (this.props.videoId){
+            this.setState({content: '', active: false});
+        } else {
+            document.getElementById(`reply-comment-form-${this.props.parentId}`).classList.remove("show");
+        }
     }
 
     handleSubmit() {
