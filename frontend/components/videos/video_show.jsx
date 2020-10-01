@@ -26,6 +26,7 @@ class VideoShow extends React.Component {
         this.handleUndislikeVideo = this.handleUndislikeVideo.bind(this);
         this.handleChangeLikeVideo = this.handleChangeLikeVideo.bind(this);
         this.handleLikeChange = this.handleLikeChange.bind(this);
+        
         this.delayClick = this.delayClick.bind(this);
     }
 

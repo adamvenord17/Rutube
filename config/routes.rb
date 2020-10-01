@@ -21,7 +21,13 @@
 #                           PATCH  /api/videos/:id(.:format)                                                                api/videos#update {:default=>{:Format=>:json}}
 #                           PUT    /api/videos/:id(.:format)                                                                api/videos#update {:default=>{:Format=>:json}}
 #                           DELETE /api/videos/:id(.:format)                                                                api/videos#destroy {:default=>{:Format=>:json}}
-#               api_comment PATCH  /api/comments/:id(.:format)                                                              api/comments#update {:default=>{:Format=>:json}}
+#          api_comment_like POST   /api/comments/:comment_id/like(.:format)                                                 api/comments#like {:default=>{:Format=>:json}}
+#        api_comment_unlike POST   /api/comments/:comment_id/unlike(.:format)                                               api/comments#unlike {:default=>{:Format=>:json}}
+#       api_comment_dislike POST   /api/comments/:comment_id/dislike(.:format)                                              api/comments#dislike {:default=>{:Format=>:json}}
+#     api_comment_undislike POST   /api/comments/:comment_id/undislike(.:format)                                            api/comments#undislike {:default=>{:Format=>:json}}
+#    api_comment_changelike POST   /api/comments/:comment_id/changelike(.:format)                                           api/comments#change_like {:default=>{:Format=>:json}}
+#               api_comment GET    /api/comments/:id(.:format)                                                              api/comments#show {:default=>{:Format=>:json}}
+#                           PATCH  /api/comments/:id(.:format)                                                              api/comments#update {:default=>{:Format=>:json}}
 #                           PUT    /api/comments/:id(.:format)                                                              api/comments#update {:default=>{:Format=>:json}}
 #                           DELETE /api/comments/:id(.:format)                                                              api/comments#destroy {:default=>{:Format=>:json}}
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
@@ -53,7 +59,13 @@ Rails.application.routes.draw do
       resources :comments, only: %i(index create)
     end
 
-    resources :comments, only: %i(destroy update)
+    resources :comments, only: %i(destroy show update) do
+      post :like, to: 'comments#like', as: 'like'
+      post :unlike, to: 'comments#unlike', as: 'unlike'
+      post :dislike, to: 'comments#dislike', as: 'dislike'
+      post :undislike, to: 'comments#undislike', as: 'undislike'
+      post :changelike, to: 'comments#change_like', as: 'changelike'
+    end
 
   end
 

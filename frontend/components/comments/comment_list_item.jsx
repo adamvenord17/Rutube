@@ -19,6 +19,14 @@ class CommentListItem extends React.Component {
         this.handlePopup = this.handlePopup.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
+
+        this.handleRedirectToLogin = this.handleRedirectToLogin.bind(this);
+        this.handleLikeComment = this.handleLikeComment.bind(this);
+        this.handleUnlikeComment = this.handleUnlikeComment.bind(this);
+        this.handleDislikeComment = this.handleDislikeComment.bind(this);
+        this.handleUndislikeComment = this.handleUndislikeComment.bind(this);
+        this.handleChangeLikeComment = this.handleChangeLikeComment.bind(this);
+        this.handleLikeChange = this.handleLikeChange.bind(this);
     }
 
     componentDidMount() {
@@ -28,6 +36,10 @@ class CommentListItem extends React.Component {
         }
 
         this.handlePopup = this.handlePopup.bind(this);
+
+        if (document.getElementById(`comment-like-btn-${this.props.comment.id}`) && document.getElementById(`comment-dislike-btn-${this.props.comment.id}`)) {
+            this.handleLikeChange();
+        }
     }
 
     componentDidUpdate() {
@@ -39,6 +51,49 @@ class CommentListItem extends React.Component {
                 }
             }
         }
+
+        if (document.getElementById(`comment-like-btn-${this.props.comment.id}`) && document.getElementById(`comment-dislike-btn-${this.props.comment.id}`)) {
+            this.handleLikeChange();
+        }
+    }
+
+    handleLikeChange() {
+        let likeBtn = document.getElementById(`comment-like-btn-${this.props.comment.id}`);
+        let dislikeBtn = document.getElementById(`comment-dislike-btn-${this.props.comment.id}`);
+        if (this.props.comment.likerIds.includes(this.props.currentUserId)) {
+            likeBtn.classList.add("like-selected");
+            dislikeBtn.classList.remove("like-selected");
+        } else if (this.props.comment.dislikerIds.includes(this.props.currentUserId)) {
+            likeBtn.classList.remove("like-selected");
+            dislikeBtn.classList.add("like-selected");
+        } else {
+            likeBtn.classList.remove("like-selected");
+            dislikeBtn.classList.remove("like-selected");
+        }
+    }
+
+    handleLikeComment() {
+        this.props.likeComment(this.props.comment.id);
+    }
+
+    handleUnlikeComment() {
+        this.props.unlikeComment(this.props.comment.id);
+    }
+
+    handleDislikeComment() {
+        this.props.dislikeComment(this.props.comment.id);
+    }
+
+    handleUndislikeComment() {
+        this.props.undislikeComment(this.props.comment.id);
+    }
+
+    handleChangeLikeComment() {
+        this.props.changeLikeComment(this.props.comment.id);
+    }
+
+    handleRedirectToLogin() {
+        this.props.history.push('/login');
     }
 
     hashCode(str) { // java String#hashCode
@@ -100,9 +155,31 @@ class CommentListItem extends React.Component {
                                 </div>
             }
 
+            // checks if comment is edited, if yes, gives edited tag next to username
             let editedTag = '';
             if (this.props.comment.isEdited) {
                 editedTag = <span>(edited)</span>
+            }
+
+            // sets up the like buttons and their actions based on the users current
+            // status of having diliked/liked the comment already
+            // if no current user, both buttons should redirect to the signin page
+            let likeBtn = ''
+            let dislikeBtn = ''
+            let likeBtnId = `comment-like-btn-${this.props.comment.id}`
+            let dislikeBtnId = `comment-dislike-btn-${this.props.comment.id}`
+            if (!this.props.currentUserId) {
+                likeBtn = <button onClick={this.handleRedirectToLogin} className="comment-like-btn-class" id={likeBtnId}><i className="fas fa-thumbs-up"></i><span>{this.props.comment.likerIds.length}</span></button>
+                dislikeBtn = <button onClick={this.handleRedirectToLogin} className="comment-dislike-btn-class" id={dislikeBtnId}><i className="fas fa-thumbs-down"></i></button>
+            } else if (this.props.comment.likerIds.includes(this.props.currentUserId)) {
+                likeBtn = <button onClick={this.handleUnlikeComment} className="comment-like-btn-class" id={likeBtnId}><i className="fas fa-thumbs-up"></i><span>{this.props.comment.likerIds.length}</span></button>
+                dislikeBtn = <button onClick={this.handleChangeLikeComment} className="comment-dislike-btn-class" id={dislikeBtnId}><i className="fas fa-thumbs-down"></i></button>
+            } else if (this.props.comment.dislikerIds.includes(this.props.currentUserId)) {
+                likeBtn = <button onClick={this.handleChangeLikeComment} className="comment-like-btn-class" id={likeBtnId}><i className="fas fa-thumbs-up"></i><span>{this.props.comment.likerIds.length}</span></button>
+                dislikeBtn = <button onClick={this.handleUndislikeComment} className="comment-dislike-btn-class" id={dislikeBtnId}><i className="fas fa-thumbs-down"></i></button>
+            } else {
+                likeBtn = <button onClick={this.handleLikeComment} className="comment-like-btn-class" id={likeBtnId}><i className="fas fa-thumbs-up"></i><span>{this.props.comment.likerIds.length}</span></button>
+                dislikeBtn = <button onClick={this.handleDislikeComment} className="comment-dislike-btn-class" id={dislikeBtnId}><i className="fas fa-thumbs-down"></i></button>
             }
 
             if (this.state.editMode) {
@@ -127,8 +204,8 @@ class CommentListItem extends React.Component {
                                 <Link to='/'>{this.props.author.username} <span>{timeSinceUpload(this.props.comment.uploadDate)}</span> {editedTag}</Link>
                                 <p>{this.props.comment.content}</p>
                                 <div id="comment-btns">
-                                    <button type="button" id="comment-like-btn"><i className="fas fa-thumbs-up"></i></button>
-                                    <button type="button" id="comment-dislike-btn"><i className="fas fa-thumbs-down"></i></button>
+                                    {likeBtn}
+                                    {dislikeBtn}
                                     <button id="reply-btn">REPLY</button>
                                 </div>
                             </div>

@@ -5,6 +5,10 @@ class Api::CommentsController < ApplicationController
         render :index
     end
 
+    def show
+        @comment = Comment.find(params[:id])
+    end
+
     def create
         @comment = Comment.new(comment_params)
         @comment.video_id = params[:video_id]
@@ -32,6 +36,57 @@ class Api::CommentsController < ApplicationController
     def destroy
         @comment = Comment.find(params[:id])
         @comment.destroy
+    end
+
+    def like
+        @like = Like.new(is_like: true, liker_id: current_user.id, likeable_id: params[:comment_id], likeable_type: "Comment")
+        if @like.save
+            redirect_to api_comment_url(params[:comment_id])
+        else
+            render json: @like.errors.full_messages, status: :unprocessable_entity
+        end
+    end
+
+    def unlike
+        @like = Like.find_by(is_like: true, liker_id: current_user.id, likeable_id: params[:comment_id], likeable_type: "Comment")
+        if @like.destroy
+            redirect_to api_comment_url(params[:comment_id])
+        else
+            render json: @like.errors.full_messages, status: :unprocessable_entity
+        end
+    end
+
+    def dislike
+        @like = Like.new(is_like: false, liker_id: current_user.id, likeable_id: params[:comment_id], likeable_type: "Comment")
+        if @like.save
+            redirect_to api_comment_url(params[:comment_id])
+        else
+            render json: @like.errors.full_messages, status: :unprocessable_entity
+        end
+    end
+
+    def undislike
+        @like = Like.find_by(is_like: false, liker_id: current_user.id, likeable_id: params[:comment_id], likeable_type: "Comment")
+        if @like.destroy
+            redirect_to api_comment_url(params[:comment_id])
+        else
+            render json: @like.errors.full_messages, status: :unprocessable_entity
+        end
+    end
+
+    def change_like
+        @like = Like.find_by(liker_id: current_user.id, likeable_id: params[:comment_id], likeable_type: "Comment")
+        if (@like.is_like)
+            @like.is_like = false
+        else
+            @like.is_like = true
+        end
+        
+        if @like.save
+            redirect_to api_comment_url(params[:comment_id])
+        else
+            render json: @like.errors.full_messages, status: :unprocessable_entity
+        end
     end
 
     private

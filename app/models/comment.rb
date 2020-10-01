@@ -13,6 +13,8 @@ class Comment < ApplicationRecord
 
     validates :content, :video_id, :author_id, presence: true
 
+    has_many :likes, as: :likeable
+
     belongs_to :author,
         foreign_key: :author_id,
         class_name: :User
@@ -24,6 +26,14 @@ class Comment < ApplicationRecord
 
     def is_edited?
         self.created_at != self.updated_at
+    end
+
+    def liker_ids
+        self.likes.where(is_like: true).select(:liker_id).map { |ele| ele.liker_id }
+    end
+
+    def disliker_ids
+        self.likes.where(is_like: false).select(:liker_id).map { |ele| ele.liker_id }
     end
     
 end

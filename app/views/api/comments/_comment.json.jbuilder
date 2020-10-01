@@ -4,3 +4,5 @@ json.videoId comment.video_id
 json.authorId comment.author_id
 json.uploadDate comment.created_at
 json.isEdited comment.is_edited?
+json.likerIds comment.liker_ids
+json.dislikerIds comment.disliker_ids

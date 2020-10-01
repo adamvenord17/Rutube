@@ -55,6 +55,9 @@
     background-color: #f3f2f2;
     margin-right: 8px;
     transition: .5s;
+    display: flex;
+    align-items: baseline;
+    position: relative;
 }
 
 .comment-list-item-container #comment-details #comment-btns button:focus {
@@ -69,8 +72,21 @@
     background-color: rgb(216, 216, 216)
 }
 
-.comment-list-item-container #comment-details #comment-btns button#comment-dislike-btn{
-    padding-top: 6px;
+.comment-list-item-container #comment-details #comment-btns button.like-selected {
+    color: rgb(0, 89, 255);
+}
+
+.comment-list-item-container #comment-details #comment-btns button.like-selected span {
+    color: #828282
+}
+
+.comment-list-item-container #comment-details #comment-btns button.comment-dislike-btn-class{
+    padding-top: 4px;
+    margin-left: 10px;
+}
+
+.comment-list-item-container #comment-details #comment-btns button.comment-like-btn-class span{
+    margin-left: 8px;
 }
 
 .comment-list-item-container #comment-details #comment-btns button#reply-btn{
