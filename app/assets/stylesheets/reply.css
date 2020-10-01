@@ -38,7 +38,14 @@
     margin-bottom: 0px;
 }
 
-#reply-list-container .reply-list-class .comment-list-item-container .commenter-icon {
+#reply-list-container .reply-list-class .commenter-icon {
+    color: white;
+    height: 25px;
+    font-size: 13px;
+    min-width: 25px;
+}
+
+.reply-comment-form #comment-form-container .commenter-icon {
     color: white;
     height: 25px;
     font-size: 13px;

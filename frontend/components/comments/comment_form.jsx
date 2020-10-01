@@ -79,6 +79,7 @@ class CommentForm extends React.Component {
         if (this.props.videoId){
             this.setState({content: '', active: false});
         } else {
+            this.setState({ content: '' });
             document.getElementById(`reply-comment-form-${this.props.parentId}`).classList.remove("show");
         }
     }
@@ -168,6 +169,10 @@ class CommentForm extends React.Component {
                 </div>
             )
         } else {
+            let commentSubmitBtnId = "comment-form-submit-btn"
+            if (this.props.parentId) {
+                commentSubmitBtnId = `comment-form-submit-btn-${this.props.parentId}`
+            }
 
             // if user is active in the form, show the comment form buttons, otherwise
             // hide the buttons

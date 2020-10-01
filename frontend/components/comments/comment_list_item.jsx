@@ -46,7 +46,7 @@ class CommentListItem extends React.Component {
     }
 
     componentDidUpdate() {
-        // debugger
+        debugger
         if (document.getElementsByClassName("inline-comment-form-container")[0]) {
             if (document.getElementsByClassName("inline-comment-form-input")[0].value.length > 0) {
                 if (!document.getElementsByClassName("inline-comment-form-btns-container")[0]) {
@@ -189,6 +189,8 @@ class CommentListItem extends React.Component {
                 dislikeBtn = <button onClick={this.handleDislikeComment} className="comment-dislike-btn-class" id={dislikeBtnId}><i className="fas fa-thumbs-down"></i></button>
             }
 
+
+
             // set up list of reply comments if any
             let repliesList = ''
             if (this.props.comment.replyIds.length > 0) {
@@ -207,12 +209,12 @@ class CommentListItem extends React.Component {
                                 </>
                 replyBtn = <button id="reply-btn" onClick={this.handleOpenReplyForm}>REPLY</button>
             }
-
+            debugger
             
-
+            // debugger
             if (this.state.editMode) {
                 return(
-                    <div className="comment-list-item-container">
+                    <div key={this.props.comment} className="comment-list-item-container">
                         <div>
                             <Link to='/' className="commenter-icon" style={iconStyle}>
                                 {this.props.author.username[0].toUpperCase()}
@@ -223,7 +225,7 @@ class CommentListItem extends React.Component {
                 )
             } else {
                 return (
-                    <div className="comment-list-item-container">
+                    <div key={this.props.comment} className="comment-list-item-container">
                         <div>
                             <Link to='/' className="commenter-icon" style={iconStyle}>
                                 {this.props.author.username[0].toUpperCase()}

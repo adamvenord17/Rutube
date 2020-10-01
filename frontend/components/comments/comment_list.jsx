@@ -40,7 +40,8 @@ class CommentList extends React.Component {
         }
 
         // set up all the comments associated with the video
-        let comments = Object.values(this.props.comments).map(comment => {
+        let comments = Object.values(this.props.comments).reverse();
+        comments = comments.map(comment => {
             if (comment.parentId === null) {
                 return <CommentListItemContainer key={comment.id} comment={comment} />
             }
