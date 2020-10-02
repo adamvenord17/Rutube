@@ -27,7 +27,6 @@ class CommentList extends React.Component {
     }
     
     render() {
-        // debugger
 
         // sets up the comment number count dislpayed in the comment's secion header
         let commentCount = '';

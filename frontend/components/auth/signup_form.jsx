@@ -68,9 +68,9 @@ class SignupForm extends React.Component {
         let emailClass = "input-container email signup";
         let passwordClass = "input-container password signup";
         let confirmClass = "input-container confirm signup";
-        // debugger
+
         let errorMessages = errors.map(error => {
-            // debugger
+        
             let errorId = '';
             if (error.includes("Password is")) {
                 errorId = "passwordLengthError";
@@ -88,7 +88,7 @@ class SignupForm extends React.Component {
             error = `⚠ ${error}`;
             return <li key={error} id={errorId} className="error-message-li">{error}</li>;
         })
-        // debugger
+
         return (
             <div>
                 <main className="signup-login-form-container signup">

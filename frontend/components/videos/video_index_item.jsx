@@ -52,7 +52,6 @@ class VideoIndexItem extends React.Component {
             let iconStyle = {
                 backgroundColor: `#${iconColor}`
             };
-            // debugger
             return(
                 <Link to={videoShowUrl}>
                     <div id="video-index-video-sleeve">

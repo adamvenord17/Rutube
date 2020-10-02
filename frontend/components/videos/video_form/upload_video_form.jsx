@@ -65,7 +65,7 @@ class UploadVideoForm extends React.Component {
     handleFile(e) {
         const file = e.currentTarget.files[0];
         const fileReader = new FileReader();
-        // debugger
+
         fileReader.onloadend = (e) => {
             let blobData = e.target.result;
             this.setState({videoFile: file, videoUrl: blobData, title: file.name});

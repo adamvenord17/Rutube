@@ -21,14 +21,12 @@ class CommentForm extends React.Component {
     }
 
     componentDidMount() {
-        // debugger
         if (this.props.formType === "EDIT") {
             this.handleEnterEdit();
         }
     }
 
     componentDidUpdate() {
-        // debugger
         if (this.props.videoId) {
             let submitBtn = document.getElementById("comment-form-submit-btn");
             if (submitBtn) {
@@ -108,7 +106,6 @@ class CommentForm extends React.Component {
     }
 
     handleEnterEdit() {
-        // debugger
         this.setState({content: this.props.comment.content, active: true});
     }
 
@@ -183,7 +180,6 @@ class CommentForm extends React.Component {
                     <button type="button" onClick={this.handleSubmit} id={commentSubmitBtnId}>COMMENT</button>
                 </div>
             }
-            // debugger
             return(
                 <div id="comment-form-container" className="inline-comment-form-container">
                     <div id="comment-form-input-and-icon">

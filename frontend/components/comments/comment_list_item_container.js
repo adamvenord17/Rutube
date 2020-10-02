@@ -6,7 +6,6 @@ import { likeComment, unlikeComment, dislikeComment, undislikeComment, changeLik
 import { withRouter } from "react-router-dom";
 
 const mSTP = (state, ownProps) => {
-    // debugger
     return ({
         author: state.entities.users[ownProps.comment.authorId],
         comment: ownProps.comment,

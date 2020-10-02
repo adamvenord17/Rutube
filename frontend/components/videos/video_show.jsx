@@ -38,18 +38,9 @@ class VideoShow extends React.Component {
         if (document.getElementById("like-btn") && document.getElementById("dislike-btn")) {
             this.handleLikeChange();
         }
-        // if (document.getElementById("video-show-video"))
-        //     document.getElementById("video-show-video").addEventListener("play", () => {
-        //         console.log("this is a view!");
-        //     });
     }
 
     delayClick() {
-        // let delay = 30000;
-        // if ((Date.now() - this.state.lastPlay) >= delay) {
-        //     this.props.addView(this.props.currentVideo.id);
-        //     this.setState({lastPlay: Date.now()});
-        // }
         this.props.addView(this.props.currentVideo.id);
     }
 

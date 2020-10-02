@@ -33,7 +33,6 @@ class CommentListItem extends React.Component {
     }
 
     componentDidMount() {
-        // debugger
         if (!this.props.author) {
             this.props.fetchUser(this.props.comment.authorId);
         }
@@ -46,7 +45,6 @@ class CommentListItem extends React.Component {
     }
 
     componentDidUpdate() {
-        debugger
         if (document.getElementsByClassName("inline-comment-form-container")[0]) {
             if (document.getElementsByClassName("inline-comment-form-input")[0].value.length > 0) {
                 if (!document.getElementsByClassName("inline-comment-form-btns-container")[0]) {
@@ -209,9 +207,7 @@ class CommentListItem extends React.Component {
                                 </>
                 replyBtn = <button id="reply-btn" onClick={this.handleOpenReplyForm}>REPLY</button>
             }
-            debugger
             
-            // debugger
             if (this.state.editMode) {
                 return(
                     <div key={this.props.comment} className="comment-list-item-container">
