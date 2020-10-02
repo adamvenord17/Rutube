@@ -200,10 +200,9 @@ l41 = Like.create!(is_like: true, liker_id: u10.id, likeable_type: "Video", like
 l41 = Like.create!(is_like: true, liker_id: u5.id, likeable_type: "Video", likeable_id: v2.id)
 l42 = Like.create!(is_like: true, liker_id: u6.id, likeable_type: "Video", likeable_id: v2.id)
 l43 = Like.create!(is_like: true, liker_id: u7.id, likeable_type: "Video", likeable_id: v2.id)
-l44 = Like.create!(is_like: true, false: u8.id, likeable_type: "Video", likeable_id: v2.id)
+l44 = Like.create!(is_like: true, liker_id: u8.id, likeable_type: "Video", likeable_id: v2.id)
 l45 = Like.create!(is_like: true, liker_id: u9.id, likeable_type: "Video", likeable_id: v2.id)
 l45 = Like.create!(is_like: true, liker_id: u10.id, likeable_type: "Video", likeable_id: v2.id)
-
 
 # delete old comments and seed new ones
 
