@@ -211,11 +211,11 @@ Comment.destroy_all
 c1 = Comment.create!(content: "This video is super weird why did you post this", video_id: v1.id, author_id: u3.id)
 c2 = Comment.create!(content: "Absolute nightmare fuel. I am not sleeping tn after watching this", video_id: v1.id, author_id: u4.id)
 
-c4 = Comment.create!(content: "I once knew a guy who had a motorcycle like this", video_id: v2.id, author_id: u6.id)
-c3 = Comment.create!(content: "WOAH, THATS A NICE MOTORCYCLE!", video_id: v2.id, author_id: u5.id)
+c4 = Comment.create!(content: "I once knew a guy who had a motorcycle like this", video_id: v3.id, author_id: u6.id)
+c3 = Comment.create!(content: "WOAH, THATS A NICE MOTORCYCLE!", video_id: v3.id, author_id: u5.id)
 
-c18 = Comment.create!(content: "Hm wow I never looked at it that way. Neat stuff.", video_id: v3.id, author_id: u7.id)
-c19 = Comment.create!(content: "Like if you know ;)", video_id: v3.id, author_id: u7.id)
+c18 = Comment.create!(content: "Wow omg that is sooooo cooooooooool.", video_id: v2.id, author_id: u7.id)
+c19 = Comment.create!(content: "Like if you know ;)", video_id: v2.id, author_id: u7.id)
 
 c20 = Comment.create!(content: "OMG SO CUTE!!! luv xxooxxoxox.", video_id: v4.id, author_id: u7.id)
 c21 = Comment.create!(content: "Where was this!??", video_id: v4.id, author_id: u9.id)
@@ -228,10 +228,6 @@ c25 = Comment.create!(content: "Wow that is wicked cool man", video_id: v2.id, a
 c26 = Comment.create!(content: "OKAY, WOW OKAY NICE", video_id: v2.id, author_id: u9.id, parent_id: c3.id)
 c27 = Comment.create!(content: "YEAH, THEY HAVE MOTORCYCLES", video_id: v2.id, author_id: u10.id, parent_id: c3.id)
 
-c5 = Comment.create!(content: "Hey! Demo user here with a nice demo comment. Try signing in and writing one of your own!", video_id: v1.id, author_id: u1.id)
-c6 = Comment.create!(content: "Hey! Demo user here with a nice demo comment. Try signing in and writing one of your own!", video_id: v2.id, author_id: u1.id)
-c7 = Comment.create!(content: "Hey! Demo user here with a nice demo comment. Try signing in and writing one of your own!", video_id: v3.id, author_id: u1.id)
-c8 = Comment.create!(content: "Hey! Demo user here with a nice demo comment. Try signing in and writing one of your own!", video_id: v4.id, author_id: u1.id)
 c9 = Comment.create!(content: "Hey! Demo user here with a nice demo comment. Try signing in and writing one of your own!", video_id: v5.id, author_id: u1.id)
 c10 = Comment.create!(content: "Hey! Demo user here with a nice demo comment. Try signing in and writing one of your own!", video_id: v6.id, author_id: u1.id)
 c11 = Comment.create!(content: "Hey! Demo user here with a nice demo comment. Try signing in and writing one of your own!", video_id: v7.id, author_id: u1.id)
