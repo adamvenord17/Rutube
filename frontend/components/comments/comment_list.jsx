@@ -7,8 +7,11 @@ class CommentList extends React.Component {
         super(props);
 
         this.state = {
-            videoId: this.props.video.id
+            videoId: this.props.video.id,
+            sortByNew: true
         };
+
+        this.handleSortBy = this.handleSortBy.bind(this);
     }
 
     componentDidMount() {
@@ -25,6 +28,10 @@ class CommentList extends React.Component {
         this.props.fetchComments(this.props.video.id);
         this.setState({videoId: this.props.video.id});
     }
+
+    handleSortBy() {
+        this.state.sortByNew ? this.setState({sortByNew: false}) : this.setState({sortByNew: true})
+    }
     
     render() {
 
@@ -38,8 +45,15 @@ class CommentList extends React.Component {
             commentCount = <p>{Object.values(this.props.comments).length} Comments</p>
         }
 
-        // set up all the comments associated with the video
-        let comments = Object.values(this.props.comments).reverse();
+        // set up all the comments associated with the video, sort by old or new
+        let comments = Object.values(this.props.comments)
+        let sortByP = 'SORTED BY: Oldest';
+        
+        if (this.state.sortByNew) {
+            comments = Object.values(this.props.comments).reverse();
+            sortByP = 'SORTED BY: Newest';
+        }
+
         comments = comments.map(comment => {
             if (comment.parentId === null) {
                 return <CommentListItemContainer key={comment.id} comment={comment} />
@@ -51,9 +65,9 @@ class CommentList extends React.Component {
             <div id="comment-list-container">
                 <header id="comments-list-header">
                     {commentCount}
-                    <div>
+                    <div onClick={this.handleSortBy}>
                         <i className="fas fa-sort-amount-up"></i>
-                        <p>SORT BY</p>
+                        <p>{sortByP}</p>
                     </div>
                 </header>
                 <CommentFormContainer videoId={this.props.video.id} />
