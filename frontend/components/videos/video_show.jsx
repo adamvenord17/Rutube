@@ -11,7 +11,8 @@ class VideoShow extends React.Component {
         super(props);
 
         this.state ={
-            lastPlay: 0
+            lastPlay: 0,
+            autoPlay: false,
         }
 
         this.hashCode = this.hashCode.bind(this);
@@ -27,6 +28,8 @@ class VideoShow extends React.Component {
         this.handleChangeLikeVideo = this.handleChangeLikeVideo.bind(this);
         this.handleLikeChange = this.handleLikeChange.bind(this);
         
+        this.handleAutoPlay = this.handleAutoPlay.bind(this);
+
         this.delayClick = this.delayClick.bind(this);
     }
 
@@ -134,6 +137,16 @@ class VideoShow extends React.Component {
     sliderClick() {
         let slider = document.getElementById("slider-btn");
         slider.classList.toggle("right");
+
+        this.state.autoPlay ? this.setState({autoPlay: false}) : this.setState({autoPlay: true})
+    }
+
+    handleAutoPlay(nextVideo) {
+        return () => {
+            if (this.state.autoPlay) {
+                this.props.history.push(`/api/videos/${nextVideo}`)
+            }
+        }
     }
 
     render() {
@@ -152,10 +165,15 @@ class VideoShow extends React.Component {
             let isCurrentUser = (this.props.currentVideo.uploaderId === this.props.currentUserId);
 
             let nextVideos = Object.values(this.props.videos).map(video => {
-                if (video.id != this.props.currentVideo.id) {
-                    return <NextVideoItem key={video.id} fetchUser={this.props.fetchUser} users={this.props.users} video={video} itemType="SHOW"/>
-                }
+                return <NextVideoItem key={video.id} fetchUser={this.props.fetchUser} users={this.props.users} video={video} itemType="SHOW"/>
             });
+
+            let nextVideosRight = nextVideos.filter(video => video.key > this.props.currentVideo.id);
+            let nextVideosLeft = nextVideos.filter(video => video.key < this.props.currentVideo.id);
+
+            nextVideos = nextVideosRight.concat(nextVideosLeft);
+
+            let nextVideo = nextVideos[0].key;
 
             // sets up a subscribe button if current user is not owner of video
             // otherwise sets up edit and remove buttons for the video
@@ -218,7 +236,7 @@ class VideoShow extends React.Component {
                         <main id="video-show-container">
                             <div id="video-content-container">
                                 <div id="video-content">
-                                    <video id="video-show-video" onPlay={this.delayClick} src={this.props.currentVideo.videoUrl} autoPlay controls></video>
+                                    <video id="video-show-video" onPlay={this.delayClick} onEnded={this.handleAutoPlay(nextVideo)} src={this.props.currentVideo.videoUrl} autoPlay controls></video>
                                     <div id="video-show-info">
                                         <p className="strong-p">{this.props.currentVideo.title}</p>
                                         <div id="video-show-title-views">

@@ -88,6 +88,9 @@ class CommentForm extends React.Component {
                 this.props.createComment(this.props.videoId, { content: this.state.content });
             } else {
                 this.props.createReply(this.props.parentId, { content: this.state.content });
+                if (this.props.handleUpdateAfterReply) {
+                    this.props.handleUpdateAfterReply();
+                }
             }
             this.hideButtons();
         } else {

@@ -139,10 +139,10 @@
     background-color: rgb(216, 216, 216);
 }
 
-
 #video-show-buttons #share-btn, #video-show-buttons #save-btn {
-    width: 85px;
-    font-size: 9px;
+    width: 95px;
+    font-size: 12px;
+    margin: 8px 0px;
 }
 
 #video-show-buttons #share-btn a, #video-show-buttons #save-btn a{

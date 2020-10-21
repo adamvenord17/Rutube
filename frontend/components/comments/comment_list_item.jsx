@@ -5,9 +5,6 @@ import EditCommentFormContainer from "./edit_comment_form_container";
 import CommentFormContainer from "./comment_form_container";
 import ReplysListContainer from "./replys_list_container";
 
-// props:
-// author (user object)
-// comment (comment object)
 
 class CommentListItem extends React.Component {
 
@@ -15,7 +12,8 @@ class CommentListItem extends React.Component {
         super(props)
 
         this.state = {
-            editMode: false
+            editMode: false,
+            replyCount: 0,
         };
 
         this.handlePopup = this.handlePopup.bind(this);
@@ -30,6 +28,8 @@ class CommentListItem extends React.Component {
         this.handleChangeLikeComment = this.handleChangeLikeComment.bind(this);
         this.handleLikeChange = this.handleLikeChange.bind(this);
         this.handleOpenReplyForm = this.handleOpenReplyForm.bind(this);
+
+        this.handleUpdateAfterReply = this.handleUpdateAfterReply.bind(this);
     }
 
     componentDidMount() {
@@ -56,6 +56,11 @@ class CommentListItem extends React.Component {
         if (document.getElementById(`comment-like-btn-${this.props.comment.id}`) && document.getElementById(`comment-dislike-btn-${this.props.comment.id}`)) {
             this.handleLikeChange();
         }
+
+    }
+
+    handleUpdateAfterReply() {
+        this.setState({editMode: false});
     }
 
     handleLikeChange() {
@@ -201,7 +206,7 @@ class CommentListItem extends React.Component {
             if (this.props.comment.parentId === null) {
                 repliesSection = <>
                                     <div id={replyCommentFormId} className="reply-comment-form">
-                                        <CommentFormContainer parentId={this.props.comment.id} />
+                                        <CommentFormContainer handleUpdateAfterReply={this.handleUpdateAfterReply} parentId={this.props.comment.id} />
                                     </div>
                                     { repliesList }
                                 </>

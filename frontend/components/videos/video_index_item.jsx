@@ -2,10 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { timeSinceUpload } from '../../util/format_util';
 
-// passed in props:
-// video
-// users
-
 class VideoIndexItem extends React.Component {
     constructor(props) {
         super(props);

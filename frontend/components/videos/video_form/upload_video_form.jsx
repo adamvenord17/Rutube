@@ -16,7 +16,7 @@ class UploadVideoForm extends React.Component {
         this.handleDrop = this.handleDrop.bind(this);
         this.handleDragEnter = this.handleDragEnter.bind(this);
         this.handleDragOver = this.handleDragOver.bind(this);
-        // this.handleEnterEdit - this.handleEnterEdit.bind(this);
+
     }
 
     componentDidMount() {
