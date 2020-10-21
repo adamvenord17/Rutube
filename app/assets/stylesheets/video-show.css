@@ -142,6 +142,13 @@
 
 #video-show-buttons #share-btn, #video-show-buttons #save-btn {
     width: 85px;
+    font-size: 9px;
+}
+
+#video-show-buttons #share-btn a, #video-show-buttons #save-btn a{
+    color: #828282;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 #video-show-buttons #ellipsis-btn {

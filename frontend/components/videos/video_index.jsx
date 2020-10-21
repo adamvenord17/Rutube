@@ -21,26 +21,16 @@ class VideoIndex extends React.Component {
                         <SmallSideBar />
                         <section id="video-index-container" className="extend">
                             <header id="genre-header">
-                                <button type="button">All</button>
-                                <button type="button">Music</button>
-                                <button type="button">Cars</button>
-                                <button type="button">Funny</button>
-                                <button type="button">Video Games</button>
-                                <button type="button">Coding</button>
-                                <button type="button">Tech</button>
-                                <button type="button">Travel</button>
-                                <button type="button">Cats</button>
-                                <button type="button">Space</button>
-                                <button type="button">Sleep</button>
-                                <button type="button">Meditation</button>
-                                <button type="button">Study</button>
-                                <button type="button">Magic</button>
-                                <button type="button">Jupiter</button>
-                                <button type="button">Green</button>
-                                <button type="button">Seltzer</button>
-                                <button type="button">Craft Beer</button>
-                                <button type="button">Wine</button>
-                                <button type="button">Apples</button>
+                                <a href="/">Bonus Links</a>
+                                <a href="https://www.linkedin.com/in/nicholas-draper/">Personal Website</a>
+                                <a href="https://www.linkedin.com/in/nicholas-draper/">LinkedIn</a>
+                                <a href="https://angel.co/u/nicholas-draper-2">AngelList</a>
+                                <a href="https://github.com/adamvenord17">GitHub</a>
+                                <a href="https://github.com/adamvenord17/Rutube">Rutube Project Repo</a>
+                                <a href="https://mongo-bread.herokuapp.com/">Bread</a>
+                                <a href="https://adamvenord17.github.io/gun-runner/">GunRunner</a>
+                                <a href="https://www.youtube.com/">YouTube</a>
+                                <a href="https://www.appacademy.io/">AppAcademy</a>
                             </header>
                             <ul id="videos-container">
                                 {videosLi}

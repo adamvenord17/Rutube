@@ -95,6 +95,8 @@ class NavBar extends React.Component {
                             <span className="popup-descriptions github-popup">Project Repo</span>
                         <a className="nav-bar-right-links linkedin" href="https://www.linkedin.com/in/nicholas-draper/"><i className="fab fa-linkedin"></i></a>
                             <span className="popup-descriptions linkedin-popup">LinkedIn Profile</span>
+                        <a className="nav-bar-right-links angellist" href="https://angel.co/u/nicholas-draper-2"><i className="fab fa-angellist"></i></a>
+                            <span className="popup-descriptions angellist-popup">Angellist Profile</span>
                         {userButton}
                         {userDropdown}
                     </div>

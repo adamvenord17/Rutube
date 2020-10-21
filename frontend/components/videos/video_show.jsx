@@ -167,7 +167,7 @@ class VideoShow extends React.Component {
                                         </div>
             } else {
                 videoShowOptionsBtns = <div id="video-show-options-btns">
-                                            <button id="subscribe-btn">SUBSCRIBE</button>
+                                            <button id="subscribe-btn">SUBSCRIBE (coming soon)</button>
                                         </div>
             }
 
@@ -230,8 +230,8 @@ class VideoShow extends React.Component {
                                                 </div>
                                                 {likeBtn}
                                                 {dislikeBtn}
-                                                <button id="share-btn"><i className="fas fa-share"></i>Share</button>
-                                                <button id="save-btn"><i className="fas fa-folder-plus"></i>Save</button>
+                                                <button onClick={this.goToLinkedin} id="share-btn"><i className="fas fa-share"></i><a href="https://www.linkedin.com/in/nicholas-draper/">LinkedIn</a></button>
+                                                <button onClick={this.goToGithub} id="save-btn"><i className="fas fa-folder-plus"></i><a href="https://github.com/adamvenord17">GitHub</a></button>
                                                 <button id="ellipsis-btn"><i className="fas fa-ellipsis-h"></i></button>
                                             </div>
                                         </div>
@@ -243,7 +243,7 @@ class VideoShow extends React.Component {
                                             </Link>
                                             <div id="video-info">
                                                 <Link to='/' className="username">{uploader.username}</Link>
-                                                <p className="subscriber-count">12.1K subscribers sub</p>
+                                                <p className="subscriber-count">12.1K subscribers</p>
                                                 <p className="video-body">{this.props.currentVideo.body}</p>
                                             </div>
                                         </div>
