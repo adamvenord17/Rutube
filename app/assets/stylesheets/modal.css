@@ -15,10 +15,16 @@
   transform: translate(-50%, -50%);
 }
 
+.modal-child.sidebar {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: none;
+}
+
 .modal-child #sidebar-container {
-  top: -358px;
-  left: -720px;
-  height: 110vh;
+  top: -7px;
+  height: 101vh;
 }
 
 .modal-child #sidebar-container #sidebar-title #logo-btn svg {

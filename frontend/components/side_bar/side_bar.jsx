@@ -38,6 +38,25 @@ class SideBar extends React.Component {
                         <a href="https://www.linkedin.com/in/nicholas-draper/"><i className="fab fa-linkedin"></i>LinkedIn</a>
                         <a href="https://github.com/adamvenord17/Rutube"><i className="fas fa-gem"></i>Project Repo</a>
                     </div>
+                    <div id="sidebar-footer">
+                        <div id="sidebar-footer-section1">
+                            <a href="https://github.com/adamvenord17/Rutube">About</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Press</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Copyright</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Contact me</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Creator</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Advertise</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Developers</a>
+                        </div>
+                        <div id="sidebar-footer-section2">
+                            <a href="https://github.com/adamvenord17/Rutube">Terms</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Privacy</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Policy & Safety</a>
+                            <a href="https://github.com/adamvenord17/Rutube">How Rutube works</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Test new features</a>
+                        </div>
+                        <div id="sidebar-footer-copyright">© 2020 Nick Draper</div>
+                    </div>
                 </section>
             );
         } else {
@@ -58,6 +77,25 @@ class SideBar extends React.Component {
                         <a href="https://angel.co/u/nicholas-draper-2"><i className="fab fa-angellist"></i>AngelList</a>
                         <a href="https://www.linkedin.com/in/nicholas-draper/"><i className="fab fa-linkedin"></i>LinkedIn</a>
                         <a href="https://github.com/adamvenord17/Rutube"><i className="fas fa-gem"></i>Project Repo</a>
+                    </div>
+                    <div id="sidebar-footer">
+                        <div id="sidebar-footer-section1">
+                            <a href="https://github.com/adamvenord17/Rutube">About</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Press</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Copyright</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Contact me</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Creator</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Advertise</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Developers</a>
+                        </div>
+                        <div id="sidebar-footer-section2">
+                            <a href="https://github.com/adamvenord17/Rutube">Terms</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Privacy</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Policy & Safety</a>
+                            <a href="https://github.com/adamvenord17/Rutube">How Rutube works</a>
+                            <a href="https://github.com/adamvenord17/Rutube">Test new features</a>
+                        </div>
+                        <div id="sidebar-footer-copyright">© 2020 Nick Draper</div>
                     </div>
                 </section>
             );

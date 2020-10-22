@@ -28,13 +28,24 @@ function Modal({ modal, closeModal }) {
             return null;
     }
 
-    return (
+    if (modal === 'sidebar') {
+        return (
         <div className="modal-background" onClick={closeModal}>
-            <div className="modal-child" onClick={e => e.stopPropagation()}>
+            <div className="modal-child sidebar" onClick={e => e.stopPropagation()}>
                 { component }
             </div>
         </div>
     );
+    } else {
+        return (
+            <div className="modal-background" onClick={closeModal}>
+                <div className="modal-child" onClick={e => e.stopPropagation()}>
+                    { component }
+                </div>
+            </div>
+        );
+    }
+    
 }
 
 const mapStateToProps = (state, ownProps) => {

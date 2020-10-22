@@ -6,6 +6,7 @@
     background-color: white;
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 #sidebar-container.hide {
@@ -96,4 +97,36 @@
 
 #sidebar-title #sidebar-options-btn:focus {
     outline: none;
+}
+
+#sidebar-container #sidebar-footer {
+    border-bottom: none;
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#sidebar-container #sidebar-footer > div {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 25px;
+    border-bottom: none;
+    padding-bottom: 0px;
+
+}
+
+#sidebar-container #sidebar-footer > div a {
+    padding: 2px 12px 2px 0px;
+    font-weight: 600;
+    color: #494949;
+}
+
+#sidebar-container #sidebar-footer > div a:hover {
+    background-color: #49494900;
+}
+
+#sidebar-container #sidebar-footer #sidebar-footer-copyright {
+    border-bottom: none;
+    font-size: 13px;
+    color: #5f5f5f;
 }
