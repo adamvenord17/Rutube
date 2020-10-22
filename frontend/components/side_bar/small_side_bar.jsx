@@ -25,7 +25,7 @@ class SmallSideBar extends React.Component {
                 </a>
                 
                 <a href="https://angel.co/u/nicholas-draper-2">
-                    <i class="fab fa-angellist"></i>
+                    <i className="fab fa-angellist"></i>
                     <span id="small-sidebar-span-facebook">AngelList</span>
                 </a>
             </section>
