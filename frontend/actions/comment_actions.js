@@ -31,7 +31,7 @@ const removeComment = (commentId) => {
 
 const removeReply = (reply) => {
     return({
-        type: REMOVE_COMMENT,
+        type: REMOVE_REPLY,
         reply
     });
 };

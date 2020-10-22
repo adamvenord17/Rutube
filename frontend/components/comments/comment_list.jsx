@@ -34,7 +34,6 @@ class CommentList extends React.Component {
     }
     
     render() {
-
         // sets up the comment number count dislpayed in the comment's secion header
         let commentCount = '';
         if (Object.values(this.props.comments).length === 0) {
@@ -56,7 +55,7 @@ class CommentList extends React.Component {
 
         comments = comments.map(comment => {
             if (comment.parentId === null) {
-                return <CommentListItemContainer key={comment.id} comment={comment} />
+                return <CommentListItemContainer key={comment.id} replyIds={comment.replyIds} comment={comment} />
             }
         })
 

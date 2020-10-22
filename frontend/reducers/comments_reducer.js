@@ -19,6 +19,7 @@ const commentsReducer = (oldState = {}, action) => {
             newState[action.reply.id] = action.reply;
             return newState;
         case REMOVE_REPLY:
+            debugger
             newState[action.reply.parentId].replyIds = newState[action.reply.parentId].replyIds.filter(ele => ele !== action.reply.id);
             delete newState[action.reply.id];
             return newState;

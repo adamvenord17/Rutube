@@ -128,7 +128,11 @@ class CommentListItem extends React.Component {
     }
 
     handleDelete() {
-        this.props.deleteComment(this.props.comment.id);
+        if (this.props.comment.parentId) {
+            this.props.deleteReply(this.props.comment)
+        } else {
+            this.props.deleteComment(this.props.comment.id);
+        }
     }
 
     handleEdit() {
@@ -143,7 +147,6 @@ class CommentListItem extends React.Component {
         if (!this.props.author) {
             return null
         } else {
-
             // set up user icon color
             let iconColor = this.intToRGB(this.hashCode(this.props.author.username));
             let iconStyle = {
