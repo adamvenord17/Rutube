@@ -14,6 +14,16 @@ class Api::VideosController < ApplicationController
         @video = Video.new(video_params)
         @video.uploader_id = current_user.id
         if @video.save
+            if (params[:tags])
+                params[:tags].each do |tag|
+                    existing_tag = Tag.find_by(tag_name: tag.name)
+                    if existing_tag
+                        TagJoins.create!({video_id: Video.last.id, existing_tag.id})
+                    else
+                        Tag.create!({tag_name: tag.name})
+                        TagJoins.create!({video_id: Video.last.id, Tag.last.id})
+                end
+            end
             render :show
         else
             render json: @video.errors.full_messages, status: 422

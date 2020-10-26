@@ -7,3 +7,4 @@ json.uploadDate video.created_at
 json.likerIds video.liker_ids
 json.dislikerIds video.disliker_ids
 json.numViews video.num_views
+json.tags video.tag_names
