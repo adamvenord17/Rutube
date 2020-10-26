@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+class Api::TagsController < ApplicationController
 
     def index
         @tags = Tag.all

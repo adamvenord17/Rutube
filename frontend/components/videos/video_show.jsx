@@ -10,7 +10,7 @@ class VideoShow extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state ={
+        this.state = {
             lastPlay: 0,
             autoPlay: false,
         }

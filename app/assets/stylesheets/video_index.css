@@ -20,38 +20,34 @@
     background: white;
     border-top: rgb(221, 221, 221) solid 1px;
     border-bottom: rgb(221, 221, 221) solid 1px;
-    padding: 18px 17px;
+    padding: 13px;
 }
 
-#genre-header a:first-child {
+#genre-header .tag-selected {
     background-color: rgb(100, 100, 100);
     color: white;
     border-color: rgb(100, 100, 100);
 }
 
-#genre-header a:first-child:hover {
+#genre-header .tag-selected:hover {
     background-color: rgb(143, 143, 143);
-    cursor: pointer;
 }
 
-#genre-header a {
+#genre-header button {
     height: 32px;
+    border: solid 1px rgb(206, 206, 206);
     border-radius: 25px;
     font-size: 14px;
-    margin: 0px 7px;
-    padding: 6px 13px;
+    margin: 0px 7px; 
+    padding: 0px 12px;
     transition: .5s;
-    background-color: #efefef;
-    border: 1px solid #d9d9d9;
-    text-decoration: none;
-    color: black;
 }
 
-#genre-header a:hover {
+#genre-header button:hover {
     background-color: rgb(228, 228, 228)
 }
 
-#genre-header a:focus {
+#genre-header button:focus {
     outline: none;
 }
 

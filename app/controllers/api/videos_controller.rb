@@ -18,10 +18,11 @@ class Api::VideosController < ApplicationController
                 params[:tags].each do |tag|
                     existing_tag = Tag.find_by(tag_name: tag.name)
                     if existing_tag
-                        TagJoins.create!({video_id: Video.last.id, existing_tag.id})
+                        TagJoins.create!({video_id: Video.last.id, tag_id: existing_tag.id})
                     else
                         Tag.create!({tag_name: tag.name})
-                        TagJoins.create!({video_id: Video.last.id, Tag.last.id})
+                        TagJoins.create!({video_id: Video.last.id, tag_id: Tag.last.id})
+                    end
                 end
             end
             render :show
