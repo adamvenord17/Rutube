@@ -44,13 +44,10 @@ class VideoIndex extends React.Component {
             })
             
             let videosLi = Object.values(this.props.videos)
-            // debugger
             if (this.state.tagSelected) {
                 videosLi = videosLi.filter(video => video.tags.includes(this.state.tagSelected))
             }
-            // debugger
             videosLi = videosLi.map(video => <li key={video.id} className="video-item"><VideoIndexItemContainer video={video} /></li>)
-            // debugger
             
             return (
                 <>
