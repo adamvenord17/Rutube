@@ -315,17 +315,17 @@ form.search-bar input:focus {
 }
 
 .upload-video-popup {
-    left: -12px;
+    left: -19px;
 }
 
 .github-popup {
-    right: 171px;
+    left: 41px;
 }
 
 .linkedin-popup {
-    right: 102px;
+    left: 98px;
 }
 
 .angellist-popup {
-    right: 46px;
+    left: 159px;
 }
