@@ -5,6 +5,7 @@ import { fetchUser } from "../../actions/user_actions";
 import { closeModal, openModal } from "../../actions/modal_actions";
 import { withRouter } from 'react-router-dom';
 import { likeVideo, unlikeVideo, dislikeVideo, undislikeVideo, changeLikeVideo } from '../../actions/video_actions';
+import { subscribeTo, unsubscribeTo } from '../../actions/user_actions';
 
 const mSTP = (state, ownProps) => {
     return {
@@ -29,7 +30,9 @@ const mDTP = dispatch => {
         dislikeVideo: (videoId) => dispatch(dislikeVideo(videoId)),
         undislikeVideo: (videoId) => dispatch(undislikeVideo(videoId)),
         changeLikeVideo: (videoId) => dispatch(changeLikeVideo(videoId)),
-        addView: (videoId) => dispatch(addView(videoId))
+        addView: (videoId) => dispatch(addView(videoId)),
+        subscribeTo: (creatorId, subscriberId) => dispatch(subscribeTo(creatorId, subscriberId)),
+        unsubscribeTo: (creatorId, subscriberId) => dispatch(unsubscribeTo(creatorId, subscriberId)),
     };
 };
 

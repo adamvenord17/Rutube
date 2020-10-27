@@ -31,6 +31,9 @@ class VideoShow extends React.Component {
         this.handleAutoPlay = this.handleAutoPlay.bind(this);
 
         this.delayClick = this.delayClick.bind(this);
+
+        this.handleSubscribe = this.handleSubscribe.bind(this);
+        this.handleUnsubscribe = this.handleUnsubscribe.bind(this);
     }
 
     componentDidMount() {
@@ -41,6 +44,14 @@ class VideoShow extends React.Component {
         if (document.getElementById("like-btn") && document.getElementById("dislike-btn")) {
             this.handleLikeChange();
         }
+    }
+
+    handleSubscribe() {
+        this.props.subscribeTo(this.props.currentVideo.uploaderId, this.props.currentUserId);
+    }
+
+    handleUnsubscribe() {
+        this.props.unsubscribeTo(this.props.currentVideo.uploaderId, this.props.currentUserId);
     }
 
     delayClick() {
@@ -184,9 +195,21 @@ class VideoShow extends React.Component {
                                             <button onClick={this.handleRemoveVideo} id="delete-btn">REMOVE</button>
                                         </div>
             } else {
-                videoShowOptionsBtns = <div id="video-show-options-btns">
-                                            <button id="subscribe-btn">SUBSCRIBE (coming soon)</button>
-                                        </div>
+                if (this.props.users[this.props.currentUserId]) {
+                    if (this.props.users[this.props.currentUserId].subscriptionIds.includes(this.props.currentVideo.uploaderId)) {
+                        videoShowOptionsBtns = <div id="video-show-options-btns">
+                                                    <button onClick={this.handleUnsubscribe} id="unsubscribe-btn">SUBSCRIBED</button>
+                                                </div>
+                    } else {
+                        videoShowOptionsBtns = <div id="video-show-options-btns">
+                                                    <button onClick={this.handleSubscribe} id="subscribe-btn">SUBSCRIBE</button>
+                                                </div>
+                    }
+                } else {
+                    videoShowOptionsBtns = <div id="video-show-options-btns">
+                                                    <button onClick={this.handleRedirectToLogin} id="subscribe-btn">SUBSCRIBE</button>
+                                                </div>
+                }
             }
 
             // sets up the like buttons and their actions based on the users current
@@ -228,6 +251,15 @@ class VideoShow extends React.Component {
                 }
             }
 
+            // sets up blurb for subscriber count
+            let subCount = this.props.users[this.props.currentVideo.uploaderId].subscriberCount;
+            let subBlurb = 'No Subscribers'
+            if (subCount === 1) {
+                subBlurb = '1 subscriber'
+            } else if (subCount > 1) {
+                subBlurb = `${subCount} subscribers`
+            }
+
             return(
                 <div id="video-show-component">
                     <NavBarContainer />
@@ -261,7 +293,7 @@ class VideoShow extends React.Component {
                                             </Link>
                                             <div id="video-info">
                                                 <Link to='/' className="username">{uploader.username}</Link>
-                                                <p className="subscriber-count">12.1K subscribers</p>
+                                                <p className="subscriber-count">{subBlurb}</p>
                                                 <p className="video-body">{this.props.currentVideo.body}</p>
                                             </div>
                                         </div>

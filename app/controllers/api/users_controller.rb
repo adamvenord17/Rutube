@@ -20,6 +20,23 @@ class Api::UsersController < ApplicationController
         render :show
     end
 
+    def subscribe_to
+        @sub = Subscription.new({subscriber_id: current_user.id, creator_id: params[:user_id]})
+        if @sub.save
+            @user = User.find(params[:user_id])
+            render :show
+        else
+            render json: @sub.errors.full_messages, status: 422
+        end
+    end
+
+    def unsubscribe_to
+        @sub = Subscription.find_by({subscriber_id: current_user.id, creator_id: params[:user_id]})
+        @sub.destroy
+        @user = User.find(params[:user_id])
+        render :show
+    end
+
     private
 
     def user_params
