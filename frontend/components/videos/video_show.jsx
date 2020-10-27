@@ -256,7 +256,7 @@ class VideoShow extends React.Component {
             let subBlurb = 'No Subscribers'
             if (subCount === 1) {
                 subBlurb = '1 subscriber'
-            } else if (subBlurb > 1) {
+            } else if (subCount > 1) {
                 subBlurb = `${subCount} subscribers`
             }
 
