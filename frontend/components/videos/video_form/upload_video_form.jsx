@@ -26,7 +26,6 @@ class UploadVideoForm extends React.Component {
     }
 
     deleteTag(e) {
-        debugger
         let tagToDelete = e.currentTarget.name;
         let newTags = this.state.tags.filter(tag => tag !== tagToDelete);
         this.setState({tags: newTags});
@@ -37,7 +36,6 @@ class UploadVideoForm extends React.Component {
     }
 
     handleTagChange(e) {
-        debugger
         if (e.target.value[e.target.value.length - 1] === ',' || e.key === "Enter") {
             let tag = e.key === "Enter" ? e.target.value : e.target.value.slice(0, e.target.value.length - 1);
             if (tag === '') {
