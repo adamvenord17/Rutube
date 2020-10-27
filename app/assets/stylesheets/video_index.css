@@ -45,6 +45,7 @@
     padding: 0px 12px;
     transition: .5s;
     border: none;
+    white-space: nowrap;
 }
 
 #genre-header button:hover {

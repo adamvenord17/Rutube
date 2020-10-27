@@ -36,7 +36,7 @@ class VideoIndex extends React.Component {
                                                         behavior: 'smooth'
                                                         });
         document.getElementById("genre-header-left").classList.remove("hide");
-        setTimeout(this.checkScroll, 300)
+        setTimeout(this.checkScroll, 700)
     }
 
     handleScrollLeft() {
@@ -47,7 +47,7 @@ class VideoIndex extends React.Component {
                                                         });
 
         document.getElementById("genre-header-right").classList.remove("hide");                                              
-        setTimeout(this.checkScroll, 300)
+        setTimeout(this.checkScroll, 700)
     }
 
     checkScroll() {
