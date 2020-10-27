@@ -521,6 +521,8 @@ TagJoin.create!(video_id: v12.id, tag_id: t14.id)
 
 TagJoin.create!(video_id: v3.id, tag_id: t16.id)
 
+Subscription.destroy_all
+
 Subscription.create!(creator_id: u2.id, subscriber_id: u1.id)
 Subscription.create!(creator_id: u3.id, subscriber_id: u1.id)
 Subscription.create!(creator_id: u4.id, subscriber_id: u1.id)
