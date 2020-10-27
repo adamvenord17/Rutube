@@ -14,11 +14,56 @@ class VideoIndex extends React.Component {
 
         this.handleTagClick = this.handleTagClick.bind(this);
         this.handleAllTagClick = this.handleAllTagClick.bind(this);
+        this.handleScrollRight = this.handleScrollRight.bind(this);
+        this.handleScrollLeft = this.handleScrollLeft.bind(this);
+        this.checkScroll = this.checkScroll.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchVideos();
         this.props.fetchTags();
+        addEventListener("resize", this.checkScroll);
+    }
+
+    componentWillUnmount() {
+        removeEventListener("resize", this.checkScroll);
+    }
+
+    handleScrollRight() {
+        document.getElementById("genre-header").scrollBy({
+                                                        top: 0,
+                                                        left: 400,
+                                                        behavior: 'smooth'
+                                                        });
+        document.getElementById("genre-header-left").classList.remove("hide");
+        setTimeout(this.checkScroll, 300)
+    }
+
+    handleScrollLeft() {
+        document.getElementById("genre-header").scrollBy({
+                                                        top: 0,
+                                                        left: -400,
+                                                        behavior: 'smooth'
+                                                        });
+
+        document.getElementById("genre-header-right").classList.remove("hide");                                              
+        setTimeout(this.checkScroll, 300)
+    }
+
+    checkScroll() {
+        let elem = document.getElementById("genre-header");
+        let rightBtn = document.getElementById("genre-header-right");
+        let leftBtn = document.getElementById("genre-header-left");
+        if (elem.scrollWidth - elem.scrollLeft === elem.offsetWidth) {
+            rightBtn.classList.add("hide");
+        } else {
+            rightBtn.classList.remove("hide");
+        }
+        if (elem.scrollWidth - elem.scrollLeft === elem.scrollWidth) {
+            leftBtn.classList.add("hide");
+        } else {
+            leftBtn.classList.remove("hide");
+        }
     }
 
     handleTagClick(e) {
@@ -56,9 +101,15 @@ class VideoIndex extends React.Component {
                         <SideBarContainer />
                         <SmallSideBar />
                         <section id="video-index-container" className="extend">
-                            <header id="genre-header">
+                            <header onResize={this.checkScroll} id="genre-header">
                                 <button id="all-tags-btn" onClick={this.handleAllTagClick} className="tag-selected">All</button>
                                 {tagsLi}
+                                <div id="genre-header-left" className="hide">
+                                    <button className="genre-header-btn" onClick={this.handleScrollLeft}><i className="fas fa-chevron-left"></i></button>
+                                </div>
+                                <div id="genre-header-right">
+                                    <button className="genre-header-btn" onClick={this.handleScrollRight}><i className="fas fa-chevron-right"></i></button>
+                                </div>
                             </header>
                             <ul id="videos-container">
                                 {videosLi}
