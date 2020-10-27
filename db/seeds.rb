@@ -521,9 +521,43 @@ TagJoin.create!(video_id: v12.id, tag_id: t14.id)
 
 TagJoin.create!(video_id: v3.id, tag_id: t16.id)
 
+Subscription.create!(creator_id: u2.id, subscriber_id: u1.id)
+Subscription.create!(creator_id: u3.id, subscriber_id: u1.id)
+Subscription.create!(creator_id: u4.id, subscriber_id: u1.id)
+Subscription.create!(creator_id: u5.id, subscriber_id: u1.id)
+Subscription.create!(creator_id: u6.id, subscriber_id: u1.id)
+Subscription.create!(creator_id: u7.id, subscriber_id: u1.id)
+Subscription.create!(creator_id: u8.id, subscriber_id: u1.id)
+Subscription.create!(creator_id: u9.id, subscriber_id: u1.id)
+Subscription.create!(creator_id: u10.id, subscriber_id: u1.id)
 
+Subscription.create!(creator_id: u2.id, subscriber_id: u11.id)
+Subscription.create!(creator_id: u3.id, subscriber_id: u11.id)
+Subscription.create!(creator_id: u4.id, subscriber_id: u11.id)
+Subscription.create!(creator_id: u5.id, subscriber_id: u11.id)
+Subscription.create!(creator_id: u6.id, subscriber_id: u11.id)
+Subscription.create!(creator_id: u7.id, subscriber_id: u11.id)
+Subscription.create!(creator_id: u8.id, subscriber_id: u11.id)
+Subscription.create!(creator_id: u9.id, subscriber_id: u11.id)
+Subscription.create!(creator_id: u10.id, subscriber_id: u11.id)
 
+Subscription.create!(creator_id: u2.id, subscriber_id: u10.id)
+Subscription.create!(creator_id: u3.id, subscriber_id: u9.id)
+Subscription.create!(creator_id: u4.id, subscriber_id: u8.id)
+Subscription.create!(creator_id: u5.id, subscriber_id: u7.id)
+Subscription.create!(creator_id: u6.id, subscriber_id: u5.id)
+Subscription.create!(creator_id: u7.id, subscriber_id: u6.id)
+Subscription.create!(creator_id: u8.id, subscriber_id: u4.id)
+Subscription.create!(creator_id: u9.id, subscriber_id: u3.id)
+Subscription.create!(creator_id: u10.id, subscriber_id: u2.id)
 
+Subscription.create!(creator_id: u2.id, subscriber_id: u3.id)
+Subscription.create!(creator_id: u2.id, subscriber_id: u4.id)
+Subscription.create!(creator_id: u2.id, subscriber_id: u5.id)
+Subscription.create!(creator_id: u2.id, subscriber_id: u6.id)
+Subscription.create!(creator_id: u2.id, subscriber_id: u7.id)
+Subscription.create!(creator_id: u2.id, subscriber_id: u8.id)
+Subscription.create!(creator_id: u2.id, subscriber_id: u9.id)
 
 
 
