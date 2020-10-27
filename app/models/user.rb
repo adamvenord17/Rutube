@@ -26,6 +26,31 @@ class User < ApplicationRecord
         foreign_key: :author_id,
         class_name: :Comment
 
+    has_many :subscribed_to,
+        foreign_key: :subscriber_id,
+        class_name: :Subscription
+
+    has_many :subscriptions,
+        through: :subscribed_to,
+        source: :creator
+
+    has_many :is_subscribed,
+        foreign_key: :creator_id,
+        class_name: :Subscription
+
+    has_many :subscribers,
+        through: :is_subscribed,
+        source: :subscriber
+
+
+    def subscriber_count
+        self.subscribers.count
+    end
+
+    def subscription_ids
+        Subscription.select(:creator_id).where(subscriber_id: self.id).map {|sub| sub.creator_id}
+    end
+
     def self.find_by_credentials(username, password) 
         user = User.find_by(username: username)
         return user if user && user.is_password?(password)

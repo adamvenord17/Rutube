@@ -230,6 +230,18 @@
     cursor: pointer;
 }
 
+#video-user-info #unsubscribe-btn {
+    background-color: #ececec;
+    color: #606060;
+    border: none;
+}
+
+#video-user-info #unsubscribe-btn:hover {
+    background-color: #ececec;
+    color: #606060;
+    border: none;
+}
+
 #video-user-info #video-show-options-btns #edit-btn, #video-user-info #video-show-options-btns #delete-btn {
     background-color: rgb(0, 89, 255);
     border-color: rgb(0, 89, 255);
