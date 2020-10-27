@@ -90,13 +90,13 @@ class NavBar extends React.Component {
                     <SearchBarContainer />
                     <div className="nav-icons right">
                         {addVideoBtn}
-                            <span className="popup-descriptions upload-video-popup">Upload Video</span>
+                        <span className="popup-descriptions upload-video-popup">Upload Video</span>
                         <a className="nav-bar-right-links github" href="https://github.com/adamvenord17/Rutube"><i className="fab fa-github"></i></a>
-                            <span className="popup-descriptions github-popup">Project Repo</span>
+                        <span className="popup-descriptions github-popup">Project Repo</span>
                         <a className="nav-bar-right-links linkedin" href="https://www.linkedin.com/in/nicholas-draper/"><i className="fab fa-linkedin"></i></a>
-                            <span className="popup-descriptions linkedin-popup">LinkedIn Profile</span>
+                        <span className="popup-descriptions linkedin-popup">LinkedIn Profile</span>
                         <a className="nav-bar-right-links angellist" href="https://angel.co/u/nicholas-draper-2"><i className="fab fa-angellist"></i></a>
-                            <span className="popup-descriptions angellist-popup">Angellist Profile</span>
+                        <span className="popup-descriptions angellist-popup">AngelList Profile</span>
                         {userButton}
                         {userDropdown}
                     </div>

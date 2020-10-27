@@ -266,6 +266,8 @@ form.search-bar input:focus {
     position: relative;
 }
 
+
+
 .nav-bar-right-links.github {
     top: 3px;
 }
@@ -282,6 +284,10 @@ form.search-bar input:focus {
     display: inline;
 }
 
+.nav-bar-right-links.angellist:hover + .angellist-popup {
+    display: inline;
+}
+
 .nav-bar-right-links.linkedin {
     top: 3px;
 }
@@ -292,7 +298,7 @@ form.search-bar input:focus {
 }
 
 .popup-descriptions {
-    background-color: rgba(0, 0, 0, 52%);
+    background-color: rgba(0, 0, 0, 0.699);
     top: 70px;
     position: absolute;
     padding: 12px;
@@ -304,6 +310,7 @@ form.search-bar input:focus {
     padding-right: 14px;
     padding-bottom: 14px;
     transition-duration: 0.5s;
+    z-index: 1;
     display: none;
 }
 
@@ -312,9 +319,13 @@ form.search-bar input:focus {
 }
 
 .github-popup {
-    right: 113px;
+    right: 171px;
 }
 
 .linkedin-popup {
-    right: 47px;
+    right: 102px;
+}
+
+.angellist-popup {
+    right: 46px;
 }
