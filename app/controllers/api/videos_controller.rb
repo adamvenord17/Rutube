@@ -14,6 +14,18 @@ class Api::VideosController < ApplicationController
         @video = Video.new(video_params)
         @video.uploader_id = current_user.id
         if @video.save
+            if (params[:tags])
+                tags = params[:tags][:tag_names].split(',')
+                tags.each do |tag|
+                    existing_tag = Tag.find_by(tag_name: tag)
+                    if existing_tag
+                        TagJoin.create!({video_id: Video.last.id, tag_id: existing_tag.id})
+                    else
+                        Tag.create!({tag_name: tag})
+                        TagJoin.create!({video_id: Video.last.id, tag_id: Tag.last.id})
+                    end
+                end
+            end
             render :show
         else
             render json: @video.errors.full_messages, status: 422
@@ -23,6 +35,20 @@ class Api::VideosController < ApplicationController
     def update
         @video = Video.find(params[:id])
         if @video.update_attributes(video_params)
+            prevTags = @video.tag_names
+            newTags = params[:tags][:tag_names]
+            tags_to_delete = prevTags.select { |tag| !newTags.include?(tag) }
+            tags_to_create = newTags.select { |tag| !prevTags.include?(tag) }
+            tags_to_delete.each { |tag| TagJoin.find_by(video_id: @video.id, tag_id: Tag.find_by(tag_name: tag)).destroy }
+            tags_to_create.each do |tag|
+                existing_tag = Tag.find_by(tag_name: tag)
+                if existing_tag
+                    TagJoin.create!({video_id: @video.id, tag_id: existing_tag.id})
+                else
+                    Tag.create!({tag_name: tag})
+                    TagJoin.create!({video_id: @video.id, tag_id: Tag.last.id})
+                end
+            end
             render :show
         else
             render json: @video.errors.full_messages, status: 422

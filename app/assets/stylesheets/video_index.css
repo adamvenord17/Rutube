@@ -15,44 +15,106 @@
 /* everything below is styling for the genre header */
 
 #genre-header {
-    width: 500%;
-    display: block;
+    width: auto;
+    display: flex;
     background: white;
     border-top: rgb(221, 221, 221) solid 1px;
     border-bottom: rgb(221, 221, 221) solid 1px;
-    padding: 18px 17px;
+    padding: 13px;
+    overflow-x: hidden;
+    position: relative;
+    transition: 1s;
 }
 
-#genre-header a:first-child {
+#genre-header .tag-selected {
     background-color: rgb(100, 100, 100);
     color: white;
     border-color: rgb(100, 100, 100);
 }
 
-#genre-header a:first-child:hover {
+#genre-header .tag-selected:hover {
     background-color: rgb(143, 143, 143);
-    cursor: pointer;
 }
 
-#genre-header a {
+#genre-header button {
     height: 32px;
+    border: solid 1px rgb(206, 206, 206);
     border-radius: 25px;
     font-size: 14px;
-    margin: 0px 7px;
-    padding: 6px 13px;
+    margin: 0px 7px; 
+    padding: 0px 12px;
     transition: .5s;
-    background-color: #efefef;
-    border: 1px solid #d9d9d9;
-    text-decoration: none;
-    color: black;
+    border: none;
 }
 
-#genre-header a:hover {
+#genre-header button:hover {
     background-color: rgb(228, 228, 228)
 }
 
-#genre-header a:focus {
+#genre-header button:focus {
     outline: none;
+}
+
+#genre-header-left {
+  position: fixed;
+  top: 56px;
+  left: 70px;
+  margin: 0px;
+  border-radius: 0px;
+  border: none;
+  height: 58px;
+  color: gray;
+  display: flex;
+  align-items: center;
+  padding-right: 40px;
+  background: linear-gradient(90deg, rgba(255,255,255,1) 62%, rgba(255,255,255,0.7469362745098039) 81%, rgba(255,255,255,0.49763655462184875) 88%, rgba(255,255,255,0.2539390756302521) 95%, rgba(0,0,0,0) 100%);
+}
+
+#genre-header-left.hide {
+  display: none;
+}
+
+#genre-header-right.hide {
+  display: none;
+}
+
+#genre-header-right {
+  position: fixed;
+  top: 56px;
+  right: 0px;
+  margin: 0px;
+  border-radius: 0px;
+  border: none;
+  height: 58px;
+  color: gray;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0.2539390756302521) 5%, rgba(255,255,255,0.49763655462184875) 12%, rgba(255,255,255,0.7469362745098039) 20%, rgba(255,255,255,1) 38%);
+}
+
+#genre-header div button {
+    font-size: 9px;
+    height: 0px;
+    width: 0px;
+    padding: 10px;
+    padding-top: 9px;
+    padding-bottom: 17px;
+    padding-right: 16px;
+    padding-left: 10px;
+    background-color: rgba(255, 255, 255, 0)
+}
+
+#genre-header div button:hover {
+  cursor: pointer
+}
+
+#genre-header div button:focus {
+  outline: none
+}
+
+#genre-header div button:active {
+  background-color: rgb(156, 156, 156)
 }
 
 /* everything below is the video index container styling */

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_01_160602) do
+ActiveRecord::Schema.define(version: 2020_10_26_134939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,21 @@ ActiveRecord::Schema.define(version: 2020_10_01_160602) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["creator_id", "subscriber_id"], name: "index_subscriptions_on_creator_id_and_subscriber_id", unique: true
+  end
+
+  create_table "tag_joins", force: :cascade do |t|
+    t.integer "video_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id", "video_id"], name: "index_tag_joins_on_tag_id_and_video_id", unique: true
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_name"], name: "index_tags_on_tag_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

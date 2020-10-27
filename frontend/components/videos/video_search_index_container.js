@@ -14,7 +14,8 @@ const mSTP = state => {
 const mDTP = dispatch => {
     return({
         fetchVideos: bounds => dispatch(fetchVideos(bounds)),
-        fetchUser: userId => dispatch(fetchUser(userId))
+        fetchUser: userId => dispatch(fetchUser(userId)),
+
     });
 };
 

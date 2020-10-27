@@ -30,6 +30,14 @@ class Video < ApplicationRecord
 
     has_many :views
 
+    has_many :tag_joins,
+        foreign_key: :video_id,
+        class_name: :TagJoin
+
+    has_many :tags,
+        through: :tag_joins,
+        source: :tag
+
     def liker_ids
         self.likes.where(is_like: true).select(:liker_id).map { |ele| ele.liker_id }
     end
@@ -53,6 +61,10 @@ class Video < ApplicationRecord
 
     def num_views
         self.views.length
+    end
+
+    def tag_names
+        self.tags.map {|tag| tag.tag_name }
     end
 
 end

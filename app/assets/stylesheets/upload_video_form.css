@@ -1,7 +1,7 @@
 #upload-video-form-container {
     background-color: white;
     max-width: 960px;
-    max-height: 850px;
+    max-height: 550px;
     overflow: hidden;
     min-width: 961px;
     min-height: 604px;
@@ -273,13 +273,13 @@
 
 #video-details-form-container form #video-upload-title-label{
     position: absolute;
-    top: 210px;
+    top: 72px;
     left: 62px;   
 }
 
 #video-details-form-container form #video-upload-body-label {
     position: absolute;
-    top: 315px;
+    top: 178px;
     left: 62px;
 }
 
@@ -343,7 +343,6 @@
 
 
 #upload-video-form-container footer {
-    margin-top: 57px;
     display: flex;
     justify-content: space-between;
     border-top: lightgray 1px solid;
@@ -406,6 +405,121 @@
 #video-details-form-container form input[type="text"]:invalid + label {
     color: red;
 }
+
+/* the below is styling for the input area and the tags input */
+
+#form-input-area {
+    overflow-y: auto;
+    max-height: 414px;
+    position: relative;
+    height: auto;
+}
+
+#video-details-form-container form > h2 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+#video-details-form-container form > p {
+
+}
+
+#video-details-form-container form #outer-tag-input {
+    display: flex;
+    width: 522px;
+    border: 1px solid rgb(103, 103, 103);
+    margin-bottom: 2px;
+    padding: 26px 13px;
+    font-size: 15px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 4px;
+    padding-right: 0px;
+    justify-content: space-between;
+}
+
+#video-details-form-container form #inner-tag-input {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#video-details-form-container form #outer-tag-input input {
+    height: 18px;
+    padding: 5px;
+    margin-bottom: 0px;
+    border: none;
+    width: auto;
+    flex-grow: 1;
+}
+
+#video-details-form-container form #inner-tag-input div {
+    background-color: #ebebeb;
+    width: fit-content;
+    padding: 7px 13px;
+    border-radius: 25px;
+    font-size: 12px;
+    height: fit-content;
+    padding-right: 7px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#video-details-form-container form #inner-tag-input div:hover {
+    background-color: #cccccc;
+}
+
+#video-details-form-container form #outer-tag-input > button {
+    margin-right: 20px;
+    height: 0px;
+    width: fit-content;
+    padding: 6px;
+    font-size: 21px;
+    background: white;
+    color: #737373;
+    border-radius: 25px;
+    padding-bottom: 24px;
+    padding-top: 2px;
+    border: none;
+    transition: .5s;
+}
+
+#video-details-form-container form #outer-tag-input > button:hover { 
+    color: #4e4e4e
+}
+
+#video-details-form-container form #outer-tag-input > button:active { 
+    background-color: rgb(201, 201, 201)
+}
+
+#video-details-form-container form #outer-tag-input > button:focus { 
+    outline: none;
+}
+
+#video-details-form-container form #inner-tag-input button {
+    border: none;
+    color: #ebebeb;
+    background-color: #6a6a6a;
+    border-radius: 25px;
+    height: 0px;
+    width: 0px;
+    padding: 10px;
+    padding-top: 2px;
+    padding-right: 14px;
+    padding-left: 5px;
+    padding-bottom: 16px;
+    margin-left: 5px;
+}
+
+#video-details-form-container form #inner-tag-input button:hover { 
+    background-color: black;
+    color: #cccccc;
+}
+
+#video-details-form-container form #inner-tag-input button:active { 
+    outline: none
+}
+
 
 
 

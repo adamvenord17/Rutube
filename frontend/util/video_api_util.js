@@ -29,12 +29,12 @@ export const createVideo = (video) => {
     );
 };
 
-export const updateVideo = (video) => {
+export const updateVideo = (video, tags) => {
     return (
         $.ajax({
             method: "PATCH",
             url: `api/videos/${video.id}`,
-            data: { video }
+            data: { video, tags }
         })
     );
 };

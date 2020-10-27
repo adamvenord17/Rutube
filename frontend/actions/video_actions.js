@@ -51,8 +51,8 @@ export const removeVideo = (videoId) => dispatch => {
     return (ApiVideosUtil.deleteVideo(videoId).then(dispatch(deleteVideo(videoId)), errors => dispatch(receiveVideoErrors(errors))));
 };
 
-export const updateVideo = (video) => dispatch => {
-    return (ApiVideosUtil.updateVideo(video).then(video => dispatch(receiveVideo(video)), errors => dispatch(receiveVideoErrors(errors))));
+export const updateVideo = (video, tags) => dispatch => {
+    return (ApiVideosUtil.updateVideo(video, tags).then(video => dispatch(receiveVideo(video)), errors => dispatch(receiveVideoErrors(errors))));
 };
 
 // below actions are for likes

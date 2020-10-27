@@ -14,7 +14,7 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => {
     return {
-        processForm: (video) => dispatch(updateVideo(video)),
+        processForm: (video, tags) => dispatch(updateVideo(video, tags)),
         closeModal: () => dispatch(closeModal())
     };
 };

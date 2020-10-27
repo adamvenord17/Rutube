@@ -6,6 +6,8 @@ class UploadVideoForm extends React.Component {
         this.state = {
             title: '',
             body: '',
+            tag: '',
+            tags: [],
             videoFile: null,
             videoUrl: null,
         };
@@ -17,6 +19,42 @@ class UploadVideoForm extends React.Component {
         this.handleDragEnter = this.handleDragEnter.bind(this);
         this.handleDragOver = this.handleDragOver.bind(this);
 
+        this.deleteTag = this.deleteTag.bind(this);
+        this.deleteAllTags = this.deleteAllTags.bind(this);
+        this.handleTagChange = this.handleTagChange.bind(this);
+        this.handleEnterTag = this.handleEnterTag.bind(this);
+    }
+
+    deleteTag(e) {
+        debugger
+        let tagToDelete = e.currentTarget.name;
+        let newTags = this.state.tags.filter(tag => tag !== tagToDelete);
+        this.setState({tags: newTags});
+    }
+
+    deleteAllTags() {
+        this.setState({tags: []});
+    }
+
+    handleTagChange(e) {
+        debugger
+        if (e.target.value[e.target.value.length - 1] === ',' || e.key === "Enter") {
+            let tag = e.key === "Enter" ? e.target.value : e.target.value.slice(0, e.target.value.length - 1);
+            if (tag === '') {
+                this.setState({tag: ''})
+            } else if (!this.state.tags.includes(tag)) {
+                let newTags = this.state.tags.concat(tag.toLowerCase());
+                this.setState({tag: '', tags: newTags})
+            } else {
+                this.setState({tag: ''})
+            }
+        } else {
+            this.setState({ tag: e.target.value });
+        }
+    }
+
+    handleEnterTag(e) {
+        this.handleTagChange(e);
     }
 
     componentDidMount() {
@@ -38,19 +76,24 @@ class UploadVideoForm extends React.Component {
         e.preventDefault();
         let formData = new FormData();
         let video = {};
+        let tags = {};
         if (this.props.formType === "EDIT") {
             let parts = this.props.location.pathname.split('/');
             let currentVideoId = parts.pop();
-            video = ({
+            video = {
                         id: currentVideoId,
                         title: this.state.title,
                         body: this.state.body
-                    });
-            this.props.processForm(video);
+                    };
+            tags = {
+                tag_names: this.state.tags
+            };
+            this.props.processForm(video, tags);
         } else {
             formData.append('video[title]', this.state.title);
             formData.append('video[body]', this.state.body);
             formData.append('video[video_file]', this.state.videoFile);
+            formData.append('tags[tag_names]', this.state.tags)
             this.props.processForm(formData);
         }
         this.props.closeModal();
@@ -72,7 +115,7 @@ class UploadVideoForm extends React.Component {
         };
         if (file) {
             fileReader.readAsDataURL(file);
-        }
+        } 
     }
 
     handleDragOver(e) {
@@ -96,7 +139,7 @@ class UploadVideoForm extends React.Component {
         let parts = this.props.location.pathname.split('/');
         let currentVideoId = parts.pop();
         let currentVideo = this.props.videos[currentVideoId];
-        this.setState({ title: currentVideo.title, body: currentVideo.body, videoUrl: currentVideo.videoUrl });
+        this.setState({ title: currentVideo.title, body: currentVideo.body, videoUrl: currentVideo.videoUrl, tags: currentVideo.tags });
     }
 
     render() {
@@ -108,6 +151,11 @@ class UploadVideoForm extends React.Component {
         }
 
         if (this.state.videoFile || this.state.videoUrl) {
+
+            let tagBtns = this.state.tags.map(tag => {
+                return <div key={tag} className="tag-to-be-added">{tag}<button type="button" name={tag} onClick={this.deleteTag}><i className="fas fa-times"></i></button></div>
+            })
+
             return(
                 <>
                     <main id="upload-video-form-container">
@@ -138,40 +186,53 @@ class UploadVideoForm extends React.Component {
                         
                         <div id="line"></div>
 
-                        <h1>Details</h1>
+                        <div id="form-input-area">
+                            <h1>Details</h1>
 
-                        <div id="video-details-form-container">
-                            <form>
-                                <input type="text" id="video-upload-title-input" onChange={this.handleChange("title")} value={this.state.title} placeholder="Add a title that describes your video" required/>
-                                <label id="video-upload-title-label">Title (required)</label>
-                                <textarea cols="30" rows="10" onChange={this.handleChange("body")} value={this.state.body} placeholder="Tell viewers about your video"></textarea>
-                                <label id="video-upload-body-label">Description</label>
-                            </form>
-                            <div id="video-upload-preview-container">
-                                <video height="170" width="303" controls>
-                                    <source src={this.state.videoUrl} type="video/mp4"/>
-                                    <source src={this.state.videoUrl} type="video/ogg"/>
-                                    <source src={this.state.videoUrl} type="video/webm"/>
-                                    There was a problem rendering the video
-                                </video>
-                                <div id="video-upload-preview-details-container">
-                                    <div id="video-preview-link-container">
-                                        <div>
-                                            <label>Video Link</label>
-                                            <a>Availble after successful upload</a>
+                            <div id="video-details-form-container">
+                                <form onSubmit={this.handleEnterTag}>
+                                    <input type="text" id="video-upload-title-input" onChange={this.handleChange("title")} value={this.state.title} placeholder="Add a title that describes your video" required/>
+                                    <label id="video-upload-title-label">Title (required)</label>
+                                    <textarea cols="30" rows="10" onChange={this.handleChange("body")} value={this.state.body} placeholder="Tell viewers about your video"></textarea>
+                                    <label id="video-upload-body-label">Description</label>
+                                    <h2>Tags</h2>
+                                    <p className="weak-p">Tags can be useful if content in your video is commonly misspelled. Otherwise, tags play a minimal role in helping viewers find your video.</p>
+                                    <div id="outer-tag-input">
+                                        <div id="inner-tag-input">
+                                            {tagBtns}
+                                            <input type="text" value={this.state.tag} onKeyDown={this.handleEnterTag} onChange={this.handleEnterTag} />
                                         </div>
-                                        <i className="far fa-copy"></i>
+                                        <button type="button" onClick={this.deleteAllTags}><i className="fas fa-times"></i></button>
                                     </div>
-                                    <div id="video-preview-filename-container">
-                                        <div>
-                                            <label>Filename</label>
-                                            <p className="strong-p">{fileName}</p>
+                                    <p className="weak-p">Enter a comma, or press enter after each tag</p>
+                                </form>
+                                <div id="video-upload-preview-container">
+                                    <video height="170" width="303" controls>
+                                        <source src={this.state.videoUrl} type="video/mp4"/>
+                                        <source src={this.state.videoUrl} type="video/ogg"/>
+                                        <source src={this.state.videoUrl} type="video/webm"/>
+                                        There was a problem rendering the video
+                                    </video>
+                                    <div id="video-upload-preview-details-container">
+                                        <div id="video-preview-link-container">
+                                            <div>
+                                                <label>Video Link</label>
+                                                <a>Availble after successful upload</a>
+                                            </div>
+                                            <i className="far fa-copy"></i>
+                                        </div>
+                                        <div id="video-preview-filename-container">
+                                            <div>
+                                                <label>Filename</label>
+                                                <p className="strong-p">{fileName}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
+                        
                         <footer>
                             <div>
                                 <i className="fab fa-js-square"></i>

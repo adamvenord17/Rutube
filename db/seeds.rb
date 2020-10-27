@@ -93,8 +93,24 @@ v13 = Video.create!({
     uploader_id: u5.id
 })
 
+# v1 = Video.find_by(title: "Weird Bunny Video");
+# v2 = Video.find_by(title: "Areil Footage of a nice beach");
+# v3 = Video.find_by(title: "EPIC motorcycle ride THROUGH THE WOODS");
+# v4 = Video.find_by(title: "Roller Coaster Ride");
+# v5 = Video.find_by(title: "Leafy Leaves");
+# v6 = Video.find_by(title: "Aerial View of a Street at night");
+# v7 = Video.find_by(title: "Santa Chillin");
+# v8 = Video.find_by(title: "Earth Spinning");
+# v9 = Video.find_by(title: "How to wash your hands");
+# v10 = Video.find_by(title: "America");
+# v11 = Video.find_by(title: "Street Activity");
+# v12 = Video.find_by(title: "Screwing in a Lightbulb");
+# v13 = Video.find_by(title: "My day on the beach!!!");
 
-# WARNING! ONLY ONE OF THESE NEXT TWO SECTIONS SHOULD BE ACTIVE WHEN SEEDING DATABASE
+
+
+
+# # WARNING! ONLY ONE OF THESE NEXT TWO SECTIONS SHOULD BE ACTIVE WHEN SEEDING DATABASE
 # MAKE SURE TO HAVE ONE SECTION COMMENTED OUT DEPENDING ON WHETHER YOU ARE SEEDING 
 # A PRODUCTION DATABASE OR DEVELOPMENT DATABASE
 
@@ -425,4 +441,89 @@ View.create!(ip_address: 123, video_id: v13.id)
 View.create!(ip_address: 123, video_id: v13.id)
 View.create!(ip_address: 123, video_id: v13.id)
 View.create!(ip_address: 123, video_id: v13.id)
+
+Tag.destroy_all
+TagJoin.destroy_all
+
+t1 = Tag.create!(tag_name: "funny")
+t2 = Tag.create!(tag_name: "weird")
+t3 = Tag.create!(tag_name: "cool")
+t4 = Tag.create!(tag_name: "friends")
+t5 = Tag.create!(tag_name: "landscape")
+t6 = Tag.create!(tag_name: "nature")
+t7 = Tag.create!(tag_name: "people")
+t8 = Tag.create!(tag_name: "space")
+t9 = Tag.create!(tag_name: "pretty")
+t10 = Tag.create!(tag_name: "informational")
+t11 = Tag.create!(tag_name: "interesting")
+t12 = Tag.create!(tag_name: "blog")
+t13 = Tag.create!(tag_name: "cartoon")
+t14 = Tag.create!(tag_name: "nighttime")
+t15 = Tag.create!(tag_name: "daytime")
+t16 = Tag.create!(tag_name: "epic")
+
+TagJoin.create!(video_id: v1.id, tag_id: t1.id)
+TagJoin.create!(video_id: v3.id, tag_id: t1.id)
+TagJoin.create!(video_id: v1.id, tag_id: t2.id)
+TagJoin.create!(video_id: v1.id, tag_id: t13.id)
+TagJoin.create!(video_id: v1.id, tag_id: t15.id)
+
+TagJoin.create!(video_id: v2.id, tag_id: t15.id)
+TagJoin.create!(video_id: v3.id, tag_id: t15.id)
+TagJoin.create!(video_id: v4.id, tag_id: t15.id)
+TagJoin.create!(video_id: v5.id, tag_id: t15.id)
+TagJoin.create!(video_id: v10.id, tag_id: t15.id)
+TagJoin.create!(video_id: v13.id, tag_id: t15.id)
+
+TagJoin.create!(video_id: v2.id, tag_id: t5.id)
+TagJoin.create!(video_id: v6.id, tag_id: t5.id)
+TagJoin.create!(video_id: v11.id, tag_id: t5.id)
+TagJoin.create!(video_id: v13.id, tag_id: t5.id)
+
+TagJoin.create!(video_id: v2.id, tag_id: t6.id)
+TagJoin.create!(video_id: v3.id, tag_id: t6.id)
+TagJoin.create!(video_id: v5.id, tag_id: t6.id)
+TagJoin.create!(video_id: v8.id, tag_id: t6.id)
+
+TagJoin.create!(video_id: v8.id, tag_id: t8.id)
+
+TagJoin.create!(video_id: v4.id, tag_id: t4.id)
+TagJoin.create!(video_id: v13.id, tag_id: t4.id)
+
+TagJoin.create!(video_id: v3.id, tag_id: t3.id)
+TagJoin.create!(video_id: v8.id, tag_id: t3.id)
+TagJoin.create!(video_id: v10.id, tag_id: t3.id)
+TagJoin.create!(video_id: v11.id, tag_id: t3.id)
+
+TagJoin.create!(video_id: v4.id, tag_id: t7.id)
+TagJoin.create!(video_id: v13.id, tag_id: t7.id)
+
+TagJoin.create!(video_id: v4.id, tag_id: t9.id)
+TagJoin.create!(video_id: v13.id, tag_id: t9.id)
+TagJoin.create!(video_id: v5.id, tag_id: t9.id)
+
+TagJoin.create!(video_id: v9.id, tag_id: t10.id)
+TagJoin.create!(video_id: v12.id, tag_id: t10.id)
+
+TagJoin.create!(video_id: v9.id, tag_id: t11.id)
+TagJoin.create!(video_id: v11.id, tag_id: t11.id)
+TagJoin.create!(video_id: v6.id, tag_id: t11.id)
+TagJoin.create!(video_id: v8.id, tag_id: t11.id)
+TagJoin.create!(video_id: v2.id, tag_id: t11.id)
+
+TagJoin.create!(video_id: v13.id, tag_id: t12.id)
+
+TagJoin.create!(video_id: v6.id, tag_id: t14.id)
+TagJoin.create!(video_id: v7.id, tag_id: t14.id)
+TagJoin.create!(video_id: v8.id, tag_id: t14.id)
+TagJoin.create!(video_id: v11.id, tag_id: t14.id)
+TagJoin.create!(video_id: v12.id, tag_id: t14.id)
+
+TagJoin.create!(video_id: v3.id, tag_id: t16.id)
+
+
+
+
+
+
 
