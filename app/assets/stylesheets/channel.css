@@ -4,3 +4,144 @@
     background-color: rgb(243, 242, 242);
     height: 100vh;
 }
+
+#channel-container header {
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+}
+
+#channel-title {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 110px;
+    align-items: center;
+}
+
+#channel-title-left {
+    display: flex;
+    align-items: center;
+}
+
+#channel-title-right {
+
+}
+
+#channel-title-left .uploader-icon {
+    min-width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    font-size: 40px;
+}
+
+#channel-title-left #channel-name-and-btns {
+    margin-left: 26px;
+}
+
+#channel-title-left #channel-name-and-btns #name-and-subs-count {
+
+}
+
+#channel-title-left #channel-name-and-btns #name-and-subs-count p:first-of-type{
+    font-size: 24px;
+    margin: 0px;
+    color: black;
+}
+
+#channel-title-left #channel-name-and-btns #name-and-subs-count p {
+    margin: 0px;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #5f5f5f;
+}
+
+#channel-title-right .channel-owner-btn {
+    height: 37px;
+    width: fit-content;
+    background-color: #0a5ed5;
+    color: white;
+    border-radius: 2px;
+    margin: 8px 0px;
+    transition: .5s;
+    border: none;
+    margin-left: 10px;
+    padding: 0px 15px;
+}
+
+#channel-title-right .channel-owner-btn:hover {
+    background-color: #0e53b4;
+    cursor: pointer;
+}
+
+#channel-title-right .channel-owner-btn:focus {
+    outline: none
+}
+
+#channel-title-right #subscribe-btn {
+    height: 37px;
+    width: 107px;
+    background-color: #c70000;
+    color: white;
+    border: 1px solid #de0000;
+    border-radius: 2px;
+    margin: 8px 0px;
+    transition: .5s
+}
+
+#channel-title-right #subscribe-bt:focus {
+    outline: none
+}
+
+#channel-title-right #subscribe-bt:hover {
+    background-color: #a80000;
+    cursor: pointer;
+}
+
+#channel-title-right #unsubscribe-btn {
+    height: 37px;
+    width: 107px;
+    background-color: #ececec;
+    color: #606060;
+    border: none;
+    border-radius: 2px;
+    margin: 8px 0px;
+    transition: .5s
+}
+
+#channel-title-right #unsubscribe-btn:hover {
+    background-color: #ececec;
+    color: #606060;
+    border: none;
+}
+
+#channel-title-right #unsubscribe-btn:focus {
+    outline: none
+}
+
+#channel-view-tabs-container {
+    display: flex;
+    margin: 5px 45px 0px 45px;
+    height: 45px;
+}
+
+.channel-view-tab {
+    display: flex;
+    align-items: center;
+    width: 105px;
+    font-size: 14px;
+    justify-content: center;
+    border-bottom: inset 0px #5f5f5f;
+    color: #5f5f5f;
+}
+
+.channel-view-tab:hover {
+    cursor: pointer;
+}
+
+.channel-view-tab.selected {
+    border-bottom: inset 3px #5f5f5f;
+    height: 38px;
+    padding-top: 4px;
+    color: black;
+    cursor: default;
+}

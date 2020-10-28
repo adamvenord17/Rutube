@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBarContainer from '../nav_bar/nav_bar_container';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NextVideoItem from './next_video_item';
 import { formatDate } from '../../util/format_util';
 import CommentListContainer from '../comments/comments_list_container';
