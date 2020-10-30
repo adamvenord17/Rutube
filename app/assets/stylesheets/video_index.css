@@ -193,6 +193,15 @@
   color: black;
 }
 
+#videos-container #video-index-item-info a {
+  font-size: 15px;
+  color: #666666;
+}
+
+#videos-container #video-index-item-info a:hover {
+  color: black;
+}
+
 #video-index-item-info-container {
   padding-top: 12px;
   display: flex;
@@ -212,23 +221,40 @@
 #video-index-item-info {
   margin-left: 12px;
   font-size: 14px;
+  position: relative;
 }
 
 #video-index-item-info p {
   margin-bottom: 3px;
   margin-top: 0px;
+  color: #666666;
+  font-size: 15px;
 }
 
 #video-index-item-info #video-index-item-title {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-size: 16px;
   font-weight: bolder;
   margin-top: 3px;
   width: 270px;
+  color: black;
 }
 
 
+#video-index-item-info .username-popup {
+    position: absolute;
+    background: #636363de;
+    padding: 10px;
+    color: white;
+    top: -8px;
+    left: -3px;
+    border-radius: 2px;
+    display: none;
+}
 
+#video-index-item-info .username-popup.reveal {
+    display: block;
+}
 
 
 
