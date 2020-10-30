@@ -1,8 +1,13 @@
 #channel-container {
-    margin-left: 72px;
+    margin-left: 240px;
     margin-top: 0px;
     background-color: rgb(243, 242, 242);
     height: 100vh;
+    overflow-y: auto;
+}
+
+#channel-container.extend {
+    margin-left: 72px;
 }
 
 #channel-container header {

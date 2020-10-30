@@ -34,9 +34,15 @@ class NavBar extends React.Component {
         let sideBar = document.getElementById("sidebar-container");
         let videoIndex = document.getElementById("video-index-container");
         let smallSideBar = document.getElementById("small-sidebar-container");
+        let channelContainer = document.getElementById("channel-container");
         smallSideBar.classList.add("hide");
         sideBar.classList.remove("hide");
-        videoIndex.classList.remove("extend");
+        if (videoIndex !== null) {
+            videoIndex.classList.remove("extend");
+        } 
+        if (channelContainer !== null) {
+            channelContainer.classList.remove("extend");
+        }
     }
 
     handleUserDropdown() {

@@ -12,10 +12,17 @@ class SideBar extends React.Component {
     hideSidebar() {
         let sideBar = document.getElementById("sidebar-container");
         let videoIndex = document.getElementById("video-index-container");
+        let channelContainer = document.getElementById("channel-container");
         let smallSideBar = document.getElementById("small-sidebar-container");
         smallSideBar.classList.remove("hide");
         sideBar.classList.add("hide");
-        videoIndex.classList.add("extend");
+
+        if (videoIndex !== null) {
+            videoIndex.classList.add("extend");
+        } 
+        if (channelContainer !== null) {
+            channelContainer.classList.add("extend");
+        }
     }
 
     render() {
