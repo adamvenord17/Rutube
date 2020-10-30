@@ -34,6 +34,9 @@ class VideoShow extends React.Component {
 
         this.handleSubscribe = this.handleSubscribe.bind(this);
         this.handleUnsubscribe = this.handleUnsubscribe.bind(this);
+
+        this.handleUsernameEnter = this.handleUsernameEnter.bind(this);
+        this.handleUsernameOut = this.handleUsernameOut.bind(this);
     }
 
     componentDidMount() {
@@ -160,6 +163,14 @@ class VideoShow extends React.Component {
         }
     }
 
+    handleUsernameEnter() {
+        document.getElementById(`username-popup-${this.props.currentVideo.uploaderId}`).classList.add('reveal');
+    }
+
+    handleUsernameOut() {
+        document.getElementById(`username-popup-${this.props.currentVideo.uploaderId}`).classList.remove('reveal');
+    }
+
     render() {
         
         if (!this.props.currentVideo) {
@@ -260,6 +271,9 @@ class VideoShow extends React.Component {
                 subBlurb = `${subCount} subscribers`
             }
 
+            let channelLink = `/api/channels/${this.props.currentVideo.uploaderId}/home`
+            let usernamePopupId = `username-popup-${this.props.currentVideo.uploaderId}`
+
             return(
                 <div id="video-show-component">
                     <NavBarContainer />
@@ -288,11 +302,12 @@ class VideoShow extends React.Component {
                                     </div>
                                     <div id="video-user-info">
                                         <div>
-                                            <Link to='/' className="uploader-icon" style={iconStyle}>
+                                            <Link to={channelLink} className="uploader-icon" style={iconStyle}>
                                                 {uploader.username[0].toUpperCase()}
                                             </Link>
                                             <div id="video-info">
-                                                <Link to='/' className="username">{uploader.username}</Link>
+                                                <Link onMouseEnter={this.handleUsernameEnter} onMouseLeave={this.handleUsernameOut} to={channelLink}>{uploader.username}</Link>
+                                                <div className="username-popup" id={usernamePopupId}>{uploader.username}</div>
                                                 <p className="subscriber-count">{subBlurb}</p>
                                                 <p className="video-body">{this.props.currentVideo.body}</p>
                                             </div>

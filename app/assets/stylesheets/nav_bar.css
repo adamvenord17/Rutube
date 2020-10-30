@@ -240,7 +240,25 @@ form.search-bar input:focus {
     padding: 10px;
 }
 
+.user-drop-down a {
+    margin: 0;
+    border-right: lightgray 1px solid;
+    border-left: lightgray 1px solid;
+    height: 40px;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    text-align: start;
+    transition: .25s;
+    color: gray;
+    padding: 10px;
+}
+
 .user-drop-down button:hover {
+    background-color: rgb(236, 236, 236);
+}
+
+.user-drop-down button:a {
     background-color: rgb(236, 236, 236);
 }
 

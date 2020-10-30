@@ -59,7 +59,7 @@ class VideoIndexItem extends React.Component {
             let iconStyle = {
                 backgroundColor: `#${iconColor}`
             };
-            let channelLink = `/api/channels/${uploader.id}`
+            let channelLink = `/api/channels/${uploader.id}/home`
             let usernamePopupId = `username-popup-${this.props.video.uploaderId}`
             return(
                 <Link to={videoShowUrl}>
@@ -67,9 +67,9 @@ class VideoIndexItem extends React.Component {
                         <video onMouseEnter={this.handleMouseEnter} onMouseOut={this.handleMouseOut} src={this.props.video.videoUrl} muted></video>
                     </div>
                     <div id="video-index-item-info-container">
-                        <div className="uploader-icon" style={iconStyle}>
+                        <Link to={channelLink} className="uploader-icon" style={iconStyle}>
                             {uploader.username[0].toUpperCase()}
-                        </div>
+                        </Link>
                         <div id="video-index-item-info">
                             <p id="video-index-item-title">{this.props.video.title}</p>
                             <Link onMouseEnter={this.handleUsernameEnter} onMouseLeave={this.handleUsernameOut} to={channelLink}>{uploader.username}</Link>

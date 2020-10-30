@@ -218,6 +218,16 @@
   color: white;
 }
 
+#video-index-item-info-container .uploader-icon {
+  min-width: 36px;
+  height: 36px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
 #video-index-item-info {
   margin-left: 12px;
   font-size: 14px;
@@ -241,7 +251,7 @@
 }
 
 
-#video-index-item-info .username-popup {
+.username-popup {
     position: absolute;
     background: #636363de;
     padding: 10px;
@@ -252,7 +262,7 @@
     display: none;
 }
 
-#video-index-item-info .username-popup.reveal {
+.username-popup.reveal {
     display: block;
 }
 

@@ -187,6 +187,7 @@
     margin-left: 18px;
     font-size: 14px;
     margin-top: 8px;
+    position: relative;
 }
 
 #video-info .username {
@@ -339,11 +340,32 @@
 #next-video-item-container #next-video-item-info {
     width: 100%;
     margin-left: 7px;
+    position: relative
+}
+
+#next-video-item-container #next-video-item-info .username-popup {
+    font-size: 11px;
+    top: -16px;
+    left: -16px;
+}
+
+#video-info .username-popup {
+    font-size: 14px;
+    top: -53px;
+    left: 0px;
+}
+
+#video-info a {
+    color: black;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 15px;
 }
 
 #next-video-item-container #next-video-item-info p{
     margin-top: 0px;
     text-decoration: none;
+    margin-bottom: 4px;
 }
 
 #next-video-item-container #next-video-item-info .strong-p{

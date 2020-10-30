@@ -11,6 +11,7 @@ class NavBar extends React.Component {
         this.showSidebar = this.showSidebar.bind(this);
         this.hashCode = this.hashCode.bind(this);
         this.intToRGB = this.intToRGB.bind(this);
+        this.redirectToUserChannel = this.redirectToUserChannel.bind(this);
     }
 
     hashCode(str) { // java String#hashCode
@@ -47,6 +48,10 @@ class NavBar extends React.Component {
         });
     }
 
+    redirectToUserChannel() {
+        this.props.history.push(`api/channels/${this.props.currentUser.id}/home`)
+    }
+
     render() {
         let userButton = '';
         let addVideoBtnClass = '';
@@ -72,7 +77,7 @@ class NavBar extends React.Component {
                                             <p className="email">{this.props.currentUser.email}</p>
                                         </div>
                                 </header>
-                                <button><i id="dropdown-user-icon" className='fas fa-user-circle'></i> Your Channel --Coming Soon!--</button>
+                                <button onClick={this.redirectToUserChannel}><i id="dropdown-user-icon" className='fas fa-user-circle'></i> Your Channel</button>
                                 <button id="last-user-dropdown-btn" onClick={this.props.logout}><i id="dropdown-logout-icon" className="fas fa-door-open"></i> Logout</button>
                             </div>
         } else {
