@@ -56,6 +56,10 @@ export const login = user => dispatch => {
     return (SessionApi.login(user).then(user => dispatch(receiveCurrentUser(user)), errors => dispatch(receiveUserErrors(errors))))
 };
 
+export const updateUser = user => dispatch => {
+    return (SessionApi.editUser(user).then(user => dispatch(receiveCurrentUser(user)), errors => dispatch(receiveUserErrors(errors))))
+};
+
 export const logout = () => dispatch => {
     return (SessionApi.logout().then(() => dispatch(logoutCurrentUser()), errors => dispatch(receiveUserErrors(errors))))
 };

@@ -51,6 +51,10 @@ class User < ApplicationRecord
         Subscription.select(:creator_id).where(subscriber_id: self.id).map {|sub| sub.creator_id}
     end
 
+    def video_ids
+        Video.select(:id).where(uploader_id: self.id).map {|video| video.id}
+    end
+
     def self.find_by_credentials(username, password) 
         user = User.find_by(username: username)
         return user if user && user.is_password?(password)

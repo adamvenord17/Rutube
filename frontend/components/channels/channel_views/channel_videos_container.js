@@ -7,7 +7,8 @@ const mSTP = (state, ownProps) => {
         users: state.entities.users,
         channelOwner: state.entities.users[ownProps.match.params.userId],
         channelOwnerId: ownProps.match.params.userId,
-        currentUserId: state.entities.currentUserId
+        currentUserId: state.entities.currentUserId,
+        videos: state.entities.videos
     })
 }
 

@@ -18,6 +18,7 @@ const mDTP = dispatch => {
         fetchUser: userId => dispatch(fetchUser(userId)),
         subscribeTo: (creatorId, subscriberId) => dispatch(subscribeTo(creatorId, subscriberId)),
         unsubscribeTo: (creatorId, subscriberId) => dispatch(unsubscribeTo(creatorId, subscriberId)),
+        fetchVideos: (userId) => dispatch(fetchVideos(userId)),
     })
 }
 

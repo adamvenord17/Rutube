@@ -17,6 +17,10 @@ class Channel extends React.Component {
         this.handleUnsubscribe = this.handleUnsubscribe.bind(this);
 
         this.handleViewChange = this.handleViewChange.bind(this);
+
+        this.state = {
+            channelOwnerId: this.props.channelOwnerId
+        }
     }
 
     componentDidMount() {
@@ -25,6 +29,13 @@ class Channel extends React.Component {
             if (this.props.currentUserId && !this.props.users[this.props.currentUserId]) {
                 this.props.fetchUser(this.props.currentUserId);
             }
+        }
+        this.props.fetchVideos({userId: this.props.channelOwnerId});
+    }
+
+    componentDidUpdate() {
+        if (this.state.channelOwnerId !== this.props.channelOwnerId) {
+            this.setState({channelOwnerId: this.props.channelOwnerId}, () => this.props.fetchVideos({userId: this.props.channelOwnerId}))
         }
     }
 
@@ -84,8 +95,8 @@ class Channel extends React.Component {
             let titleBtns = '';
             if (parseInt(this.props.channelOwnerId) === this.props.currentUserId) {
                 titleBtns = <div id="channel-title-right">
-                                <button className="channel-owner-btn">CUSTOMIZE CHANNEL</button>
-                                <button className="channel-owner-btn">MANAGE VIDEOS</button>
+                                <button onClick={this.handleViewChange("about")} className="channel-owner-btn">CUSTOMIZE CHANNEL</button>
+                                <button onClick={this.handleViewChange("videos")} className="channel-owner-btn">MANAGE VIDEOS</button>
                             </div>
             } else {
                 if (this.props.users[this.props.currentUserId]) {

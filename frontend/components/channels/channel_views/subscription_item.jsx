@@ -7,7 +7,9 @@ class SubscriptionItem extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchUser(this.props.creatorId)
+        if (!this.props.creator) {
+            this.props.fetchUser(this.props.creatorId)
+        }
     }
 
     hashCode(str) { // java String#hashCode

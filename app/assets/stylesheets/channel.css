@@ -150,3 +150,48 @@
     color: black;
     cursor: default;
 }
+
+#channel-view-container .video-item {
+    width: 210px;
+    margin: 5px 5px 5px 0px;
+}
+
+#channel-view-container a {
+    text-decoration: none;
+}
+
+#channel-view-container #video-index-video-sleeve {
+
+}
+
+#channel-view-container video {
+    width: 100%;
+}
+
+#channel-view-container #video-index-item-info-container {
+    width: 100%;
+}
+
+#channel-view-container #video-index-item-info-container #video-index-item-title {
+    
+}
+
+#channel-view-container #video-index-item-info-container p {
+    font-size: 14px;
+}
+
+#channel-view-container #seperator-line {
+    width: 100%;
+    border-bottom: 1px #cccccc solid;
+    margin: 30px 0px;
+}
+
+#channel-home-videos {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+}
+
+

@@ -32,7 +32,9 @@ class VideoIndexItem extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchUser(this.props.video.uploaderId);
+        if (!this.props.users[this.props.video.uploaderId]) {
+            this.props.fetchUser(this.props.video.uploaderId);
+        }
     }
 
     handleMouseEnter(e) {
@@ -61,19 +63,26 @@ class VideoIndexItem extends React.Component {
             };
             let channelLink = `/api/channels/${uploader.id}/home`
             let usernamePopupId = `username-popup-${this.props.video.uploaderId}`
+
+            let uploaderIcon = null;
+            let uploaderLink = null;
+            if (!this.props.history.location.pathname.includes("channels")) {
+                uploaderIcon = <Link to={channelLink} className="uploader-icon" style={iconStyle}>
+                            {uploader.username[0].toUpperCase()}
+                        </Link>
+                uploaderLink = <><Link onMouseEnter={this.handleUsernameEnter} onMouseLeave={this.handleUsernameOut} to={channelLink}>{uploader.username}</Link>
+                            <div className="username-popup" id={usernamePopupId}>{uploader.username}</div></>
+            }
             return(
                 <Link to={videoShowUrl}>
                     <div id="video-index-video-sleeve">
                         <video onMouseEnter={this.handleMouseEnter} onMouseOut={this.handleMouseOut} src={this.props.video.videoUrl} muted></video>
                     </div>
                     <div id="video-index-item-info-container">
-                        <Link to={channelLink} className="uploader-icon" style={iconStyle}>
-                            {uploader.username[0].toUpperCase()}
-                        </Link>
+                        {uploaderIcon}
                         <div id="video-index-item-info">
                             <p id="video-index-item-title">{this.props.video.title}</p>
-                            <Link onMouseEnter={this.handleUsernameEnter} onMouseLeave={this.handleUsernameOut} to={channelLink}>{uploader.username}</Link>
-                            <div className="username-popup" id={usernamePopupId}>{uploader.username}</div>
+                            {uploaderLink}
                             <p>{this.props.video.numViews} views • {timeSinceUpload(this.props.video.uploadDate)}</p>
                         </div>
                     </div>
@@ -82,7 +91,7 @@ class VideoIndexItem extends React.Component {
         } else {
             return(
                 <div>
-                    Nothing user associated with video...
+                    LOADING
                 </div>
             )
         }

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import VideoIndexItem from './video_index_item';
 import { fetchUser } from '../../actions/user_actions';
+import { withRouter } from  'react-router-dom';
 
 const mSTP = (state, ownProps) => {
     return {
@@ -15,4 +16,4 @@ const mDTP = dispatch => {
     });
 };
 
-export default connect(mSTP, mDTP)(VideoIndexItem);
+export default withRouter(connect(mSTP, mDTP)(VideoIndexItem));

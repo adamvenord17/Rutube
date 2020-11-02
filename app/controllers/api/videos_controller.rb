@@ -1,7 +1,13 @@
 class Api::VideosController < ApplicationController
 
     def index
-        @videos = params[:bounds] ? Video.with_attached_video_file.within_search_params(params[:bounds]) : Video.with_attached_video_file.all
+        if params[:bounds] 
+            @videos = Video.with_attached_video_file.within_search_params(params[:bounds])
+        elsif params[:userId]
+            @videos = Video.with_attached_video_file.where(uploader_id: params[:userId])
+        else
+            @videos = Video.with_attached_video_file.all
+        end
         render :index
     end
 

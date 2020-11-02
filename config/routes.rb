@@ -7,6 +7,8 @@
 #           api_user_videos GET    /api/users/:user_id/videos(.:format)                                                     api/videos#index {:default=>{:Format=>:json}}
 #                 api_users POST   /api/users(.:format)                                                                     api/users#create {:default=>{:Format=>:json}}
 #                  api_user GET    /api/users/:id(.:format)                                                                 api/users#show {:default=>{:Format=>:json}}
+#                           PATCH  /api/users/:id(.:format)                                                                 api/users#update {:default=>{:Format=>:json}}
+#                           PUT    /api/users/:id(.:format)                                                                 api/users#update {:default=>{:Format=>:json}}
 #               api_session DELETE /api/session(.:format)                                                                   api/sessions#destroy {:default=>{:Format=>:json}}
 #                           POST   /api/session(.:format)                                                                   api/sessions#create {:default=>{:Format=>:json}}
 #            api_video_like POST   /api/videos/:video_id/like(.:format)                                                     api/videos#like {:default=>{:Format=>:json}}
@@ -48,7 +50,7 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
 
   namespace :api, default: {Format: :json} do
-    resources :users, only: %i(create show) do
+    resources :users, only: %i(create show update) do
       post :subscribeto, to: 'users#subscribe_to', as: 'subscribeto'
       post :unsubscribeto, to: 'users#unsubscribe_to', as: 'unsubscribeto'
 
