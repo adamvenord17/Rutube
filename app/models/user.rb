@@ -42,6 +42,18 @@ class User < ApplicationRecord
         through: :is_subscribed,
         source: :subscriber
 
+    has_many :likes,
+        foreign_key: :liker_id,
+        class_name: :Like
+
+    # has_many :liked_things,
+    #     through: :likes,
+    #     source: :likeable
+
+    def liked_videos
+        video_ids = self.likes.where(likeable_type: "Video").map {|like| like.likeable_id}
+        Video.with_attached_video_file.find(video_ids)
+    end
 
     def subscriber_count
         self.subscribers.count

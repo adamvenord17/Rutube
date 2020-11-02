@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import ChannelHome from './channel_views/channel_home_container';
 import ChannelVideos from './channel_views/channel_videos_container';
 import ChannelAbout from './channel_views/channel_about_container';
+import LikedVideos from './channel_views/channel_liked_container';
 
 
 class Channel extends React.Component {
@@ -91,6 +92,15 @@ class Channel extends React.Component {
             } else if (subCount > 1) {
                 subBlurb = `${subCount} subscribers`
             }
+
+            let path = this.props.history.location.pathname.split('/');
+            path = path[path.length - 1];
+            if (document.querySelector(".channel-view-tab.selected")) {
+                document.querySelector(".channel-view-tab.selected").classList.remove("selected");
+            }
+            if (document.getElementById(`channel-view-tab-${path}`)) {
+                document.getElementById(`channel-view-tab-${path}`).classList.add("selected")
+            }
     
             let titleBtns = '';
             if (parseInt(this.props.channelOwnerId) === this.props.currentUserId) {
@@ -98,26 +108,8 @@ class Channel extends React.Component {
                                 <button onClick={this.handleViewChange("about")} className="channel-owner-btn">CUSTOMIZE CHANNEL</button>
                                 <button onClick={this.handleViewChange("videos")} className="channel-owner-btn">MANAGE VIDEOS</button>
                             </div>
-            } else {
-                if (this.props.users[this.props.currentUserId]) {
-                    if (this.props.users[this.props.currentUserId].subscriptionIds.includes(this.props.channelOwnerId)) {
-                        titleBtns = <div id="channel-title-right">
-                                                    <button onClick={this.handleUnsubscribe} id="unsubscribe-btn">SUBSCRIBED</button>
-                                                </div>
-                    } else {
-                        titleBtns = <div id="channel-title-right">
-                                                    <button onClick={this.handleSubscribe} id="subscribe-btn">SUBSCRIBE</button>
-                                                </div>
-                    }
-                } else {
-                    titleBtns = <div id="channel-title-right">
-                                                    <button onClick={this.handleRedirectToLogin} id="subscribe-btn">SUBSCRIBE</button>
-                                                </div>
-                    }
-            }
-    
-            return(
-                <>
+                return(
+                    <>
                         <NavBarContainer />
                         <main className="row">
                             <SideBarContainer />
@@ -139,18 +131,70 @@ class Channel extends React.Component {
                                         {titleBtns}
                                     </div>
                                     <div id="channel-view-tabs-container">
-                                        <div className="channel-view-tab selected" id="channel-view-tab-home" onClick={this.handleViewChange("home")}>HOME</div>
+                                        <div className="channel-view-tab" id="channel-view-tab-home" onClick={this.handleViewChange("home")}>HOME</div>
                                         <div className="channel-view-tab" id="channel-view-tab-videos" onClick={this.handleViewChange("videos")}>VIDEOS</div>
+                                        <div className="channel-view-tab" id="channel-view-tab-liked" onClick={this.handleViewChange("liked")}>LIKED</div>
                                         <div className="channel-view-tab" id="channel-view-tab-about" onClick={this.handleViewChange("about")}>ABOUT</div>
                                     </div>
                                 </header>
                                 <Route path="/api/channels/:userId/home" component={ChannelHome} />
                                 <Route path="/api/channels/:userId/videos" component={ChannelVideos} />
+                                <Route path="/api/channels/:userId/liked" component={LikedVideos} />
                                 <Route path="/api/channels/:userId/about" component={ChannelAbout} />
                             </section>
                         </main>
                     </>
-            )
+                )
+            } else {
+                if (this.props.users[this.props.currentUserId]) {
+                    if (this.props.users[this.props.currentUserId].subscriptionIds.includes(this.props.channelOwnerId)) {
+                        titleBtns = <div id="channel-title-right">
+                                                    <button onClick={this.handleUnsubscribe} id="unsubscribe-btn">SUBSCRIBED</button>
+                                                </div>
+                    } else {
+                        titleBtns = <div id="channel-title-right">
+                                                    <button onClick={this.handleSubscribe} id="subscribe-btn">SUBSCRIBE</button>
+                                                </div>
+                    }
+                } else {
+                    titleBtns = <div id="channel-title-right">
+                                                    <button onClick={this.handleRedirectToLogin} id="subscribe-btn">SUBSCRIBE</button>
+                                                </div>
+                    }
+                return(
+                        <>
+                            <NavBarContainer />
+                            <main className="row">
+                                <SideBarContainer />
+                                <SmallSideBar />
+                                <section id="channel-container" className="extend">
+                                    <header>
+                                        <div id="channel-title">
+                                            <div id="channel-title-left">
+                                                <div className="uploader-icon" style={iconStyle}>
+                                                    {uploader.username[0].toUpperCase()}
+                                                </div>
+                                                <div id="channel-name-and-btns">
+                                                    <div id="name-and-subs-count">
+                                                        <p id="channel-username">{this.props.channelOwner.username}</p>
+                                                        <p id="channel-subs-count">{subBlurb}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {titleBtns}
+                                        </div>
+                                        <div id="channel-view-tabs-container">
+                                            <div className="channel-view-tab selected" id="channel-view-tab-home" onClick={this.handleViewChange("home")}>HOME</div>
+                                            <div className="channel-view-tab" id="channel-view-tab-about" onClick={this.handleViewChange("about")}>ABOUT</div>
+                                        </div>
+                                    </header>
+                                    <Route path="/api/channels/:userId/home" component={ChannelVideos} />
+                                    <Route path="/api/channels/:userId/about" component={ChannelAbout} />
+                                </section>
+                            </main>
+                        </>
+                )
+            }
         } else {
             return null
         }
