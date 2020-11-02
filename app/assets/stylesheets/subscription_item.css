@@ -1,0 +1,61 @@
+#channel-view-container {
+    padding: 26px 45px;
+}
+
+.channel-view-title {
+    font-weight: 700;
+}
+
+#channel-home-subscriptions {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#subscription-item-container {
+    margin: 20px 40px;
+    max-width: 100px;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}   
+
+#subscription-item-container a.uploader-icon {
+    height: 100px;
+    border-radius: 50px;
+    font-size: 45px;
+    text-decoration: none;
+    width: 100%;
+}
+
+#subscription-item-container #subscription-name {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px 0px 3px 0px;
+}
+
+#subscription-item-container #subscription-count {
+    font-size: 14px;
+    color: #444444;
+}
+
+#subscription-item-container #unsubscribe-btn {
+    background-color: #e5e5e5;
+    color: #606060;
+    border: none;
+    border-radius: 2px;
+    margin: 25px 0px 0px 0px;
+    transition: .5s;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+#subscription-item-container #unsubscribe-btn:hover {
+    background-color: #ececec;
+    color: #606060;
+    border: none;
+}
+
+#subscription-item-container #unsubscribe-btn:focus {
+    outline: none;
+}

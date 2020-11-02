@@ -12,13 +12,29 @@ class SideBar extends React.Component {
     hideSidebar() {
         let sideBar = document.getElementById("sidebar-container");
         let videoIndex = document.getElementById("video-index-container");
+        let channelContainer = document.getElementById("channel-container");
         let smallSideBar = document.getElementById("small-sidebar-container");
         smallSideBar.classList.remove("hide");
         sideBar.classList.add("hide");
-        videoIndex.classList.add("extend");
+
+        if (videoIndex !== null) {
+            videoIndex.classList.add("extend");
+        } 
+        if (channelContainer !== null) {
+            channelContainer.classList.add("extend");
+        }
     }
 
     render() {
+        let subsLink = `/login`;
+        let vidsLink = `/login`;
+        let likedLink = `/login`;
+        if (this.props.currentUserId) {
+            subsLink = `/api/channels/${this.props.currentUserId}/home`;
+            vidsLink = `/api/channels/${this.props.currentUserId}/videos`;
+            likedLink = `/api/channels/${this.props.currentUserId}/liked`;
+        }
+
         if (this.props.modal !== "sidebar") {
             return (
                 <section id="sidebar-container" className="hide">
@@ -28,9 +44,9 @@ class SideBar extends React.Component {
                     </div>
                     <div id="sidebar-website-links">
                         <Link id="sidebar-home-link" to='/'><i className="fas fa-home"></i>Home</Link>
-                        <Link to='/'><i className="far fa-newspaper"></i>Subscriptions (in dev)</Link>
-                        <Link to='/'><i className="fas fa-photo-video"></i>Your Videos (in dev)</Link>
-                        <Link to='/'><i className="fas fa-thumbs-up"></i>Liked Videos (in dev)</Link>
+                        <Link to={subsLink}><i className="far fa-newspaper"></i>Subscriptions</Link>
+                        <Link to={vidsLink}><i className="fas fa-photo-video"></i>Your Videos</Link>
+                        <Link to={likedLink}><i className="fas fa-thumbs-up"></i>Liked Videos</Link>
                     </div>
                     <div>
                         <a href="https://github.com/adamvenord17"><i className="fab fa-github"></i>GitHub</a>
@@ -68,9 +84,9 @@ class SideBar extends React.Component {
                     </div>
                     <div id="sidebar-website-links">
                         <Link id="sidebar-home-link" to='/'><i className="fas fa-home"></i>Home</Link>
-                        <Link to='/'><i className="far fa-newspaper"></i>Subscriptions (in dev)</Link>
-                        <Link to='/'><i className="fas fa-photo-video"></i>Your Videos (in dev)</Link>
-                        <Link to='/'><i className="fas fa-thumbs-up"></i>Liked Videos (in dev)</Link>
+                        <Link to={subsLink}><i className="far fa-newspaper"></i>Subscriptions</Link>
+                        <Link to={vidsLink}><i className="fas fa-photo-video"></i>Your Videos</Link>
+                        <Link to={likedLink}><i className="fas fa-thumbs-up"></i>Liked Videos</Link>
                     </div>
                     <div>
                         <a href="https://github.com/adamvenord17"><i className="fab fa-github"></i>GitHub</a>

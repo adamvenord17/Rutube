@@ -10,6 +10,9 @@ class VideoIndexItem extends React.Component {
         this.intToRGB = this.intToRGB.bind(this);
         this.handleMouseOut = this.handleMouseOut.bind(this);
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
+
+        this.handleUsernameEnter = this.handleUsernameEnter.bind(this);
+        this.handleUsernameOut = this.handleUsernameOut.bind(this);
     }
 
     hashCode(str) { // java String#hashCode
@@ -29,7 +32,9 @@ class VideoIndexItem extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchUser(this.props.video.uploaderId);
+        if (!this.props.users[this.props.video.uploaderId]) {
+            this.props.fetchUser(this.props.video.uploaderId);
+        }
     }
 
     handleMouseEnter(e) {
@@ -40,6 +45,14 @@ class VideoIndexItem extends React.Component {
         e.target.pause();
     }
 
+    handleUsernameEnter() {
+        document.getElementById(`username-popup-${this.props.video.uploaderId}`).classList.add('reveal');
+    }
+
+    handleUsernameOut() {
+        document.getElementById(`username-popup-${this.props.video.uploaderId}`).classList.remove('reveal');
+    }
+
     render() {
         if (this.props.users[this.props.video.uploaderId]) {
             let videoShowUrl = `/api/videos/${this.props.video.id}`;
@@ -48,18 +61,28 @@ class VideoIndexItem extends React.Component {
             let iconStyle = {
                 backgroundColor: `#${iconColor}`
             };
+            let channelLink = `/api/channels/${uploader.id}/home`
+            let usernamePopupId = `username-popup-${this.props.video.uploaderId}`
+
+            let uploaderIcon = null;
+            let uploaderLink = null;
+            if (!this.props.history.location.pathname.includes("channels")) {
+                uploaderIcon = <Link to={channelLink} className="uploader-icon" style={iconStyle}>
+                            {uploader.username[0].toUpperCase()}
+                        </Link>
+                uploaderLink = <><Link onMouseEnter={this.handleUsernameEnter} onMouseLeave={this.handleUsernameOut} to={channelLink}>{uploader.username}</Link>
+                            <div className="username-popup" id={usernamePopupId}>{uploader.username}</div></>
+            }
             return(
                 <Link to={videoShowUrl}>
                     <div id="video-index-video-sleeve">
                         <video onMouseEnter={this.handleMouseEnter} onMouseOut={this.handleMouseOut} src={this.props.video.videoUrl} muted></video>
                     </div>
                     <div id="video-index-item-info-container">
-                        <div className="uploader-icon" style={iconStyle}>
-                            {uploader.username[0].toUpperCase()}
-                        </div>
+                        {uploaderIcon}
                         <div id="video-index-item-info">
                             <p id="video-index-item-title">{this.props.video.title}</p>
-                            <p>{uploader.username}</p>
+                            {uploaderLink}
                             <p>{this.props.video.numViews} views • {timeSinceUpload(this.props.video.uploadDate)}</p>
                         </div>
                     </div>
@@ -68,7 +91,7 @@ class VideoIndexItem extends React.Component {
         } else {
             return(
                 <div>
-                    Nothing user associated with video...
+                    LOADING
                 </div>
             )
         }

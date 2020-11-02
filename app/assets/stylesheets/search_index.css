@@ -71,6 +71,7 @@
 #search-results-container #next-video-item-container #next-video-item-info {
     width: 100%;
     margin-left: 17px;
+    position: relative;
 }
 
 #search-results-container #next-video-item-container #next-video-item-info .weak-p {
@@ -82,4 +83,11 @@
     font-weight: normal;
 }
 
+#next-video-item-info p a {
+    color: #565656;
+    text-decoration: none;
+}
 
+#next-video-item-info p a:hover {
+    color: black
+}

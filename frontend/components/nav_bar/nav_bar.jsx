@@ -11,6 +11,7 @@ class NavBar extends React.Component {
         this.showSidebar = this.showSidebar.bind(this);
         this.hashCode = this.hashCode.bind(this);
         this.intToRGB = this.intToRGB.bind(this);
+        this.redirectToUserChannel = this.redirectToUserChannel.bind(this);
     }
 
     hashCode(str) { // java String#hashCode
@@ -33,9 +34,15 @@ class NavBar extends React.Component {
         let sideBar = document.getElementById("sidebar-container");
         let videoIndex = document.getElementById("video-index-container");
         let smallSideBar = document.getElementById("small-sidebar-container");
+        let channelContainer = document.getElementById("channel-container");
         smallSideBar.classList.add("hide");
         sideBar.classList.remove("hide");
-        videoIndex.classList.remove("extend");
+        if (videoIndex !== null) {
+            videoIndex.classList.remove("extend");
+        } 
+        if (channelContainer !== null) {
+            channelContainer.classList.remove("extend");
+        }
     }
 
     handleUserDropdown() {
@@ -45,6 +52,14 @@ class NavBar extends React.Component {
         body.addEventListener("click", () => {
             userDropdown.classList.add("hide");
         });
+    }
+
+    redirectToUserChannel() {
+        if (this.props.location.pathname.includes("channels")) {
+            this.props.history.replace(`/api/channels/${this.props.currentUser.id}/home`)
+        } else {
+            this.props.history.push(`/api/channels/${this.props.currentUser.id}/home`)
+        }
     }
 
     render() {
@@ -72,7 +87,7 @@ class NavBar extends React.Component {
                                             <p className="email">{this.props.currentUser.email}</p>
                                         </div>
                                 </header>
-                                <button><i id="dropdown-user-icon" className='fas fa-user-circle'></i> Your Channel --Coming Soon!--</button>
+                                <button onClick={this.redirectToUserChannel}><i id="dropdown-user-icon" className='fas fa-user-circle'></i> Your Channel</button>
                                 <button id="last-user-dropdown-btn" onClick={this.props.logout}><i id="dropdown-logout-icon" className="fas fa-door-open"></i> Logout</button>
                             </div>
         } else {

@@ -3,6 +3,7 @@ import * as ApiLikesUtil from '../util/likes_util';
 import * as ApiViewsUtil from '../util/views_api_util';
 
 export const RECEIVE_VIDEOS = "RECEIVE_VIDEOS";
+export const RECEIVE_LIKED_VIDEOS = "RECEIVE_LIKED_VIDEOS";
 export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
 export const RECEIVE_VIDEO_ERRORS = "RECEIVE_VIDEO_ERRORS";
 export const REMOVE_VIDEO = "REMOVE_VIDEO";
@@ -10,6 +11,13 @@ export const REMOVE_VIDEO = "REMOVE_VIDEO";
 const receiveVideos = (videos) => {
     return {
         type: RECEIVE_VIDEOS,
+        videos
+    };
+};
+
+const receiveLikedVideos = (videos) => {
+    return {
+        type: RECEIVE_LIKED_VIDEOS,
         videos
     };
 };
@@ -37,6 +45,10 @@ const deleteVideo = (videoId) => {
 
 export const fetchVideos = (filters) => dispatch => {
     return (ApiVideosUtil.fetchVideos(filters).then(videos => dispatch(receiveVideos(videos)), errors => dispatch(receiveVideoErrors(errors))));
+};
+
+export const fetchLikedVideos = (likerId) => dispatch => {
+    return (ApiVideosUtil.fetchVideos(likerId).then(videos => dispatch(receiveLikedVideos(videos)), errors => dispatch(receiveVideoErrors(errors))));
 };
 
 export const fetchVideo = (videoId) => dispatch => {
