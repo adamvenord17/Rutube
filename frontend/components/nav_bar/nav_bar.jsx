@@ -55,7 +55,11 @@ class NavBar extends React.Component {
     }
 
     redirectToUserChannel() {
-        this.props.history.push(`api/channels/${this.props.currentUser.id}/home`)
+        if (this.props.location.pathname.includes("channels")) {
+            this.props.history.replace(`/api/channels/${this.props.currentUser.id}/home`)
+        } else {
+            this.props.history.push(`/api/channels/${this.props.currentUser.id}/home`)
+        }
     }
 
     render() {
