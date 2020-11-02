@@ -41,52 +41,66 @@ class ChannelAbout extends React.Component {
 
         let formView = "showing"
 
-        if (parseInt(this.props.channelOwnerId) !== this.props.currentUserId) {
-            formView = "hiding"
-        }
-
         let errors = null;
         if (this.props.errors.length > 0) {
             errors = this.props.errors.map(error => {
                 return <div id="edit-error">{error}</div>
             })
         }
-        return(
-            <div id="channel-view-container">
-                <div id="channel-about-container">
-                    <div id="edit-channel-container" className={formView}>
-                        <div id='edit-channel-title'>Update Profile</div>
-                        <form>
-                            <div className={usernameClass}>
-                                <input
-                                    type="text"
-                                    onChange={this.handleChange('username')}
-                                    value={this.state.username}
-                                    required
-                                />
-                                <label>Username</label>
-                            </div>
-                            <div className={emailClass}>
-                                <input
-                                    type="text"
-                                    onChange={this.handleChange('email')}
-                                    value={this.state.email}
-                                    required
-                                />
-                                <label>Email</label>
-                            </div>
-                            {errors}
-                            <button className="edit" onClick={this.handleSubmit}>SAVE UPDATES</button>
-                        </form>
-                    </div>
-                    <div id="about-stats-container">
-                        <div id="about-stats-title" className="about-stats-stat">Stats</div>
-                        <div className="about-stats-stat">Joined {joinedAt}</div>
-                        <div className="about-stats-stat">{totalViews} views</div>
+
+        if (parseInt(this.props.channelOwnerId) !== this.props.currentUserId) {
+            formView = "hiding"
+            return(
+                <div id="channel-view-container">
+                    <div id="channel-about-container">
+                        <div id="edit-channel-container" className={formView}>
+                        </div>
+                        <div id="about-stats-container">
+                            <div id="about-stats-title" className="about-stats-stat">Stats</div>
+                            <div className="about-stats-stat">Joined {joinedAt}</div>
+                            <div className="about-stats-stat">{totalViews} views</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return(
+                <div id="channel-view-container">
+                    <div id="channel-about-container">
+                        <div id="edit-channel-container" className={formView}>
+                            <div id='edit-channel-title'>Update Profile</div>
+                            <form>
+                                <div className={usernameClass}>
+                                    <input
+                                        type="text"
+                                        onChange={this.handleChange('username')}
+                                        value={this.state.username}
+                                        required
+                                    />
+                                    <label>Username</label>
+                                </div>
+                                <div className={emailClass}>
+                                    <input
+                                        type="text"
+                                        onChange={this.handleChange('email')}
+                                        value={this.state.email}
+                                        required
+                                    />
+                                    <label>Email</label>
+                                </div>
+                                {errors}
+                                <button className="edit" onClick={this.handleSubmit}>SAVE UPDATES</button>
+                            </form>
+                        </div>
+                        <div id="about-stats-container">
+                            <div id="about-stats-title" className="about-stats-stat">Stats</div>
+                            <div className="about-stats-stat">Joined {joinedAt}</div>
+                            <div className="about-stats-stat">{totalViews} views</div>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
     }
 }
 
