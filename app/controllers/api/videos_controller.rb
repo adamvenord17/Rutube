@@ -129,6 +129,8 @@ class Api::VideosController < ApplicationController
                 else
                     render json: @view.errors.full_messages, status: :unprocessable_entity
                 end
+            else
+                redirect_to api_video_url(params[:video_id])
             end
         else
             @view = View.new(ip_address: request.remote_ip, video_id: params[:video_id])

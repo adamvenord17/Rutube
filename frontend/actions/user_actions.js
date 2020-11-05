@@ -45,7 +45,6 @@ const addSubscription = (creatorId, subscriberId) => {
 }
 
 const removeSubscription = (creatorId, subscriberId) => {
-    debugger
     return({
         type: REMOVE_SUB,
         creatorId,
@@ -77,10 +76,10 @@ export const fetchUser = (userId) => dispatch => {
 
 export const subscribeTo = (creatorId, subscriberId) => dispatch => {
     dispatch(addSubscription(creatorId, subscriberId))
-    return UserApi.subscribeTo(creatorId).then(user => dispatch(recieveUser(user)))
+    return UserApi.subscribeTo(creatorId).then(user => dispatch(receiveUser(user)))
 }
 
 export const unsubscribeTo = (creatorId, subscriberId) => dispatch => {
     dispatch(removeSubscription(creatorId, subscriberId))
-    return UserApi.unsubscribeTo(creatorId).then(user => dispatch(recieveUser(user)))
+    return UserApi.unsubscribeTo(creatorId).then(user => dispatch(receiveUser(user)))
 }
