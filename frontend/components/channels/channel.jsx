@@ -19,8 +19,11 @@ class Channel extends React.Component {
 
         this.handleViewChange = this.handleViewChange.bind(this);
 
+
+
         this.state = {
-            channelOwnerId: this.props.channelOwnerId
+            channelOwnerId: this.props.channelOwnerId,
+            view: this.props.history.location.pathname.split('/')[this.props.history.location.pathname.split('/').length - 1]
         }
     }
 
@@ -31,12 +34,17 @@ class Channel extends React.Component {
                 this.props.fetchUser(this.props.currentUserId);
             }
         }
-        this.props.fetchVideos({userId: this.props.channelOwnerId});
+        this.handleViewChange(this.state.view)();
     }
 
     componentDidUpdate() {
         if (this.state.channelOwnerId !== this.props.channelOwnerId) {
             this.setState({channelOwnerId: this.props.channelOwnerId}, () => this.props.fetchVideos({userId: this.props.channelOwnerId}))
+        }
+        let path = this.props.history.location.pathname.split('/');
+        path = path[path.length - 1];
+        if (this.state.view !== path) {
+            this.setState({view: path}, this.handleViewChange(path)());
         }
     }
 
@@ -93,14 +101,15 @@ class Channel extends React.Component {
                 subBlurb = `${subCount} subscribers`
             }
 
-            let path = this.props.history.location.pathname.split('/');
-            path = path[path.length - 1];
-            if (document.querySelector(".channel-view-tab.selected")) {
-                document.querySelector(".channel-view-tab.selected").classList.remove("selected");
-            }
-            if (document.getElementById(`channel-view-tab-${path}`)) {
-                document.getElementById(`channel-view-tab-${path}`).classList.add("selected")
-            }
+            // let path = this.props.history.location.pathname.split('/');
+            // path = path[path.length - 1];
+            // debugger
+            // if (document.querySelector(".channel-view-tab.selected")) {
+            //     document.querySelector(".channel-view-tab.selected").classList.remove("selected");
+            // }
+            // if (document.getElementById(`channel-view-tab-${path}`)) {
+            //     document.getElementById(`channel-view-tab-${path}`).classList.add("selected")
+            // }
     
             let titleBtns = '';
             if (parseInt(this.props.channelOwnerId) === this.props.currentUserId) {
@@ -131,7 +140,7 @@ class Channel extends React.Component {
                                         {titleBtns}
                                     </div>
                                     <div id="channel-view-tabs-container">
-                                        <div className="channel-view-tab" id="channel-view-tab-home" onClick={this.handleViewChange("home")}>HOME</div>
+                                        <div className="channel-view-tab selected" id="channel-view-tab-home" onClick={this.handleViewChange("home")}>HOME</div>
                                         <div className="channel-view-tab" id="channel-view-tab-videos" onClick={this.handleViewChange("videos")}>VIDEOS</div>
                                         <div className="channel-view-tab" id="channel-view-tab-liked" onClick={this.handleViewChange("liked")}>LIKED</div>
                                         <div className="channel-view-tab" id="channel-view-tab-about" onClick={this.handleViewChange("about")}>ABOUT</div>

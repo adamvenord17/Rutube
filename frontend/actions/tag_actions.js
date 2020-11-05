@@ -18,9 +18,9 @@ const receiveTag = (tag) => {
 }
 
 export const fetchTags = () => dispatch => {
-    return(ApiTagsUtil.fetchTags().then(tags => dispatch(receiveTags(tags)).catch(errors => console.log(errors))))
+    return(ApiTagsUtil.fetchTags().then(tags => dispatch(receiveTags(tags))).catch(errors => console.log(errors)));
 }
 
 export const fetchTag = (tag_id) => dispatch => {
-    return(ApiTagsUtil.fetchTag(tag_id).then(tag => dispatch(receiveTag(tag))))
+    return(ApiTagsUtil.fetchTag(tag_id).then(tag => dispatch(receiveTag(tag))).catch(errors => console.log(errors)));
 }

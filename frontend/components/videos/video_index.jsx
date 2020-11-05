@@ -51,6 +51,7 @@ class VideoIndex extends React.Component {
     }
 
     checkScroll() {
+        debugger
         let elem = document.getElementById("genre-header");
         let rightBtn = document.getElementById("genre-header-right");
         let leftBtn = document.getElementById("genre-header-left");
