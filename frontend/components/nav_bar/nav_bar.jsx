@@ -62,6 +62,11 @@ class NavBar extends React.Component {
         }
     }
 
+    handleLogout() {
+        this.props.logout();
+        this.props.history.push('/');
+    }
+
     render() {
         let userButton = '';
         let addVideoBtnClass = '';

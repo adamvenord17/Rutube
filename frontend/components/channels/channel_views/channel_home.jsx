@@ -6,6 +6,10 @@ class ChannelHome extends React.Component {
         super(props)
     }
 
+    // componentDidMount() {
+    //     this.props.fetchUserVideos(this.props.channelOwnerId);
+    // }
+
     render() {
 
         let subscriptions = this.props.channelOwner.subscriptionIds.map(subId => {
@@ -15,6 +19,14 @@ class ChannelHome extends React.Component {
         let videos = Object.values(this.props.videos).map((video) => {
             return <div key={video.id} className="video-item"><VideoIndexItem video={video} /></div>
         })
+
+        if (subscriptions.length === 0) {
+            subscriptions = <div style={{marginLeft: '20px', marginTop: '20px'}}>No Subscriptions yet. Go out and subscribe to some users!</div>
+        }
+
+        if (videos.length === 0) {
+            videos = <div style={{marginLeft: '20px'}}>Your uploaded videos will appear here. It doesn't look like you have uploaded any videos yet!</div>
+        }
 
         return(
             <div id="channel-view-container">

@@ -34,6 +34,7 @@ class Channel extends React.Component {
                 this.props.fetchUser(this.props.currentUserId);
             }
         }
+        this.props.fetchVideos({userId: this.props.channelOwnerId});
         this.handleViewChange(this.state.view)();
     }
 

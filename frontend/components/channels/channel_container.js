@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import Channel from "./channel";
 import { fetchUser } from "../../actions/user_actions";
 import { subscribeTo, unsubscribeTo } from '../../actions/user_actions';
+import { fetchVideos } from '../../actions/video_actions';
 
 const mSTP = (state, ownProps) => {
     return({

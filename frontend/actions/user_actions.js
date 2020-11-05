@@ -45,6 +45,7 @@ const addSubscription = (creatorId, subscriberId) => {
 }
 
 const removeSubscription = (creatorId, subscriberId) => {
+    debugger
     return({
         type: REMOVE_SUB,
         creatorId,

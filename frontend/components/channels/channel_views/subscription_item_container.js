@@ -6,13 +6,14 @@ import SubscriptionItem from './subscription_item';
 const mSTP = (state, ownProps) => {
     return({
         creatorId: ownProps.creatorId,
-        creator: state.entities.users[ownProps.creatorId]
+        creator: state.entities.users[ownProps.creatorId],
+        currentUserId: state.session.currentUserId,
     })
 }
 
 const mDTP = dispatch => {
     return({
-        unsubscribeTo: userId => dispatch(unsubscribeTo(userId)),
+        unsubscribeTo: (userId, subscriberId) => dispatch(unsubscribeTo(userId, subscriberId)),
         fetchUser: userId => dispatch(fetchUser(userId)),
     })
 }

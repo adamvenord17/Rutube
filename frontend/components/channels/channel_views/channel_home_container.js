@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import ChannelHome from './channel_home';
+import { fetchVideos } from '../../../actions/video_actions';
 
 const mSTP = (state, ownProps) => {
     return({
@@ -12,10 +13,10 @@ const mSTP = (state, ownProps) => {
     })
 }
 
-// const mDTP = dispatch => {
-//     return({
+const mDTP = dispatch => {
+    return({
+        fetchUserVideos: userId => dispatch(fetchVideos(userId)),
+    })
+}
 
-//     })
-// }
-
-export default withRouter(connect(mSTP)(ChannelHome))
+export default withRouter(connect(mSTP, mDTP)(ChannelHome))

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 class SubscriptionItem extends React.Component {
     constructor(props) {
         super(props)
+
+        this.handleUnsubscribe = this.handleUnsubscribe.bind(this);
     }
 
     componentDidMount() {

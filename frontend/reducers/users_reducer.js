@@ -15,6 +15,7 @@ const usersReducer = (oldState = {}, action) => {
             newState[action.creatorId].subscriberCount++
             return newState
         case REMOVE_SUB:
+            debugger
             newState[action.subscriberId].subscriptionIds = newState[action.subscriberId].subscriptionIds.filter(id => id !== action.creatorId)
             newState[action.creatorId].subscriberCount--
             return newState

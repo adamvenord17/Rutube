@@ -17,6 +17,10 @@ class LikedVideos extends React.Component {
             return <div key={video.id} className="video-item"><VideoIndexItem video={video} /></div>
         })
 
+        if (videos.length === 0) {
+            videos = <div style={{marginLeft: '20px'}}>Videos that you like will appear here. It doesn't look like you have liked any videos yet!</div>
+        }
+
         return(
             <div id="channel-view-container">
                 <div id="channel-home-container">
