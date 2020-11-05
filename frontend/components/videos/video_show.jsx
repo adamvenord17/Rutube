@@ -296,7 +296,6 @@ class VideoShow extends React.Component {
                                                 {dislikeBtn}
                                                 <button onClick={this.goToLinkedin} id="share-btn"><i className="fas fa-share"></i><a href="https://www.linkedin.com/in/nicholas-draper/">LinkedIn</a></button>
                                                 <button onClick={this.goToGithub} id="save-btn"><i className="fas fa-folder-plus"></i><a href="https://github.com/adamvenord17">GitHub</a></button>
-                                                <button id="ellipsis-btn"><i className="fas fa-ellipsis-h"></i></button>
                                             </div>
                                         </div>
                                     </div>
