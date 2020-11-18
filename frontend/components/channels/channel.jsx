@@ -35,7 +35,9 @@ class Channel extends React.Component {
             }
         }
         this.props.fetchVideos({userId: this.props.channelOwnerId});
-        this.handleViewChange(this.state.view)();
+        if (document.getElementById(`channel-view-tab-${this.state.view}`)) {
+            this.handleViewChange(this.state.view)();
+        }
     }
 
     componentDidUpdate() {
@@ -101,16 +103,6 @@ class Channel extends React.Component {
             } else if (subCount > 1) {
                 subBlurb = `${subCount} subscribers`
             }
-
-            // let path = this.props.history.location.pathname.split('/');
-            // path = path[path.length - 1];
-            // debugger
-            // if (document.querySelector(".channel-view-tab.selected")) {
-            //     document.querySelector(".channel-view-tab.selected").classList.remove("selected");
-            // }
-            // if (document.getElementById(`channel-view-tab-${path}`)) {
-            //     document.getElementById(`channel-view-tab-${path}`).classList.add("selected")
-            // }
     
             let titleBtns = '';
             if (parseInt(this.props.channelOwnerId) === this.props.currentUserId) {
@@ -157,7 +149,7 @@ class Channel extends React.Component {
                 )
             } else {
                 if (this.props.users[this.props.currentUserId]) {
-                    if (this.props.users[this.props.currentUserId].subscriptionIds.includes(this.props.channelOwnerId)) {
+                    if (this.props.users[this.props.currentUserId].subscriptionIds.includes(this.props.channelOwner.id)) {
                         titleBtns = <div id="channel-title-right">
                                                     <button onClick={this.handleUnsubscribe} id="unsubscribe-btn">SUBSCRIBED</button>
                                                 </div>

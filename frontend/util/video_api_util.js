@@ -1,5 +1,4 @@
 export const fetchVideos = (data) => {
-    debugger
     return(
         $.ajax({
             method: "GET",
@@ -10,7 +9,6 @@ export const fetchVideos = (data) => {
 };
 
 export const fetchVideo = (videoId) => {
-    debugger
     return(
         $.ajax({
             method: "GET",
@@ -20,7 +18,6 @@ export const fetchVideo = (videoId) => {
 };
 
 export const createVideo = (video) => {
-    debugger
     return (
         $.ajax({
             method: "POST",
@@ -33,7 +30,6 @@ export const createVideo = (video) => {
 };
 
 export const updateVideo = (video, tags) => {
-    debugger
     return (
         $.ajax({
             method: "PATCH",
@@ -44,7 +40,6 @@ export const updateVideo = (video, tags) => {
 };
 
 export const deleteVideo = (videoId) => {
-    debugger
     return (
         $.ajax({
             method: "DELETE",
