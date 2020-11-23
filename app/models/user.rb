@@ -51,7 +51,7 @@ class User < ApplicationRecord
     #     source: :likeable
 
     def liked_videos
-        video_ids = self.likes.where(likeable_type: "Video").map {|like| like.likeable_id}
+        video_ids = self.likes.where(likeable_type: "Video").where(is_like: true).map {|like| like.likeable_id}
         Video.with_attached_video_file.find(video_ids)
     end
 
