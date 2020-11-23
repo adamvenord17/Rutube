@@ -1,6 +1,7 @@
 class Api::VideosController < ApplicationController
 
     def index
+        # debugger
         if params[:bounds] 
             @videos = Video.with_attached_video_file.within_search_params(params[:bounds])
         elsif params[:userId]
