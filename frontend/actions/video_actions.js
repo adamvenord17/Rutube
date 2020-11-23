@@ -44,7 +44,7 @@ const deleteVideo = (videoId) => {
 };
 
 export const fetchVideos = (filters) => dispatch => {
-    return (ApiVideosUtil.fetchVideos(filters).then(videos => dispatch(receiveVideos(videos)), errors => dispatch(receiveVideoErrors(errors))));
+    return (ApiVideosUtil.fetchVideos(filters).then(videos => dispatch(receiveVideos(videos))).catch( errors => console.log(errors)));
 };
 
 export const fetchLikedVideos = (likerId) => dispatch => {
