@@ -44,12 +44,12 @@ const deleteVideo = (videoId) => {
 };
 
 export const fetchVideos = (filters) => dispatch => {
-    return (ApiVideosUtil.fetchVideos(filters).then(videos => console.log(videos)))
-        // videos => dispatch(receiveVideos(videos)), errors => console.log(errors))));
+    return (ApiVideosUtil.fetchVideos(filters).then(videos => dispatch(receiveVideos(videos)), errors => dispatch(receiveVideoErrors(errors))));
 };
 
 export const fetchLikedVideos = (likerId) => dispatch => {
-    return (ApiVideosUtil.fetchVideos(likerId).then(videos => dispatch(receiveLikedVideos(videos)), errors => dispatch(receiveVideoErrors(errors))));
+    return (ApiVideosUtil.fetchVideos(likerId).then(videos => console.log(videos)))
+        // videos => dispatch(receiveLikedVideos(videos)), errors => dispatch(receiveVideoErrors(errors))));
 };
 
 export const fetchVideo = (videoId) => dispatch => {
