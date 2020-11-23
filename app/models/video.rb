@@ -20,23 +20,26 @@ class Video < ApplicationRecord
         foreign_key: :uploader_id,
         class_name: :User
 
-    has_many :likes, as: :likeable
+    has_many :likes, as: :likeable, dependent: :destroy
 
     has_many :comments,
         foreign_key: :video_id,
-        class_name: :Comment
+        class_name: :Comment,
+        dependent: :destroy
 
     has_one_attached :video_file
 
-    has_many :views
+    has_many :views, dependent: :destroy
 
     has_many :tag_joins,
         foreign_key: :video_id,
-        class_name: :TagJoin
+        class_name: :TagJoin,
+        dependent: :destroy
 
     has_many :tags,
         through: :tag_joins,
-        source: :tag
+        source: :tag,
+        dependent: :destroy
 
     def liker_ids
         self.likes.where(is_like: true).select(:liker_id).map { |ele| ele.liker_id }

@@ -14,11 +14,12 @@ class Comment < ApplicationRecord
 
     validates :content, :author_id, presence: true
 
-    has_many :likes, as: :likeable
+    has_many :likes, as: :likeable, dependent: :destroy
 
     has_many :reply_comments,
         foreign_key: :parent_id,
-        class_name: :Comment
+        class_name: :Comment,
+        dependent: :destroy
 
     belongs_to :author,
         foreign_key: :author_id,

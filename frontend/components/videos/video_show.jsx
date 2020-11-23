@@ -195,7 +195,9 @@ class VideoShow extends React.Component {
 
             nextVideos = nextVideosRight.concat(nextVideosLeft);
 
-            let nextVideo = nextVideos[0].key;
+            if (nextVideos.length > 0) {
+                var nextVideo = nextVideos[0].key;
+            }
 
             // sets up a subscribe button if current user is not owner of video
             // otherwise sets up edit and remove buttons for the video

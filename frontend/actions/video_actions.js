@@ -48,8 +48,7 @@ export const fetchVideos = (filters) => dispatch => {
 };
 
 export const fetchLikedVideos = (likerId) => dispatch => {
-    return (ApiVideosUtil.fetchVideos(likerId).then(videos => console.log(videos)).catch(errors => console.log(errors)))
-        // videos => dispatch(receiveLikedVideos(videos)), errors => dispatch(receiveVideoErrors(errors))));
+    return (ApiVideosUtil.fetchVideos(likerId).then(videos => dispatch(receiveLikedVideos(videos)), errors => dispatch(receiveVideoErrors(errors))));
 };
 
 export const fetchVideo = (videoId) => dispatch => {
