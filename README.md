@@ -1,4 +1,4 @@
-# Rutube(RubyReel)
+# Rutube
 
 
 <h3 style="text-align: center">Share, explore, and discover</h3>
@@ -85,18 +85,12 @@ Now, a video will have a safer, consistant, and more accurate view count.
 ## Smart Errors
 I wanted logging in and signing up to Rutube to feel easy, smooth, and effortless. I wanted to make sure that the user knew exactly what was going on if they had a failed sign in or log in, so made sure to receive errors from my backend and update my state with them so I would be able to present the specific errors to my users.
 
-<div style="text-align: center"><img src="app/assets/images/loggingin.gif" alt="video index"></div>
-
 I also knew that in signup, there are multiple fields that can be invalid. To make it clear which fields are erroring out, I made sure that the specific input that was invalid would light up red to tell the user that is the field that has something wrong with it, and the descriptive error message is displayed right below it.
-
-<div style="text-align: center"><img src="app/assets/images/signup.gif" alt="video index"></div>
 
 With lots of experience being a user myself, I know that I need to present information as clearly as possible to the user and leave nothing up to speculation.
 
 ## The Like Bar
 One thing that I just think is really cool is the like bar for video likes. I wanted mine to function how it does on YouTube, how it shows the proportion of likes to dislikes, and then highlights it blue if you like it. I thought it was a cool, interesting little feature that was fun to implement that looks really clean and adds a lot to the feel of the website.
-
-<div style="text-align: center"><img src="app/assets/images/likebar.gif" alt="video index"></div>
 
 ```Javascript
 // video_show.jsx
