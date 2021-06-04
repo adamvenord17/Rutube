@@ -15,7 +15,7 @@
 
 # Introduction - At a glance
 
-<img align="right" src="app/assets/images/rutubegif.gif" alt="rutubegif">
+![rutube](https://user-images.githubusercontent.com/62521461/120765624-f941f300-c54b-11eb-84ef-3b6a0edcb7fe.png)
 
 ### Rutube, a YouTube clone, is a video-sharing platform where users can uplaod their own videos, as well as watch and express their opinions of other user videos through the medium of likes, dislikes, and comments.
 
