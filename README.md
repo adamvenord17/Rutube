@@ -35,20 +35,6 @@
 * See specific users uploaded videos on their channel
 * View your uploaded videos and videos you've liked on your channel, also update your account information
 
-# Recent Updates
-### Channels (11/02/2020)
-Users now have their own channels! Owners of a channel may look at their uploaded videos, subscriptions, and are able to edit their user info. When viewing other user's channels, you may view their uploaded videos and their info.
-
-<img src="app/assets/images/channels.gif" alt="addtags">
-
-### Video Tags (10/30/20)
-
-<img align="right" src="app/assets/images/addtags.gif" alt="addtags">
-
-Now when uploading (and editing) your videos on Rutube, you can create your own tags to add on to videos. Then, on the homepage, you can sort the videos by tags and see only videos with that tag attached! Easily edit your video to remove tags, or add new ones.
-
-<img src="app/assets/images/switch_tags.gif" alt="switchtags">
-
 # Technology
 ### This is a fullstack application that was built using the following technologies:
 * JavaScript
